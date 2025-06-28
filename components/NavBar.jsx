@@ -6,27 +6,27 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { Button } from "./ui/button";
+import { HomeIcon } from "./svg/HomeIcon";
+import { UserIcon } from "./svg/UserIcon";
 
 function NavBar() {
   return (
-    <NavigationMenu className="px-6 py-4 mt-3 shadow rounded-2xl">
+    <NavigationMenu className="px-6 py-4 mt-3 rounded-2xl shadow">
       <NavigationMenuList className="flex gap-4">
         <NavigationMenuItem>
-          <NavigationMenuLink
-            asChild
-            className="hover:!bg-gray-200 focus:!bg-white"
-          >
-            <Link href="/">Home</Link>
-          </NavigationMenuLink>
+          <Button asChild>
+            <Link href="/">
+              <HomeIcon className="text-white" />
+            </Link>
+          </Button>
         </NavigationMenuItem>
-
         <NavigationMenuItem>
-          <NavigationMenuLink
-            asChild
-            className="hover:!bg-gray-200 focus:!bg-white"
-          >
-            <Link href="/profile">Profile</Link>
-          </NavigationMenuLink>
+          <Button asChild>
+            <Link href="/profile">
+              <UserIcon className="text-white" />
+            </Link>
+          </Button>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
