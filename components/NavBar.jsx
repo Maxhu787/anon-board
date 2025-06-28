@@ -12,13 +12,19 @@ function NavBar() {
     <NavigationMenu className="px-6 py-4 mt-3 shadow rounded-2xl">
       <NavigationMenuList className="flex gap-4">
         <NavigationMenuItem>
-          <NavigationMenuLink asChild>
+          <NavigationMenuLink
+            asChild
+            className="hover:!bg-gray-200 focus:!bg-white"
+          >
             <Link href="/">Home</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuLink asChild>
+          <NavigationMenuLink
+            asChild
+            className="hover:!bg-gray-200 focus:!bg-white"
+          >
             <Link href="/profile">Profile</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
