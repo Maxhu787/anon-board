@@ -23,12 +23,6 @@ export default function Home() {
           </li>
         ))}
       </ul>
-      <Link
-        href="/profile"
-        className="inline-block px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-      >
-        Go to Profile
-      </Link>
     </div>
   );
 }
