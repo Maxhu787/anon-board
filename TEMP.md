@@ -6,8 +6,9 @@
 - google auth
 - db schema
 - post page
-- loading skeletons
 - add line breaks in posts
+- profile page
+- loading skeletons
 
 A anonymous forum website for posts on various topics for discussion, targeted towards students.
 
@@ -21,3 +22,6 @@ A anonymous forum website for posts on various topics for discussion, targeted t
 - add feature for one click to share the post on some social media app
 - or something like a button to press to donwload the post with some comments as a image to post on other platforms
 - home page with list of posts
+
+https://lucide.dev/icons/
+https://tailwindcss.com/docs
