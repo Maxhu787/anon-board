@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   Card,
@@ -10,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
-// Mock posts data
+
 const posts = [
   {
     id: "1",
@@ -30,24 +32,39 @@ export default function Home() {
   return (
     <div className="p-8">
       {/* <h1 className="text-2xl font-bold mb-4">Latest Posts</h1> */}
-      <ul className="mb-8 flex flex-col items-center  space-y-2">
+      <ul className="mb-8 flex flex-col items-center space-y-2">
         {posts.map((post) => (
           <li key={post.id} className="w-full max-w-xl">
-            <Link href={`/posts/${post.id}`}>
+            <Link href={`/post/${post.id}`}>
               <Card>
-                <CardHeader>
-                  <CardTitle>{post.user}</CardTitle>
+                <CardHeader className="flex flex-row">
+                  <Link href={`/user/${1}`} className="hover:underline">
+                    <CardTitle>{post.user}</CardTitle>
+                  </Link>
                   <CardDescription>{post.date}</CardDescription>
-                  <CardAction>Card Action</CardAction>
                 </CardHeader>
                 <CardContent>
                   <p>{post.content}</p>
                 </CardContent>
                 <CardFooter className="gap-2">
-                  <Button variant="outline">
+                  <Button
+                    className="hover:cursor-pointer w-[70px]"
+                    variant="outline"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                    }}
+                  >
                     <ThumbsUp />
                   </Button>
-                  <Button variant="outline">
+                  <Button
+                    className="hover:cursor-pointer w-[70px]"
+                    variant="outline"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                    }}
+                  >
                     <ThumbsDown />
                   </Button>
                 </CardFooter>
