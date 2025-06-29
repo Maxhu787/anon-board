@@ -16,7 +16,7 @@ export default function Home() {
           <li key={post.id}>
             <Link
               href={`/posts/${post.id}`}
-              className="text-blue-600 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               <strong>{post.title}</strong> - {post.summary}
             </Link>

@@ -8,7 +8,7 @@ export default function ProfilePage() {
       <h1 className="text-xl font-bold mb-2">Profile</h1>
       <p className="mb-1">Name: {user.name}</p>
       <p className="mb-4">{user.bio}</p>
-      <Link href="/" className="text-blue-600 hover:underline">
+      <Link href="/" className="text-blue-500 hover:underline">
         ← Back to all posts
       </Link>
     </div>

@@ -18,7 +18,7 @@ export default async function PostPage({ params }) {
     <div className="p-8">
       <h1 className="text-xl font-bold mb-2">{post.title}</h1>
       <p className="mb-4">{post.content}</p>
-      <Link href="/" className="text-blue-600 hover:underline">
+      <Link href="/" className="text-blue-500 hover:underline">
         ← Back to all posts
       </Link>
     </div>
