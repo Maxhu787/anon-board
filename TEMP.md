@@ -1,17 +1,15 @@
 # anon-board
 
 - set button gloabl active pressed style
-- db schema
-- google auth
-- login page
-- set page titles
-- post page
+- db schema for posts
 - add line breaks in posts
-- profile page
+- post page
 - loading skeletons
 - add loading screen
+- set page titles
+- profile page
 
-chagne name of oauth screen currently supaabse url
+chagne name of oauth screen currently supabase url
 figure out what use-client is
 
 A anonymous forum website for posts on various topics for discussion, targeted towards students.
