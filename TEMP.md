@@ -1,10 +1,9 @@
 # anon-board
 
-- fix link inside post (make the action buttons a seperate div, that stays at the bottom)
-- set page titles
-- login page
-- google auth
 - db schema
+- google auth
+- login page
+- set page titles
 - post page
 - add line breaks in posts
 - profile page
