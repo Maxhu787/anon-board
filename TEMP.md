@@ -31,3 +31,7 @@ https://tailwindcss.com/docs
 https://www.youtube.com/watch?v=WWwDL9G9xkU
 video for setting up gogole auth
 https://supabase.com/docs/guides/auth/server-side/nextjs
+
+https://ui.shadcn.com/docs/components/separator
+https://ui.shadcn.com/docs/components/select
+https://ui.shadcn.com/docs/components/toggle-group
