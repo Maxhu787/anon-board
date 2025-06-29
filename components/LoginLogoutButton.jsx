@@ -6,9 +6,10 @@ import { createClient } from "@/utils/supabase/client";
 import { signout } from "@/lib/auth-actions";
 
 const LoginButton = () => {
-  const [user, setUser] = useState < any > null;
+  const [user, setUser] = useState(null);
   const router = useRouter();
   const supabase = createClient();
+
   useEffect(() => {
     const fetchUser = async () => {
       const {
@@ -18,6 +19,7 @@ const LoginButton = () => {
     };
     fetchUser();
   }, []);
+
   if (user) {
     return (
       <Button
@@ -30,6 +32,7 @@ const LoginButton = () => {
       </Button>
     );
   }
+
   return (
     <Button
       variant="outline"
