@@ -7,8 +7,8 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
-import { HomeIcon } from "./svg/HomeIcon";
-import { UserIcon } from "./svg/UserIcon";
+import { HouseIcon } from "lucide-react";
+import { UserIcon } from "lucide-react";
 
 function NavBar() {
   return (
@@ -17,14 +17,14 @@ function NavBar() {
         <NavigationMenuItem>
           <Button asChild className="min-w-[58px] min-h-[50px]">
             <Link href="/">
-              <HomeIcon />
+              <HouseIcon style={{ height: 25, width: 25 }} />
             </Link>
           </Button>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Button asChild className="min-w-[58px] min-h-[50px]">
             <Link href="/profile">
-              <UserIcon />
+              <UserIcon style={{ height: 25, width: 25 }} />
             </Link>
           </Button>
         </NavigationMenuItem>
