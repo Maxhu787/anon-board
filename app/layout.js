@@ -1,5 +1,6 @@
 import "./globals.css";
 import NavBar from "@/components/NavBar";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function RootLayout({ children }) {
   return (
@@ -9,6 +10,7 @@ export default function RootLayout({ children }) {
           <NavBar />
         </header>
         <main className="mt-20">{children}</main>
+        <Toaster />
       </body>
     </html>
   );

@@ -13,6 +13,18 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 const posts = [
   {
@@ -60,55 +72,94 @@ const posts = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="p-8">
+      <Drawer>
+        <DrawerTrigger>Open</DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+            <DrawerDescription>This action cannot be undone.</DrawerDescription>
+          </DrawerHeader>
+          <DrawerFooter>
+            <Button>Submit</Button>
+            <DrawerClose>
+              <Button variant="outline">Cancel</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
       {/* <h1 className="text-2xl font-bold mb-4">Latest Posts</h1> */}
       <ul className="mb-8 flex flex-col items-center space-y-2">
         {posts.map((post) => (
           <li key={post.id} className="w-full max-w-xl">
-            <Link href={`/post/${post.id}`}>
-              <Card className="border-1 border-gray-300 border-solid shadow-none">
-                <CardHeader className="flex flex-row gap-3 ">
-                  <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>A</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <Link href={`/user/${1}`} className="hover:underline">
-                      <CardTitle>{post.user}</CardTitle>
-                    </Link>
-                    <CardDescription className="mt-1 text-[12px]">
-                      {post.date}
-                    </CardDescription>
+            <Card
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                router.push(`/post/${post.id}`);
+                // alert("avatar clicked");
+              }}
+              className="border-1 border-gray-300 border-solid shadow-none hover:cursor-pointer"
+            >
+              <CardHeader className="flex flex-row gap-3 ">
+                <Avatar
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    // router.push(`/post/${post.id}`);
+                    toast("avatar clicked");
+                  }}
+                >
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>A</AvatarFallback>
+                </Avatar>
+                <div>
+                  <div
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      // router.push(`/post/${post.id}`);
+                      toast("username clicked");
+                    }}
+                    className="hover:underline"
+                  >
+                    <CardTitle>{post.user}</CardTitle>
                   </div>
-                </CardHeader>
-                <CardContent className="mt-[-18] pl-17">
-                  <p className="text-[15px]">{post.content}</p>
-                </CardContent>
-                <CardFooter className="gap-2 mt-[-12] mb-[-8]">
-                  <Button
-                    className="hover:cursor-pointer w-[70px]"
-                    variant="outline"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                    }}
-                  >
-                    <ThumbsUp />
-                  </Button>
-                  <Button
-                    className="hover:cursor-pointer w-[70px]"
-                    variant="outline"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                    }}
-                  >
-                    <ThumbsDown />
-                  </Button>
-                </CardFooter>
-              </Card>
-            </Link>
+                  <CardDescription className="mt-1 text-[12px]">
+                    {post.date}
+                  </CardDescription>
+                </div>
+              </CardHeader>
+              <CardContent className="mt-[-18] pl-17">
+                <p className="text-[15px]">{post.content}</p>
+              </CardContent>
+              <CardFooter className="gap-2 mt-[-12] mb-[-8]">
+                <Button
+                  className="hover:cursor-pointer w-[70px]"
+                  variant="outline"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    toast("button clicked");
+                  }}
+                >
+                  <ThumbsUp />
+                </Button>
+                <Button
+                  className="hover:cursor-pointer w-[70px]"
+                  variant="outline"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    toast("button clicked");
+                  }}
+                >
+                  <ThumbsDown />
+                </Button>
+              </CardFooter>
+            </Card>
           </li>
         ))}
       </ul>
