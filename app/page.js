@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 
@@ -17,13 +18,38 @@ const posts = [
   {
     id: "1",
     user: "Anonymous user",
-    date: "6月23日 10:42",
+    date: "5月12日 10:42",
     content: "This is the first post.",
   },
   {
     id: "2",
     user: "Anonymous user",
-    date: "6月29日 11:07",
+    date: "5月24日 11:07",
+    content:
+      "This is the second post awdoij awodij iwjdiji jso aijd oisj awdoaiwjd oijwdo iajos idjasoid jaosdi jasoid j",
+  },
+  {
+    id: "3",
+    user: "Anonymous user",
+    date: "6月1日 10:42",
+    content: "This is the first post.",
+  },
+  {
+    id: "4",
+    user: "Anonymous user",
+    date: "6月8日 11:07",
+    content: "This is the second post.",
+  },
+  {
+    id: "5",
+    user: "Anonymous user",
+    date: "6月22日 10:42",
+    content: "This is the first post.",
+  },
+  {
+    id: "6",
+    user: "Anonymous user",
+    date: "6月23日 11:07",
     content: "This is the second post.",
   },
 ];
@@ -36,8 +62,12 @@ export default function Home() {
         {posts.map((post) => (
           <li key={post.id} className="w-full max-w-xl">
             <Link href={`/post/${post.id}`}>
-              <Card>
-                <CardHeader className="flex flex-row">
+              <Card className="border-1 border-gray-300 border-solid shadow-none">
+                <CardHeader className="flex flex-row gap-3 items-center">
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>A</AvatarFallback>
+                  </Avatar>
                   <Link href={`/user/${1}`} className="hover:underline">
                     <CardTitle>{post.user}</CardTitle>
                   </Link>

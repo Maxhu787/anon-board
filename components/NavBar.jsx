@@ -7,12 +7,12 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
-import { House, Send, User } from "lucide-react";
+import { Plus, House, Send, User } from "lucide-react";
 
 function NavBar() {
   const iconSize = 24;
   return (
-    <NavigationMenu className="py-4 mt-3 rounded-2xl shadow bg-white w-full max-w-5xl mx-auto fixed">
+    <NavigationMenu className="py-4 mt-0 rounded-2xl shadow bg-white w-full max-w-5xl mx-auto fixed z-10">
       <NavigationMenuList className="flex w-full justify-between gap-4">
         <NavigationMenuItem>
           <Button
@@ -35,7 +35,7 @@ function NavBar() {
             className="min-w-[58px] min-h-[50px]"
           >
             <Link href="/">
-              <Send
+              <Plus
                 style={{ height: iconSize, width: iconSize }}
                 color="#000"
               />

@@ -1,5 +1,14 @@
 # anon-board
 
+- fix link inside post (make the action buttons a seperate div, that stays at the bottom)
+- set page titles
+- login page
+- google auth
+- db schema
+- post page
+- loading skeletons
+- add line breaks in posts
+
 A anonymous forum website for posts on various topics for discussion, targeted towards students.
 
 - anonymouse messaging board
@@ -11,7 +20,4 @@ A anonymous forum website for posts on various topics for discussion, targeted t
 - white clean minalistic look
 - add feature for one click to share the post on some social media app
 - or something like a button to press to donwload the post with some comments as a image to post on other platforms
-
 - home page with list of posts
-- profile page
--
