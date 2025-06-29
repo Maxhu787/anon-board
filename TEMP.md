@@ -8,6 +8,7 @@
 - add line breaks in posts
 - profile page
 - loading skeletons
+- add loading screen
 
 figure out what use-client is
 
