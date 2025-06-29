@@ -20,6 +20,15 @@ function NavBar() {
             asChild
             className="min-w-[58px] min-h-[50px]"
           >
+            <Link href="/">g4o2.me</Link>
+          </Button>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Button
+            variant="outline"
+            asChild
+            className="min-w-[58px] min-h-[50px]"
+          >
             <Link href="/">
               <House
                 style={{ height: iconSize, width: iconSize }}

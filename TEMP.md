@@ -10,6 +10,8 @@
 - profile page
 - loading skeletons
 
+figure out what use-client is
+
 A anonymous forum website for posts on various topics for discussion, targeted towards students.
 
 - anonymouse messaging board
