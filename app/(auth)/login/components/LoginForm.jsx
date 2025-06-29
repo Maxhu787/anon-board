@@ -15,9 +15,9 @@ import { SignInWithGoogleButton } from "./SignInWithGoogleButton";
 export function LoginForm({ className, ...props }) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
+      <Card className="w-[400px]">
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
+          <CardTitle className="text-2xl">登入帳號</CardTitle>
           <CardDescription>
             Enter your email below to login to your account
           </CardDescription>
@@ -38,12 +38,12 @@ export function LoginForm({ className, ...props }) {
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-                  <a
+                  {/* <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
                     Forgot your password?
-                  </a>
+                  </a> */}
                 </div>
                 <Input id="password" name="password" type="password" required />
               </div>

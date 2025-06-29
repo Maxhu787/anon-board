@@ -28,3 +28,6 @@ A anonymous forum website for posts on various topics for discussion, targeted t
 
 https://lucide.dev/icons/
 https://tailwindcss.com/docs
+
+https://www.youtube.com/watch?v=WWwDL9G9xkU
+video for setting up gogole auth

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { signout } from "@/lib/auth-actions";
 
-const LoginButton = () => {
+const LoginButton = ({ className }) => {
   const [user, setUser] = useState(null);
   const router = useRouter();
   const supabase = createClient();
@@ -23,24 +23,26 @@ const LoginButton = () => {
   if (user) {
     return (
       <Button
+        variant="outline"
         onClick={() => {
           signout();
           setUser(null);
         }}
+        className={className}
       >
-        Log out
+        登出
       </Button>
     );
   }
 
   return (
     <Button
-      variant="outline"
       onClick={() => {
         router.push("/login");
       }}
+      className={className}
     >
-      Login
+      登入
     </Button>
   );
 };

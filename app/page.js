@@ -15,7 +15,6 @@ import { Button } from "@/components/ui/button";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import LoginButton from "@/components/LoginLogoutButton";
 import UserGreetText from "@/components/UserGreetText";
 
 const posts = [
@@ -68,8 +67,7 @@ export default function Home() {
   return (
     <div className="p-8">
       {/* <h1 className="text-2xl font-bold mb-4">Latest Posts</h1> */}
-      <LoginButton />
-      <UserGreetText />
+      {/* <UserGreetText /> */}
       <ul className="mb-8 flex flex-col items-center space-y-2">
         {posts.map((post) => (
           <li key={post.id} className="w-full max-w-xl">
