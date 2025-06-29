@@ -7,8 +7,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
-import { House } from "lucide-react";
-import { User } from "lucide-react";
+import { House, Send, User } from "lucide-react";
 
 function NavBar() {
   const iconSize = 24;
@@ -36,7 +35,7 @@ function NavBar() {
             className="min-w-[58px] min-h-[50px]"
           >
             <Link href="/">
-              <House
+              <Send
                 style={{ height: iconSize, width: iconSize }}
                 color="#000"
               />

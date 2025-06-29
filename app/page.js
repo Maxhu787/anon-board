@@ -29,10 +29,10 @@ const posts = [
 export default function Home() {
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">All Posts</h1>
-      <ul className="mb-8 space-y-2">
+      {/* <h1 className="text-2xl font-bold mb-4">Latest Posts</h1> */}
+      <ul className="mb-8 flex flex-col items-center  space-y-2">
         {posts.map((post) => (
-          <li key={post.id}>
+          <li key={post.id} className="w-full max-w-xl">
             <Link href={`/posts/${post.id}`}>
               <Card>
                 <CardHeader>
@@ -44,10 +44,10 @@ export default function Home() {
                   <p>{post.content}</p>
                 </CardContent>
                 <CardFooter className="gap-2">
-                  <Button>
+                  <Button variant="outline">
                     <ThumbsUp />
                   </Button>
-                  <Button>
+                  <Button variant="outline">
                     <ThumbsDown />
                   </Button>
                 </CardFooter>
