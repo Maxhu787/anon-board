@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
         <header className="flex justify-center">
           <NavBar />
         </header>
-        <main>{children}</main>
+        <main className="mt-25">{children}</main>
       </body>
     </html>
   );

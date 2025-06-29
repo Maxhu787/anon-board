@@ -1,10 +1,29 @@
 import Link from "next/link";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
+import { ThumbsDown, ThumbsUp } from "lucide-react";
 // Mock posts data
 const posts = [
-  { id: "1", title: "First Post", summary: "This is the first post." },
-  { id: "2", title: "Second Post", summary: "This is the second post." },
+  {
+    id: "1",
+    user: "Anonymous user",
+    date: "6月23日 10:42",
+    content: "This is the first post.",
+  },
+  {
+    id: "2",
+    user: "Anonymous user",
+    date: "6月29日 11:07",
+    content: "This is the second post.",
+  },
 ];
 
 export default function Home() {
@@ -14,11 +33,25 @@ export default function Home() {
       <ul className="mb-8 space-y-2">
         {posts.map((post) => (
           <li key={post.id}>
-            <Link
-              href={`/posts/${post.id}`}
-              className="text-blue-500 hover:underline"
-            >
-              <strong>{post.title}</strong> - {post.summary}
+            <Link href={`/posts/${post.id}`}>
+              <Card>
+                <CardHeader>
+                  <CardTitle>{post.user}</CardTitle>
+                  <CardDescription>{post.date}</CardDescription>
+                  <CardAction>Card Action</CardAction>
+                </CardHeader>
+                <CardContent>
+                  <p>{post.content}</p>
+                </CardContent>
+                <CardFooter className="gap-2">
+                  <Button>
+                    <ThumbsUp />
+                  </Button>
+                  <Button>
+                    <ThumbsDown />
+                  </Button>
+                </CardFooter>
+              </Card>
             </Link>
           </li>
         ))}
