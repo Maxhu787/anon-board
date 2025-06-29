@@ -13,9 +13,10 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import UserGreetText from "@/components/UserGreetText";
+import { useEffect } from "react";
 
 const posts = [
   {
@@ -64,6 +65,15 @@ const posts = [
 
 export default function Home() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const toastParam = searchParams.get("toast");
+
+  useEffect(() => {
+    if (toastParam === "email_sent") {
+      toast("Confirmation email sent.");
+    }
+  }, [toastParam]);
+
   return (
     <div className="p-8">
       {/* <h1 className="text-2xl font-bold mb-4">Latest Posts</h1> */}

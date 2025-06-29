@@ -1,5 +1,6 @@
 # anon-board
 
+- set button gloabl active pressed style
 - db schema
 - google auth
 - login page
@@ -31,3 +32,4 @@ https://tailwindcss.com/docs
 
 https://www.youtube.com/watch?v=WWwDL9G9xkU
 video for setting up gogole auth
+https://supabase.com/docs/guides/auth/server-side/nextjs
