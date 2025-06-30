@@ -7,6 +7,7 @@
 - loading skeletons
 - add loading screen
 - set page titles
+- add some colors to make it less plain
 
 chagne name of oauth screen currently supabase url
 figure out what use-client is
