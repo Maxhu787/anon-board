@@ -58,7 +58,11 @@ export function SignUpForm() {
               <Label htmlFor="password">Password</Label>
               <Input name="password" id="password" type="password" />
             </div>
-            <Button formAction={signup} type="submit" className="w-full">
+            <Button
+              formAction={signup}
+              type="submit"
+              className="w-full cursor-pointer active:scale-95 transition-all"
+            >
               Create an account
             </Button>
           </div>

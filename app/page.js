@@ -78,7 +78,7 @@ export default function Home() {
                 router.push(`/post/${post.id}`);
                 // alert("avatar clicked");
               }}
-              className="border-1 border-gray-300 border-solid shadow-none hover:cursor-pointer"
+              className="border-1 dark:border-gray-800 border-gray-300 border-solid shadow-none hover:cursor-pointer"
             >
               <CardHeader className="flex flex-row gap-3 ">
                 <Avatar
@@ -114,7 +114,7 @@ export default function Home() {
               </CardContent>
               <CardFooter className="gap-2 mt-[-12] mb-[-8]">
                 <Button
-                  className="hover:cursor-pointer w-[70px]"
+                  className="w-[70px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(60,60,60)]"
                   variant="outline"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -125,7 +125,7 @@ export default function Home() {
                   <ThumbsUp />
                 </Button>
                 <Button
-                  className="hover:cursor-pointer w-[70px]"
+                  className="w-[70px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(60,60,60)]"
                   variant="outline"
                   onClick={(e) => {
                     e.stopPropagation();

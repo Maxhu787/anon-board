@@ -8,7 +8,7 @@ export const SignInWithGoogleButton = () => {
     <Button
       type="button"
       variant="outline"
-      className="w-full"
+      className="w-full cursor-pointer active:scale-95 transition-all"
       onClick={() => {
         signInWithGoogle();
       }}

@@ -1,7 +1,7 @@
 # anon-board
 
-- set button gloabl active pressed style
 - db schema for posts
+- figure out where to put the theme button
 - add line breaks in posts
 - post page
 - loading skeletons

@@ -48,7 +48,11 @@ export function LoginForm({ className, ...props }) {
                 <Input id="password" name="password" type="password" required />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" formAction={login} className="w-full">
+                <Button
+                  type="submit"
+                  formAction={login}
+                  className="w-full cursor-pointer active:scale-95 transition-all"
+                >
                   Login
                 </Button>
                 <SignInWithGoogleButton />
