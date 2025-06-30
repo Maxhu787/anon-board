@@ -21,7 +21,6 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import LoginButton from "./LoginLogoutButton";
-import { ToggleThemeButton } from "./ToggleThemeButton";
 import { useTheme } from "next-themes";
 
 export default function NavBar() {
@@ -91,13 +90,6 @@ export default function NavBar() {
             className="min-w-[58px] min-h-[50px] cursor-pointer active:scale-95 transition-all"
           />
         </NavigationMenuItem>
-        {/* <NavigationMenuItem>
-          <ToggleThemeButton
-            variant="outline"
-            asChild
-            className="min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)]"
-          />
-        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );

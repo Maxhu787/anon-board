@@ -1,10 +1,9 @@
 # anon-board
 
-- profile page
-- post page
-- add line breaks in posts
-- figure out where to put the theme button
 - loading skeletons
+- send post page
+- individual post page
+- add line breaks in posts
 - add loading screen
 - set page titles
 - add some colors to make it less plain

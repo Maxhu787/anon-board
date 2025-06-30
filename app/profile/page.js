@@ -1,16 +1,75 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export default function ProfilePage() {
-  // Mock user data
-  const user = { name: "Anonymous", bio: "This is your profile page." };
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  const supabase = createClient();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        router.push("/login");
+      } else {
+        setUser(user);
+      }
+
+      setLoading(false);
+    };
+
+    fetchUser();
+  }, []);
+
+  if (loading || !user) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  const fullName = user?.user_metadata?.full_name || "Anonymous";
+  const email = user?.email || "No email";
+  const avatarUrl = user?.user_metadata?.avatar_url || "";
+
   return (
-    <div className="p-8">
-      <h1 className="text-xl font-bold mb-2">Profile</h1>
-      <p className="mb-1">Name: {user.name}</p>
-      <p className="mb-4">{user.bio}</p>
-      <Link href="/" className="text-blue-500 hover:underline">
-        ← Back to all posts
-      </Link>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-zinc-900">
+      <div className="bg-white dark:bg-zinc-800 text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <div className="flex flex-col items-center mb-6">
+          <Avatar className="w-28 h-28 mt-6 mb-2">
+            <AvatarImage src={avatarUrl} alt={fullName} />
+            <AvatarFallback>
+              {fullName
+                .split(" ")
+                .map((word) => word[0])
+                .join("")
+                .toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+        </div>
+        <div className="text-left">
+          <h1 className="text-2xl font-bold mb-4">Profile</h1>
+          <p className="mb-2">
+            <span className="font-semibold">Name:</span> {fullName}
+          </p>
+          <p className="mb-6">
+            <span className="font-semibold">Email:</span> {email}
+          </p>
+          <Link href="/" className="text-blue-500 hover:underline">
+            ← Back to all posts
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

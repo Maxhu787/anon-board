@@ -2,6 +2,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import NavBar from "@/components/NavBar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ToggleThemeButton } from "@/components/ToggleThemeButton";
 
 export default function RootLayout({ children }) {
   return (
@@ -21,6 +22,11 @@ export default function RootLayout({ children }) {
           </header>
           <main>{children}</main>
           <Toaster />
+          <ToggleThemeButton
+            variant="outline"
+            asChild
+            className="min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-6 bottom-6"
+          />
         </ThemeProvider>
       </body>
     </html>
