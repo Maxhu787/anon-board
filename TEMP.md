@@ -1,11 +1,11 @@
 # anon-board
 
-- loading skeletons
 - send post page
 - individual post page
 - add line breaks in posts
 - add loading screen
 - set page titles
+- site logo
 - add some colors to make it less plain
 
 chagne name of oauth screen currently supabase url
