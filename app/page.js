@@ -65,7 +65,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="p-8">
+    <div className="p-8 mt-20">
       {/* <h1 className="text-2xl font-bold mb-4">Latest Posts</h1> */}
       {/* <UserGreetText /> */}
       <ul className="mb-8 flex flex-col items-center space-y-2">

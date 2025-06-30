@@ -6,6 +6,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <title>g4o2.me</title>
+      </head>
       <body className="bg-[rgb(250,250,250)] dark:bg-[rgb(30,30,30)]">
         <ThemeProvider
           attribute="class"
@@ -16,7 +19,7 @@ export default function RootLayout({ children }) {
           <header className="flex justify-center">
             <NavBar />
           </header>
-          <main className="mt-20">{children}</main>
+          <main>{children}</main>
           <Toaster />
         </ThemeProvider>
       </body>

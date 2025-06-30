@@ -1,13 +1,12 @@
 # anon-board
 
-- db schema for posts
-- figure out where to put the theme button
-- add line breaks in posts
+- profile page
 - post page
+- add line breaks in posts
+- figure out where to put the theme button
 - loading skeletons
 - add loading screen
 - set page titles
-- profile page
 
 chagne name of oauth screen currently supabase url
 figure out what use-client is
