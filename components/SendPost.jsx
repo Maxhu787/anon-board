@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "./ui/button";
 import {
   DrawerClose,
@@ -14,11 +14,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { createClient } from "@/utils/supabase/client";
+import { toast } from "sonner";
 
 export default function SendPost() {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [loading, setLoading] = useState(false);
+  const closeRef = useRef(null);
 
   const supabase = createClient();
 
@@ -38,6 +40,8 @@ export default function SendPost() {
     if (!error) {
       setContent("");
       setIsAnonymous(false);
+      closeRef.current?.click();
+      toast("Posted!");
     } else {
       console.error("Error posting:", error);
     }
@@ -71,6 +75,7 @@ export default function SendPost() {
               id="anonymous"
               checked={isAnonymous}
               onCheckedChange={setIsAnonymous}
+              className="cursor-pointer"
             />
           </div>
         </div>
@@ -79,14 +84,22 @@ export default function SendPost() {
         <div className="w-full flex justify-center">
           <div className="w-full max-w-md px-4 space-y-2 mb-4">
             <Button
-              className="w-full"
+              className="w-full cursor-pointer active:bg-[rgb(57,57,57)] active:scale-95 transition-all dark:active:bg-gray-200"
               disabled={loading || !content.trim()}
               onClick={handleSubmit}
             >
               {loading ? "Posting..." : "Post"}
             </Button>
+
             <DrawerClose asChild>
-              <Button variant="outline" className="w-full">
+              <button ref={closeRef} className="hidden" />
+            </DrawerClose>
+
+            <DrawerClose asChild>
+              <Button
+                variant="outline"
+                className="w-full cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)]"
+              >
                 Cancel
               </Button>
             </DrawerClose>
