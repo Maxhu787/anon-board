@@ -1,5 +1,6 @@
 # anon-board
 
+- fix multiple fetches in home
 - send post page
 - individual post page
 - add line breaks in posts

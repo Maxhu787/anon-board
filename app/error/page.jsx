@@ -7,7 +7,7 @@ export default function NotFound() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-orange-400 via-orange-500 to-yellow-400 text-white px-4">
-      <h1 className="text-9xl font-extrabold mb-6 select-none">404</h1>
+      <h1 className="text-9xl font-extrabold mb-6 select-none">Oops...</h1>
       <p className="text-2xl md:text-3xl mb-8 max-w-md text-center">
         Sorry, something went wrong.
       </p>
