@@ -40,9 +40,12 @@ export default function Home() {
             <h1 className="text-5xl font-extrabold tracking-tight text-black dark:text-white">
               g4o2.me
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
+            {/* <p className="text-lg text-gray-600 dark:text-gray-400">
               A place to post your thoughts freely - choose to share anonymously
               or not.
+            </p> */}
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              一個可以自由發表想法的地方 - 選擇匿名或不匿名分享。
             </p>
           </div>
         )}
@@ -50,14 +53,20 @@ export default function Home() {
 
       <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
         <div className="space-x-4 mb-2">
-          <Link href="/terms-of-service" className="hover:underline">
+          {/* <Link href="/terms-of-service" className="hover:underline">
             Terms of Service
+          </Link> */}
+          <Link href="/terms-of-service" className="hover:underline">
+            服務條款
           </Link>
-          <Link href="/privacy-policy" className="hover:underline">
+          {/* <Link href="/privacy-policy" className="hover:underline">
             Privacy Policy
+          </Link> */}
+          <Link href="/privacy-policy" className="hover:underline">
+            隱私政策
           </Link>
         </div>
-        <div>© {new Date().getFullYear()} g4o2.me — All rights reserved.</div>
+        <div>© {new Date().getFullYear()} g4o2.me - All rights reserved.</div>
       </footer>
     </div>
   );

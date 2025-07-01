@@ -1,10 +1,14 @@
 # anon-board
 
-- fix multiple fetches in home
+- add likes implementation & comments
+- add favicon
+- add translations
 - change error page make white and black
 - add loading screen
 - dynamic page title
 - add some colors to make it less plain
+- add sitemap gogole search console
+- ~~fix multiple fetches in home~~ (seems to not be an issue in production)
 
 somehow not fetch the userid when anon is true
 

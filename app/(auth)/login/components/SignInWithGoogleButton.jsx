@@ -7,7 +7,7 @@ export const SignInWithGoogleButton = () => {
   return (
     <Button
       type="button"
-      variant="outline"
+      // variant="outline"
       className="w-full cursor-pointer active:scale-95 transition-all"
       onClick={() => {
         signInWithGoogle();

@@ -18,14 +18,14 @@ export function LoginForm({ className, ...props }) {
       <Card className="w-[400px]">
         <CardHeader>
           <CardTitle className="text-2xl">登入帳號</CardTitle>
-          <CardDescription>
+          {/* <CardDescription>
             Enter your email below to login to your account
-          </CardDescription>
+          </CardDescription> */}
         </CardHeader>
         <CardContent>
           <form action="">
             <div className="flex flex-col gap-6">
-              <div className="grid gap-3">
+              {/* <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
@@ -38,32 +38,32 @@ export function LoginForm({ className, ...props }) {
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-                  {/* <a
+                  <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
                     Forgot your password?
-                  </a> */}
+                  </a>
                 </div>
                 <Input id="password" name="password" type="password" required />
-              </div>
+              </div> */}
               <div className="flex flex-col gap-3">
-                <Button
+                {/* <Button
                   type="submit"
                   formAction={login}
                   className="w-full cursor-pointer active:scale-95 transition-all"
                 >
                   Login
-                </Button>
+                </Button> */}
                 <SignInWithGoogleButton />
               </div>
             </div>
-            <div className="mt-4 text-center text-sm">
+            {/* <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}
               <a href="/signup" className="underline underline-offset-4">
                 Sign up
               </a>
-            </div>
+            </div> */}
           </form>
         </CardContent>
       </Card>
