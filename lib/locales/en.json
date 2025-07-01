@@ -1,0 +1,18 @@
+{
+  "description": "A place to post your thoughts freely - choose to share anonymously or not.",
+  "logIn": "Login",
+  "logOut": "Logout",
+  "logInAccount": "Login",
+  "signUpAccount": "Sign up",
+  "privacyPolicy": "Privacy Policy",
+  "tos": "Terms of Service",
+  "cardTitle": "Create a post",
+  "cardSecondary": "Share your thoughts anonymously or publicly.",
+  "content": "Content",
+  "cardPlaceholder": "What's on your mind?",
+  "postAnon": "Post Anonymously",
+  "post": "Post",
+  "posting": "Posting...",
+  "cancel": "Cancel",
+  "profile": "Profile"
+}

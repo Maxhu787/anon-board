@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { createClient } from "@/utils/supabase/client";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export default function SendPost() {
   const [content, setContent] = useState("");
@@ -23,6 +24,7 @@ export default function SendPost() {
   const closeRef = useRef(null);
 
   const supabase = createClient();
+  const { t } = useTranslation();
 
   const handleSubmit = async () => {
     if (!content.trim()) return;
@@ -50,27 +52,25 @@ export default function SendPost() {
   return (
     <DrawerContent>
       <DrawerHeader className="text-center mt-2">
-        <DrawerTitle>Create a post</DrawerTitle>
-        <DrawerDescription>
-          Share your thoughts anonymously or publicly.
-        </DrawerDescription>
+        <DrawerTitle>{t("cardTitle")}</DrawerTitle>
+        <DrawerDescription>{t("cardSecondary")}</DrawerDescription>
       </DrawerHeader>
       <div className="w-full flex justify-center">
         <div className="w-full max-w-md px-4 space-y-4">
           <div>
-            <Label htmlFor="content">Content</Label>
+            <Label htmlFor="content">{t("content")}</Label>
             <Textarea
               id="content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="What's on your mind?"
+              placeholder={t("cardPlaceholder")}
               rows={4}
               className="mt-2 min-h-40 max-h-40 overflow-y-auto resize-none"
             />
           </div>
 
           <div className="flex items-center justify-between">
-            <Label htmlFor="anonymous">Post Anonymously</Label>
+            <Label htmlFor="anonymous">{t("postAnon")}</Label>
             <Switch
               id="anonymous"
               checked={isAnonymous}
@@ -88,7 +88,7 @@ export default function SendPost() {
               disabled={loading || !content.trim()}
               onClick={handleSubmit}
             >
-              {loading ? "Posting..." : "Post"}
+              {loading ? t("posting") : t("post")}
             </Button>
 
             <DrawerClose asChild>
@@ -100,7 +100,7 @@ export default function SendPost() {
                 variant="outline"
                 className="w-full cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)]"
               >
-                Cancel
+                {t("cancel")}
               </Button>
             </DrawerClose>
           </div>

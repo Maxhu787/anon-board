@@ -1,0 +1,18 @@
+{
+  "description": "一個可以自由發表想法的地方 - 選擇匿名或不匿名分享。",
+  "logIn": "登入",
+  "logOut": "登出",
+  "logInAccount": "登入帳號",
+  "signUpAccount": "註冊帳號",
+  "privacyPolicy": "隱私政策",
+  "tos": "服務條款",
+  "cardTitle": "發文",
+  "cardSecondary": "匿名或公開分享你的想法",
+  "content": "內容",
+  "cardPlaceholder": "你在想些什麼呢?",
+  "postAnon": "匿名發布",
+  "post": "發布",
+  "posting": "發布中...",
+  "cancel": "取消",
+  "profile": "個人檔案"
+}

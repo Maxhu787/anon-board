@@ -5,7 +5,7 @@ import { SignUpForm } from "./components/SignUpForm";
 const SignUpPage = () => {
   return (
     <div className="flex items-center justify-center mt-35">
-      <SignUpForm />
+      {/* <SignUpForm /> */}
     </div>
   );
 };

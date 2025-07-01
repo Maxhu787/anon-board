@@ -7,12 +7,14 @@ import Link from "next/link";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useTranslation } from "react-i18next";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const supabase = createClient();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -74,7 +76,7 @@ export default function ProfilePage() {
           </Avatar>
         </div>
         <div className="text-left">
-          <h1 className="text-2xl font-bold mb-4">Profile</h1>
+          <h1 className="text-2xl font-bold mb-4">{t("profile")}</h1>
           <p className="mb-2">
             <span className="font-semibold">Name:</span> {fullName}
           </p>

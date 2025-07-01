@@ -4,11 +4,13 @@ import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { signout } from "@/lib/auth-actions";
+import { useTranslation } from "react-i18next";
 
 const LoginButton = ({ className }) => {
   const [user, setUser] = useState(null);
   const router = useRouter();
   const supabase = createClient();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,7 +32,7 @@ const LoginButton = ({ className }) => {
         }}
         className={className}
       >
-        登出
+        {t("logOut")}
       </Button>
     );
   }
@@ -42,7 +44,7 @@ const LoginButton = ({ className }) => {
       }}
       className={className}
     >
-      登入
+      {t("logIn")}
     </Button>
   );
 };

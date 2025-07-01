@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,13 +13,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login } from "@/lib/auth-actions";
 import { SignInWithGoogleButton } from "./SignInWithGoogleButton";
+import { useTranslation } from "react-i18next";
 
 export function LoginForm({ className, ...props }) {
+  const { t } = useTranslation();
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="w-[400px]">
         <CardHeader>
-          <CardTitle className="text-2xl">登入帳號</CardTitle>
+          <CardTitle className="text-2xl">{t("logInAccount")}</CardTitle>
           {/* <CardDescription>
             Enter your email below to login to your account
           </CardDescription> */}

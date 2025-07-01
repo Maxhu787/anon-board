@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,12 +12,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signup } from "@/lib/auth-actions";
+import { useTranslation } from "react-i18next";
 
 export function SignUpForm() {
+  const { t } = useTranslation();
   return (
     <Card className="mx-auto max-w-sm">
       <CardHeader>
-        <CardTitle className="text-2xl">註冊帳號</CardTitle>
+        <CardTitle className="text-2xl">{t("signUpAccount")}</CardTitle>
         <CardDescription>
           Enter your information to create an account
         </CardDescription>

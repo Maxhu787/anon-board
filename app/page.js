@@ -4,11 +4,14 @@ import Posts from "@/components/Posts";
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const supabase = createClient();
+  const { t } = useTranslation();
 
   useEffect(() => {
     document.title = "g4o2.me | Home";
@@ -22,6 +25,10 @@ export default function Home() {
     };
 
     fetchUser();
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
   if (loading) {
@@ -40,30 +47,22 @@ export default function Home() {
             <h1 className="text-5xl font-extrabold tracking-tight text-black dark:text-white">
               g4o2.me
             </h1>
-            {/* <p className="text-lg text-gray-600 dark:text-gray-400">
-              A place to post your thoughts freely - choose to share anonymously
-              or not.
-            </p> */}
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              一個可以自由發表想法的地方 - 選擇匿名或不匿名分享。
-            </p>
+            {mounted && (
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {t("description")}
+              </p>
+            )}
           </div>
         )}
       </main>
 
       <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
         <div className="space-x-4 mb-2">
-          {/* <Link href="/terms-of-service" className="hover:underline">
-            Terms of Service
-          </Link> */}
           <Link href="/terms-of-service" className="hover:underline">
-            服務條款
+            {t("tos")}
           </Link>
-          {/* <Link href="/privacy-policy" className="hover:underline">
-            Privacy Policy
-          </Link> */}
           <Link href="/privacy-policy" className="hover:underline">
-            隱私政策
+            {t("privacyPolicy")}
           </Link>
         </div>
         <div>© {new Date().getFullYear()} g4o2.me - All rights reserved.</div>
