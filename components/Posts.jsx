@@ -107,7 +107,9 @@ export default function Posts() {
                 onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
-                  toast("avatar clicked");
+                  if (!post.is_anonymous) {
+                    router.push(`/user/${post.user_id}`);
+                  }
                 }}
               >
                 {post.is_anonymous ? (
@@ -123,7 +125,9 @@ export default function Posts() {
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
-                    toast("username clicked");
+                    if (!post.is_anonymous) {
+                      router.push(`/user/${post.user_id}`);
+                    }
                   }}
                   className="hover:underline"
                 >

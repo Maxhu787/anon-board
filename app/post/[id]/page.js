@@ -123,7 +123,9 @@ export default function PostPage(promiseParams) {
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
-              toast("avatar clicked");
+              if (!post.is_anonymous) {
+                router.push(`/user/${post.user_id}`);
+              }
             }}
             className="cursor-pointer"
           >
@@ -140,7 +142,9 @@ export default function PostPage(promiseParams) {
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                toast("username clicked");
+                if (!post.is_anonymous) {
+                  router.push(`/user/${post.user_id}`);
+                }
               }}
               className="hover:underline cursor-pointer"
             >
