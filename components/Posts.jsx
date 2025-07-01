@@ -147,7 +147,7 @@ export default function Posts() {
                 </CardDescription>
               </div>
             </CardHeader>
-            <CardContent className="mt-[-18] pl-17">
+            <CardContent className="mt-[-18] whitespace-pre-wrap pl-17">
               <p className="text-[15px]">{post.content}</p>
             </CardContent>
             <CardFooter className="gap-2 mt-[-12] mb-[-8]">
