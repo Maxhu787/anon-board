@@ -15,7 +15,7 @@ export default function TermsOfService() {
 
       <h2 className="text-xl font-semibold mt-8 mb-2">1. Use of the Service</h2>
       <ul className="list-disc pl-6 mb-4">
-        <li>You must be at least 13 years old to use the app.</li>
+        {/* <li>You must be at least 13 years old to use the app.</li> */}
         <li>
           You agree not to misuse the service or attempt to harm others or the
           platform.

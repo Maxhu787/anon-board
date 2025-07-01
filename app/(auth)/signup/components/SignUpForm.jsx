@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -67,6 +66,19 @@ export function SignUpForm() {
             </Button>
           </div>
         </form>
+
+        <p className="mt-3 text-xs text-gray-500 text-center">
+          By signing up, you agree to our{" "}
+          <Link href="/privacy-policy" className="underline">
+            Privacy Policy
+          </Link>{" "}
+          and{" "}
+          <Link href="/terms-of-service" className="underline">
+            Terms of Service
+          </Link>
+          .
+        </p>
+
         <div className="mt-4 text-center text-sm">
           Already have an account?{" "}
           <Link href="/login" className="underline">

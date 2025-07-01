@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -12,20 +12,27 @@ import { Plus, House, User } from "lucide-react";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 import LoginButton from "./LoginLogoutButton";
 import SendPost from "./SendPost";
+import { createClient } from "@/utils/supabase/client";
 
 export default function NavBar() {
   const iconSize = 24;
   const buttonClass =
     "min-w-[58px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)]";
 
+  const supabase = createClient();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user);
+    };
+    checkUser();
+  }, []);
+
   return (
-    <NavigationMenu className="py-4 mt-0 rounded-2xl shadow  w-full max-w-5xl mx-auto fixed z-10 bg-white dark:bg-[rgb(43,43,43)]">
+    <NavigationMenu className="py-4 mt-0 rounded-2xl shadow w-full max-w-5xl mx-auto fixed z-10 bg-white dark:bg-[rgb(43,43,43)]">
       <NavigationMenuList className="flex w-full justify-between gap-4">
-        {/* <NavigationMenuItem>
-          <Button asChild className="min-w-[58px] min-h-[50px]">
-            <Link href="/">g4o2.me</Link>
-          </Button>
-        </NavigationMenuItem> */}
         <NavigationMenuItem>
           <Button variant="outline" asChild className={buttonClass}>
             <Link href="/">
@@ -33,23 +40,42 @@ export default function NavBar() {
             </Link>
           </Button>
         </NavigationMenuItem>
+
         <NavigationMenuItem>
-          <Drawer>
-            <DrawerTrigger asChild>
-              <Button variant="outline" className={buttonClass}>
+          {user ? (
+            <Drawer>
+              <DrawerTrigger asChild>
+                <Button variant="outline" className={buttonClass}>
+                  <Plus style={{ height: iconSize, width: iconSize }} />
+                </Button>
+              </DrawerTrigger>
+              <SendPost />
+            </Drawer>
+          ) : (
+            <Button variant="outline" asChild className={buttonClass}>
+              <Link href="/login">
                 <Plus style={{ height: iconSize, width: iconSize }} />
-              </Button>
-            </DrawerTrigger>
-            <SendPost />
-          </Drawer>
+              </Link>
+            </Button>
+          )}
         </NavigationMenuItem>
+
         <NavigationMenuItem>
-          <Button variant="outline" asChild className={buttonClass}>
-            <Link href="/profile">
-              <User style={{ height: iconSize, width: iconSize }} />
-            </Link>
-          </Button>
+          {user ? (
+            <Button variant="outline" asChild className={buttonClass}>
+              <Link href="/profile">
+                <User style={{ height: iconSize, width: iconSize }} />
+              </Link>
+            </Button>
+          ) : (
+            <Button variant="outline" asChild className={buttonClass}>
+              <Link href="/login">
+                <User style={{ height: iconSize, width: iconSize }} />
+              </Link>
+            </Button>
+          )}
         </NavigationMenuItem>
+
         <NavigationMenuItem>
           <LoginButton
             variant="outline"
