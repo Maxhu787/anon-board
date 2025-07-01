@@ -23,16 +23,18 @@ export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef(null);
 
   const supabase = createClient();
 
   const fetchPosts = async (pageIndex) => {
+    if (!hasMore) return;
+
     setLoading(true);
     const from = pageIndex * PAGE_SIZE;
     const to = from + PAGE_SIZE - 1;
 
-    // Select posts with related profiles (full_name and avatar_url)
     const { data, error } = await supabase
       .from("posts")
       .select(
@@ -49,8 +51,13 @@ export default function Posts() {
 
     if (error) {
       console.error("Error fetching posts:", error);
-    } else if (data?.length) {
-      setPosts((prev) => [...prev, ...data]);
+    } else {
+      if (data.length < PAGE_SIZE) {
+        setHasMore(false);
+      }
+      if (data.length) {
+        setPosts((prev) => [...prev, ...data]);
+      }
     }
 
     setLoading(false);
@@ -63,7 +70,7 @@ export default function Posts() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !loading) {
+        if (entries[0].isIntersecting && !loading && hasMore) {
           setPage((prev) => prev + 1);
         }
       },
@@ -77,7 +84,7 @@ export default function Posts() {
     return () => {
       if (loaderRef.current) observer.unobserve(loaderRef.current);
     };
-  }, [loading]);
+  }, [loading, hasMore]);
 
   useEffect(() => {
     if (page > 0) fetchPosts(page);
@@ -171,7 +178,12 @@ export default function Posts() {
         ref={loaderRef}
         className="h-10 w-full flex justify-center items-center"
       >
-        {loading && <span className="text-sm text-gray-500">Loading...</span>}
+        {loading && hasMore && (
+          <span className="text-sm text-gray-500">Loading...</span>
+        )}
+        {!hasMore && (
+          <span className="text-sm text-gray-400">No more posts to load.</span>
+        )}
       </li>
     </ul>
   );
