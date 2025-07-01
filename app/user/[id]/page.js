@@ -34,7 +34,7 @@ export default function UserPage({ params }) {
     };
 
     fetchProfile();
-  }, [id]);
+  }, [id, supabase]);
 
   if (loading) {
     return (

@@ -61,7 +61,7 @@ export default function PostPage(promiseParams) {
     }
 
     fetchPost();
-  }, [id]);
+  }, [id, supabase]);
 
   if (loading)
     return (

@@ -32,7 +32,7 @@ export default function ProfilePage() {
     fetchUser();
 
     document.title = "g4o2.me | Profile";
-  }, []);
+  }, [supabase.auth, router]);
 
   if (loading || !user) {
     return (
