@@ -1,13 +1,14 @@
 # anon-board
 
 - fix multiple fetches in home
-- send post page
-- individual post page
+- change error page make white and black
 - add line breaks in posts
 - add loading screen
 - set page titles
 - site logo
 - add some colors to make it less plain
+
+somehow not fetch the userid when anon is true
 
 chagne name of oauth screen currently supabase url
 figure out what use-client is

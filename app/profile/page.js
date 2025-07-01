@@ -30,6 +30,8 @@ export default function ProfilePage() {
     };
 
     fetchUser();
+
+    document.title = "g4o2.me | Profile";
   }, []);
 
   if (loading || !user) {
