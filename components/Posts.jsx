@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useEffect, useRef, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { useTranslation } from "react-i18next";
 
 const PAGE_SIZE = 10;
 
@@ -27,6 +28,7 @@ export default function Posts() {
   const loaderRef = useRef(null);
 
   const supabase = createClient();
+  const { t } = useTranslation();
 
   const fetchPosts = async (pageIndex) => {
     if (!hasMore) return;
@@ -34,7 +36,6 @@ export default function Posts() {
     setLoading(true);
     const from = pageIndex * PAGE_SIZE;
     const to = from + PAGE_SIZE - 1;
-
     const { data, error } = await supabase
       .from("posts")
       .select(
@@ -183,10 +184,10 @@ export default function Posts() {
         className="h-10 w-full flex justify-center items-center"
       >
         {loading && hasMore && (
-          <span className="text-sm text-gray-500">Loading...</span>
+          <span className="text-sm text-gray-500">{t("loading")}</span>
         )}
         {!hasMore && (
-          <span className="text-sm text-gray-400">No more posts to load.</span>
+          <span className="text-sm text-gray-400">{t("nomore")}</span>
         )}
       </li>
     </ul>

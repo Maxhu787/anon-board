@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 export default function Home() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [mounted, setMounted] = useState(false);
   const supabase = createClient();
   const { t } = useTranslation();
 
@@ -27,13 +26,9 @@ export default function Home() {
     fetchUser();
   }, []);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   if (loading) {
     return (
-      <div className="p-8 mt-20 text-center text-gray-500">Loading...</div>
+      <div className="p-8 mt-20 text-center text-gray-500">{t("loading")}</div>
     );
   }
 
@@ -41,7 +36,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="p-8 flex-grow">
         {user ? (
-          <div className="mt-22">
+          <div className="mt-20">
             <Posts />
           </div>
         ) : (
@@ -51,11 +46,9 @@ export default function Home() {
                 g4o2.me
               </h1>
             </Link>
-            {mounted && (
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                {t("description")}
-              </p>
-            )}
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              {t("description")}
+            </p>
           </div>
         )}
       </main>
