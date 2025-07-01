@@ -39,14 +39,16 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="p-8 mt-20 flex-grow">
+      <main className="p-8 flex-grow">
         {user ? (
           <Posts />
         ) : (
-          <div className="mt-40 max-w-2xl mx-auto text-center space-y-4">
-            <h1 className="text-5xl font-extrabold tracking-tight text-black dark:text-white">
-              g4o2.me
-            </h1>
+          <div className="flex flex-col items-center justify-center text-center space-y-4 h-full min-h-[calc(100vh-5rem)]">
+            <Link href="https://g4o2.me">
+              <h1 className="text-5xl font-extrabold tracking-tight text-black dark:text-white">
+                g4o2.me
+              </h1>
+            </Link>
             {mounted && (
               <p className="text-lg text-gray-600 dark:text-gray-400">
                 {t("description")}
@@ -55,18 +57,31 @@ export default function Home() {
           </div>
         )}
       </main>
-
-      <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
-        <div className="space-x-4 mb-2">
-          <Link href="/terms-of-service" className="hover:underline">
-            {t("tos")}
-          </Link>
-          <Link href="/privacy-policy" className="hover:underline">
-            {t("privacyPolicy")}
-          </Link>
-        </div>
-        <div>© {new Date().getFullYear()} g4o2.me - All rights reserved.</div>
-      </footer>
+      {user ? (
+        <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
+          <div className="space-x-4 mb-2">
+            <Link href="/terms-of-service" className="hover:underline">
+              {t("tos")}
+            </Link>
+            <Link href="/privacy-policy" className="hover:underline">
+              {t("privacyPolicy")}
+            </Link>
+          </div>
+          <div>© {new Date().getFullYear()} g4o2.me - All rights reserved.</div>
+        </footer>
+      ) : (
+        <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400 absolute bottom-0 w-full">
+          <div className="space-x-4 mb-2">
+            <Link href="/terms-of-service" className="hover:underline">
+              {t("tos")}
+            </Link>
+            <Link href="/privacy-policy" className="hover:underline">
+              {t("privacyPolicy")}
+            </Link>
+          </div>
+          <div>© {new Date().getFullYear()} g4o2.me - All rights reserved.</div>
+        </footer>
+      )}
     </div>
   );
 }

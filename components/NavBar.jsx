@@ -31,7 +31,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <NavigationMenu className="py-4 mt-0 rounded-2xl shadow w-full max-w-5xl mx-auto fixed z-10 bg-white dark:bg-[rgb(43,43,43)]">
+    <NavigationMenu className="py-4 mt-0 rounded-b-2xl shadow w-full max-w-5xl mx-auto fixed z-10 bg-white dark:bg-[rgb(43,43,43)]">
       <NavigationMenuList className="flex w-full justify-between gap-4">
         <NavigationMenuItem>
           <Button variant="outline" asChild className={buttonClass}>
