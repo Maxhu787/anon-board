@@ -41,7 +41,9 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="p-8 flex-grow">
         {user ? (
-          <Posts />
+          <div className="mt-22">
+            <Posts />
+          </div>
         ) : (
           <div className="flex flex-col items-center justify-center text-center space-y-4 h-full min-h-[calc(100vh-5rem)]">
             <Link href="https://g4o2.me">
@@ -67,7 +69,9 @@ export default function Home() {
               {t("privacyPolicy")}
             </Link>
           </div>
-          <div>© {new Date().getFullYear()} g4o2.me - All rights reserved.</div>
+          <div>
+            © {new Date().getFullYear()} g4o2.me - {t("legal")}
+          </div>
         </footer>
       ) : (
         <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400 absolute bottom-0 w-full">
@@ -79,7 +83,9 @@ export default function Home() {
               {t("privacyPolicy")}
             </Link>
           </div>
-          <div>© {new Date().getFullYear()} g4o2.me - All rights reserved.</div>
+          <div>
+            © {new Date().getFullYear()} g4o2.me - {t("legal")}
+          </div>
         </footer>
       )}
     </div>

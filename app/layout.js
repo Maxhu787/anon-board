@@ -30,12 +30,12 @@ export default function RootLayout({ children }) {
             <ToggleThemeButton
               variant="outline"
               asChild
-              className="min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-6 top-25"
+              className="min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-6 top-40"
             />
             <ToggleLanguageButton
               variant="outline"
               asChild
-              className="min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-22 top-25"
+              className="min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-6 top-25"
             />
           </ThemeProvider>
         </I18nProvider>
