@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <body className="bg-[rgb(250,250,250)] dark:bg-[rgb(30,30,30)]">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
