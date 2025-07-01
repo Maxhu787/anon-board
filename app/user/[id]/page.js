@@ -34,6 +34,7 @@ export default function UserPage({ params }) {
     };
 
     fetchProfile();
+    document.title = "g4o2.me | User";
   }, [id, supabase]);
 
   if (loading) {

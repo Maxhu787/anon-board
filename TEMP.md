@@ -2,10 +2,8 @@
 
 - fix multiple fetches in home
 - change error page make white and black
-- add line breaks in posts
 - add loading screen
-- set page titles
-- site logo
+- dynamic page title
 - add some colors to make it less plain
 
 somehow not fetch the userid when anon is true

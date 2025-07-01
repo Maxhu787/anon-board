@@ -61,6 +61,7 @@ export default function PostPage(promiseParams) {
     }
 
     fetchPost();
+    document.title = "g4o2.me | Post";
   }, [id, supabase]);
 
   if (loading)
