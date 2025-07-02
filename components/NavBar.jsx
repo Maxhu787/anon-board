@@ -40,72 +40,76 @@ export default function NavBar() {
 
   return (
     <NavigationMenu className="py-4 mt-0 rounded-b-2xl shadow w-full max-w-5xl mx-auto fixed z-10 bg-white dark:bg-[rgb(43,43,43)]">
-      <NavigationMenuList className="flex w-full justify-between gap-4">
-        <NavigationMenuItem>
-          <Button variant="outline" asChild className={buttonClass}>
-            <Link href="/">
-              <House style={{ height: iconSize, width: iconSize }} />
-            </Link>
-          </Button>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          {user ? (
-            <Drawer>
-              <DrawerTrigger asChild>
-                <Button variant="outline" className={buttonClass}>
+      <div className="relative w-full pl-5 pr-4">
+        <div className="float-left list-none">
+          <NavigationMenuItem>
+            <Button
+              variant="none"
+              asChild
+              className="p-0 min-w-[50px] min-h-[50px] cursor-pointer active:scale-85 transition-all"
+            >
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  width={iconSize + 18}
+                  height={iconSize + 18}
+                  className="rounded-full"
+                  alt="logo"
+                />
+              </Link>
+            </Button>
+          </NavigationMenuItem>
+        </div>
+        <div className="float-right flex items-center gap-3 list-none">
+          <NavigationMenuItem>
+            <Button variant="outline" asChild className={buttonClass}>
+              <Link href="/">
+                <House style={{ height: iconSize, width: iconSize }} />
+              </Link>
+            </Button>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            {user ? (
+              <Drawer>
+                <DrawerTrigger asChild>
+                  <Button variant="outline" className={buttonClass}>
+                    <Plus style={{ height: iconSize, width: iconSize }} />
+                  </Button>
+                </DrawerTrigger>
+                <SendPost />
+              </Drawer>
+            ) : (
+              <Button variant="outline" asChild className={buttonClass}>
+                <Link href="/login">
                   <Plus style={{ height: iconSize, width: iconSize }} />
-                </Button>
-              </DrawerTrigger>
-              <SendPost />
-            </Drawer>
-          ) : (
-            <Button variant="outline" asChild className={buttonClass}>
-              <Link href="/login">
-                <Plus style={{ height: iconSize, width: iconSize }} />
-              </Link>
-            </Button>
-          )}
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Button
-            variant="none"
-            asChild
-            className="min-w-[58px] min-h-[50px] cursor-pointer active:scale-85 transition-all"
-          >
-            <Link href="/">
-              <Image
-                src="/logo.png"
-                width={iconSize + 10}
-                height={iconSize + 10}
-                className="rounded-full"
-                alt="logo"
-              />
-            </Link>
-          </Button>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          {user ? (
-            <Button variant="outline" asChild className={buttonClass}>
-              <Link href="/profile">
-                <User style={{ height: iconSize, width: iconSize }} />
-              </Link>
-            </Button>
-          ) : (
-            <Button variant="outline" asChild className={buttonClass}>
-              <Link href="/login">
-                <User style={{ height: iconSize, width: iconSize }} />
-              </Link>
-            </Button>
-          )}
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <LoginButton
-            variant="outline"
-            asChild
-            className="min-w-[58px] min-h-[50px] cursor-pointer active:scale-95 transition-all"
-          />
-        </NavigationMenuItem>
-      </NavigationMenuList>
+                </Link>
+              </Button>
+            )}
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            {user ? (
+              <Button variant="outline" asChild className={buttonClass}>
+                <Link href="/profile">
+                  <User style={{ height: iconSize, width: iconSize }} />
+                </Link>
+              </Button>
+            ) : (
+              <Button variant="outline" asChild className={buttonClass}>
+                <Link href="/login">
+                  <User style={{ height: iconSize, width: iconSize }} />
+                </Link>
+              </Button>
+            )}
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <LoginButton
+              variant="outline"
+              asChild
+              className="min-w-[58px] min-h-[50px] cursor-pointer active:scale-95 transition-all"
+            />
+          </NavigationMenuItem>
+        </div>
+      </div>
     </NavigationMenu>
   );
 }

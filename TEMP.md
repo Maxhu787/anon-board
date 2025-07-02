@@ -2,7 +2,11 @@
 
 g4o2.me domain expires in 2025/6/10
 
+- reconsider where to place the logo in top nav
 - add comments
+- change top nav color
+- add custom pfps if there arent any (github identicon or something better)
+- add chinese translation for tos and privacy policy
 - add country auto detect (small flag)
 - add school tag? db schema design needed
 - fix website loading cycle, like load skeleton page faster than fetch data
