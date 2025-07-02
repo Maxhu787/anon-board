@@ -13,6 +13,7 @@ import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 import LoginButton from "./LoginLogoutButton";
 import SendPost from "./SendPost";
 import { createClient } from "@/utils/supabase/client";
+import Image from "next/image";
 
 export default function NavBar() {
   const iconSize = 24;
@@ -47,7 +48,6 @@ export default function NavBar() {
             </Link>
           </Button>
         </NavigationMenuItem>
-
         <NavigationMenuItem>
           {user ? (
             <Drawer>
@@ -66,7 +66,23 @@ export default function NavBar() {
             </Button>
           )}
         </NavigationMenuItem>
-
+        <NavigationMenuItem>
+          <Button
+            variant="none"
+            asChild
+            className="min-w-[58px] min-h-[50px] cursor-pointer active:scale-85 transition-all"
+          >
+            <Link href="/">
+              <Image
+                src="/logo.png"
+                width={iconSize + 10}
+                height={iconSize + 10}
+                className="rounded-full"
+                alt="logo"
+              />
+            </Link>
+          </Button>
+        </NavigationMenuItem>
         <NavigationMenuItem>
           {user ? (
             <Button variant="outline" asChild className={buttonClass}>
@@ -82,7 +98,6 @@ export default function NavBar() {
             </Button>
           )}
         </NavigationMenuItem>
-
         <NavigationMenuItem>
           <LoginButton
             variant="outline"

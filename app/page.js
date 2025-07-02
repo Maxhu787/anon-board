@@ -34,7 +34,8 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="p-8 mt-20 text-center text-gray-500">{t("loading")}</div>
+      <></>
+      // <div className="p-8 mt-20 text-center text-gray-500">{t("loading")}</div>
     );
   }
 

@@ -1,9 +1,17 @@
 # anon-board
 
-- add likes & comments
+- add comments
+- add social queues like register number count
+- add create username step
+- maybe add link email
+- add about page
 - add shadcn progress bar for loading screen
+- change like button color
+- refresh or do something when posted a post
 - add some colors and stuff to make it less plain
 - add share feature
+- add micro transaction shop
+- contact more people for promotion
 - add sitemap gogole search console
 
 somehow not fetch the userid when anon is true
