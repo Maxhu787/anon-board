@@ -8,15 +8,16 @@ g4o2.me domain expires in 2025/6/10
 - fix up home page (maybe add threejs playground)
 
 - add custom pfps if there arent any (github identicon or something better)
-- add school tag? db schema design needed
+- add school tag? db schema design needed (link school email)
 - add country auto detect for profile (small flag)
+
+- refresh or do something when posted a post
 - fix website loading cycle, like load skeleton page faster than fetch data
 - fix logout cycle, add loading screen, and fix up the delay
   (cause still too slow rn)
-- maybe add link school email
+
 - add shadcn progress bar for loading screen
 - change like button color
-- refresh or do something when posted a post
 - add some colors and stuff to make it less plain
 
 - add social queues like register number count, verified check, tags
