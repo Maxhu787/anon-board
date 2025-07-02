@@ -109,33 +109,45 @@ export default function Posts() {
     } = await supabase.auth.getUser();
     if (!user) return toast("You must be logged in");
 
-    const existingVote = posts
-      .find((p) => p.id === postId)
-      ?.votes.find((v) => v.user_id === user.id);
+    const postIndex = posts.findIndex((p) => p.id === postId);
+    if (postIndex === -1) return;
 
-    // If already voted the same, remove the vote (toggle off)
+    const post = posts[postIndex];
+    const existingVote = post.votes?.find((v) => v.user_id === user.id);
+
     if (existingVote && existingVote.vote_type === type) {
       await supabase
         .from("votes")
         .delete()
         .eq("user_id", user.id)
         .eq("post_id", postId);
+
       toast(`${type} removed`);
+
+      // Update local post state
+      const updatedVotes = post.votes.filter((v) => v.user_id !== user.id);
+
+      const newPosts = [...posts];
+      newPosts[postIndex] = { ...post, votes: updatedVotes };
+      setPosts(newPosts);
     } else {
-      // Upsert (insert or replace) the vote
+      // Upsert the new vote
       await supabase.from("votes").upsert({
         user_id: user.id,
         post_id: postId,
         vote_type: type,
       });
-      toast(`${type === "like" ? "Liked" : "Disliked"}`);
-    }
 
-    // Refresh post list (ideally just that one post)
-    setPosts([]);
-    setPage(0);
-    setHasMore(true);
-    fetchPosts(0);
+      toast(`${type === "like" ? "Liked" : "Disliked"}`);
+
+      // Remove old vote (if any) and add new one
+      const filteredVotes = post.votes.filter((v) => v.user_id !== user.id);
+      const newVote = { user_id: user.id, vote_type: type };
+
+      const newPosts = [...posts];
+      newPosts[postIndex] = { ...post, votes: [...filteredVotes, newVote] };
+      setPosts(newPosts);
+    }
   };
 
   return (
@@ -204,21 +216,14 @@ export default function Posts() {
                 </div>
               </CardHeader>
               <CardContent className="mt-[-18] whitespace-pre-wrap pl-17">
-                <p className="text-[15px]">
-                  {post.content} {/*  */}
-                  <span className="text-xs text-gray-500">
-                    ({likes}👍 {dislikes}👎)
-                  </span>
-                  {/*  */}
-                </p>
+                <p className="text-[15px]">{post.content}</p>
               </CardContent>
               <CardFooter className="gap-2 mt-[-12] mb-[-8]">
                 <Button
-                  // className="w-[70px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(60,60,60)]"
                   className={clsx(
                     "w-[70px] cursor-pointer active:scale-95 transition-all",
                     userVote?.vote_type === "like"
-                      ? "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300"
+                      ? "bg-blue-100 text-blue-600 hover:bg-blue-200 dark:bg-blue-800 dark:text-blue-300 dark:hover:bg-blue-900"
                       : "bg-transparent border",
                     "active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
                   )}
@@ -230,14 +235,14 @@ export default function Posts() {
                     handleVote(post.id, "like");
                   }}
                 >
+                  {likes}
                   <ThumbsUp />
                 </Button>
                 <Button
-                  // className="w-[70px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(60,60,60)]"
                   className={clsx(
                     "w-[70px] cursor-pointer active:scale-95 transition-all",
                     userVote?.vote_type === "dislike"
-                      ? "bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300"
+                      ? "bg-red-100 text-red-600 hover:bg-red-200 dark:bg-red-800 dark:text-red-300 dark:hover:bg-red-900"
                       : "bg-transparent border",
                     "active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
                   )}
@@ -249,6 +254,7 @@ export default function Posts() {
                     handleVote(post.id, "dislike");
                   }}
                 >
+                  {dislikes}
                   <ThumbsDown />
                 </Button>
               </CardFooter>
