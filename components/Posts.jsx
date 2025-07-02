@@ -115,39 +115,54 @@ export default function Posts() {
     const post = posts[postIndex];
     const existingVote = post.votes?.find((v) => v.user_id === user.id);
 
-    if (existingVote && existingVote.vote_type === type) {
-      await supabase
-        .from("votes")
-        .delete()
-        .eq("user_id", user.id)
-        .eq("post_id", postId);
+    if (existingVote) {
+      if (existingVote.vote_type === type) {
+        // Same vote pressed again - remove vote
+        await supabase
+          .from("votes")
+          .delete()
+          .eq("user_id", user.id)
+          .eq("post_id", postId);
+        toast(`${type} removed`);
 
-      toast(`${type} removed`);
+        const updatedVotes = post.votes.filter((v) => v.user_id !== user.id);
+        const newPosts = [...posts];
+        newPosts[postIndex] = { ...post, votes: updatedVotes };
+        setPosts(newPosts);
+        return;
+      } else {
+        // Different vote pressed - update existing vote_type
+        await supabase
+          .from("votes")
+          .update({ vote_type: type })
+          .eq("user_id", user.id)
+          .eq("post_id", postId);
+        toast(`${type === "like" ? "Liked" : "Disliked"}`);
 
-      // Update local post state
-      const updatedVotes = post.votes.filter((v) => v.user_id !== user.id);
-
-      const newPosts = [...posts];
-      newPosts[postIndex] = { ...post, votes: updatedVotes };
-      setPosts(newPosts);
-    } else {
-      // Upsert the new vote
-      await supabase.from("votes").upsert({
-        user_id: user.id,
-        post_id: postId,
-        vote_type: type,
-      });
-
-      toast(`${type === "like" ? "Liked" : "Disliked"}`);
-
-      // Remove old vote (if any) and add new one
-      const filteredVotes = post.votes.filter((v) => v.user_id !== user.id);
-      const newVote = { user_id: user.id, vote_type: type };
-
-      const newPosts = [...posts];
-      newPosts[postIndex] = { ...post, votes: [...filteredVotes, newVote] };
-      setPosts(newPosts);
+        const updatedVotes = post.votes.map((v) =>
+          v.user_id === user.id ? { ...v, vote_type: type } : v
+        );
+        const newPosts = [...posts];
+        newPosts[postIndex] = { ...post, votes: updatedVotes };
+        setPosts(newPosts);
+        return;
+      }
     }
+
+    // No existing vote, insert new
+    await supabase.from("votes").insert({
+      user_id: user.id,
+      post_id: postId,
+      vote_type: type,
+    });
+    toast(`${type === "like" ? "Liked" : "Disliked"}`);
+
+    const newPosts = [...posts];
+    newPosts[postIndex] = {
+      ...post,
+      votes: [...(post.votes || []), { user_id: user.id, vote_type: type }],
+    };
+    setPosts(newPosts);
   };
 
   return (

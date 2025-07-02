@@ -17,21 +17,28 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
+import clsx from "clsx";
 
 export default function PostPage(promiseParams) {
   const { id } = use(promiseParams.params);
-
   const [post, setPost] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   const supabase = createClient();
   const router = useRouter();
+
   useEffect(() => {
     async function fetchPost() {
       try {
         setLoading(true);
         setHasError(false);
+
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        setUserId(user?.id);
 
         const { data, error } = await supabase
           .from("posts")
@@ -41,6 +48,10 @@ export default function PostPage(promiseParams) {
             profiles:profiles!posts_user_id_fkey (
               full_name,
               avatar_url
+            ),
+            votes (
+              user_id,
+              vote_type
             )
           `
           )
@@ -48,10 +59,8 @@ export default function PostPage(promiseParams) {
           .single();
 
         if (error || !data) throw new Error("Post not found");
-
         setPost(data);
       } catch (err) {
-        // console.error("Fetch error:", err);
         toast.error("Failed to load post.");
         setHasError(true);
         setPost(null);
@@ -63,6 +72,58 @@ export default function PostPage(promiseParams) {
     fetchPost();
     document.title = "g4o2.me | Post";
   }, [id, supabase]);
+
+  const handleVote = async (type) => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) return toast("You must be logged in");
+
+    const existingVote = post.votes?.find((v) => v.user_id === user.id);
+
+    if (existingVote) {
+      if (existingVote.vote_type === type) {
+        // Same vote pressed again -> remove it
+        await supabase
+          .from("votes")
+          .delete()
+          .eq("user_id", user.id)
+          .eq("post_id", post.id);
+        toast(`${type} removed`);
+
+        const updatedVotes = post.votes.filter((v) => v.user_id !== user.id);
+        setPost({ ...post, votes: updatedVotes });
+        return;
+      } else {
+        // Different vote pressed -> update vote_type
+        await supabase
+          .from("votes")
+          .update({ vote_type: type })
+          .eq("user_id", user.id)
+          .eq("post_id", post.id);
+        toast(`${type === "like" ? "Liked" : "Disliked"}`);
+
+        const updatedVotes = post.votes.map((v) =>
+          v.user_id === user.id ? { ...v, vote_type: type } : v
+        );
+        setPost({ ...post, votes: updatedVotes });
+        return;
+      }
+    }
+
+    // No existing vote, add new
+    await supabase.from("votes").insert({
+      user_id: user.id,
+      post_id: post.id,
+      vote_type: type,
+    });
+    toast(`${type === "like" ? "Liked" : "Disliked"}`);
+
+    setPost({
+      ...post,
+      votes: [...(post.votes || []), { user_id: user.id, vote_type: type }],
+    });
+  };
 
   if (loading)
     return (
@@ -109,6 +170,11 @@ export default function PostPage(promiseParams) {
         </button>
       </div>
     );
+
+  const likes = post.votes?.filter((v) => v.vote_type === "like").length || 0;
+  const dislikes =
+    post.votes?.filter((v) => v.vote_type === "dislike").length || 0;
+  const userVote = post.votes?.find((v) => v.user_id === userId);
 
   return (
     <div className="max-w-xl mx-auto p-8 mt-15">
@@ -170,25 +236,39 @@ export default function PostPage(promiseParams) {
         </CardContent>
         <CardFooter className="gap-2 mt-[-12] mb-[-8]">
           <Button
-            className="w-[70px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(60,60,60)]"
+            className={clsx(
+              "w-[70px] cursor-pointer active:scale-95 transition-all",
+              userVote?.vote_type === "like"
+                ? "bg-blue-100 text-blue-600 hover:bg-blue-200 dark:bg-blue-800 dark:text-blue-300 dark:hover:bg-blue-900"
+                : "bg-transparent border",
+              "active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
+            )}
             variant="outline"
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
-              toast("Liked");
+              handleVote("like");
             }}
           >
+            {likes}
             <ThumbsUp />
           </Button>
           <Button
-            className="w-[70px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(60,60,60)]"
+            className={clsx(
+              "w-[70px] cursor-pointer active:scale-95 transition-all",
+              userVote?.vote_type === "dislike"
+                ? "bg-red-100 text-red-600 hover:bg-red-200 dark:bg-red-800 dark:text-red-300 dark:hover:bg-red-900"
+                : "bg-transparent border",
+              "active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
+            )}
             variant="outline"
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
-              toast("Disliked");
+              handleVote("dislike");
             }}
           >
+            {dislikes}
             <ThumbsDown />
           </Button>
         </CardFooter>
