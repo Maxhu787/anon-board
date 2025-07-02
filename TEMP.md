@@ -1,16 +1,26 @@
 # anon-board
 
+g4o2.me domain expires in 2025/6/10
+
 - add comments
+- add country auto detect (small flag)
+- add school tag? db schema design needed
+- fix website loading cycle, like load skeleton page faster than fetch data
+  (cause still too slow rn)
 - add social queues like register number count
+- fix logout cycle, add loading screen, and fix up the delay
 - add create username step
 - maybe add link email
 - add about page
+- fix up home page (maybe add threejs playground)
 - add shadcn progress bar for loading screen
 - change like button color
 - refresh or do something when posted a post
 - add some colors and stuff to make it less plain
 - add share feature
+- add analytics
 - add micro transaction shop
+- setup timeout rules for anti spam
 - contact more people for promotion
 - add sitemap gogole search console
 

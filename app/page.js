@@ -55,6 +55,8 @@ export default function Home() {
             </Link>
             <p className="text-lg text-gray-600 dark:text-gray-400">
               {t("description")}
+              <br />
+              {t("description2")}
             </p>
           </div>
         )}
