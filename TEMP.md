@@ -3,19 +3,18 @@
 g4o2.me domain expires in 2025/6/10
 
 - add comments
-- add about page
-- add chinese translation for tos and privacy policy
+- add create username step
+- change top nav color
+- fix up home page (maybe add threejs playground)
+
 - add custom pfps if there arent any (github identicon or something better)
 - add school tag? db schema design needed
 - add country auto detect for profile (small flag)
 - fix website loading cycle, like load skeleton page faster than fetch data
 - fix logout cycle, add loading screen, and fix up the delay
   (cause still too slow rn)
-- add create username step
 - maybe add link school email
-- fix up home page (maybe add threejs playground)
 - add shadcn progress bar for loading screen
-- change top nav color
 - change like button color
 - refresh or do something when posted a post
 - add some colors and stuff to make it less plain
