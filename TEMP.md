@@ -1,18 +1,12 @@
 # anon-board
 
-- add likes implementation & comments
-- add favicon
-- add translations
-- change error page make white and black
-- add loading screen
-- dynamic page title
-- add some colors to make it less plain
+- add likes & comments
+- add shadcn progress bar for loading screen
+- add some colors and stuff to make it less plain
+- add share feature
 - add sitemap gogole search console
 
 somehow not fetch the userid when anon is true
-
-chagne name of oauth screen currently supabase url
-figure out what use-client is
 
 A anonymous forum website for posts on various topics for discussion, targeted towards students.
 

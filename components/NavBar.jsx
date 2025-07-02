@@ -21,14 +21,21 @@ export default function NavBar() {
 
   const supabase = createClient();
   const [user, setUser] = useState(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const checkUser = async () => {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
     };
     checkUser();
   }, []);
+
+  if (!mounted) {
+    // Prevent hydration mismatch by not rendering until mounted
+    return null;
+  }
 
   return (
     <NavigationMenu className="py-4 mt-0 rounded-b-2xl shadow w-full max-w-5xl mx-auto fixed z-10 bg-white dark:bg-[rgb(43,43,43)]">

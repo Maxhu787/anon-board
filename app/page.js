@@ -9,10 +9,12 @@ import { useTranslation } from "react-i18next";
 export default function Home() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const supabase = createClient();
   const { t } = useTranslation();
 
   useEffect(() => {
+    setMounted(true);
     document.title = "g4o2.me | Home";
 
     const fetchUser = async () => {
@@ -25,6 +27,10 @@ export default function Home() {
 
     fetchUser();
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   if (loading) {
     return (

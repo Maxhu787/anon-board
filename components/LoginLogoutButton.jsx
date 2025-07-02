@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
@@ -8,11 +9,13 @@ import { useTranslation } from "react-i18next";
 
 const LoginButton = ({ className }) => {
   const [user, setUser] = useState(null);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const supabase = createClient();
   const { t } = useTranslation();
 
   useEffect(() => {
+    setMounted(true);
     const fetchUser = async () => {
       const {
         data: { user },
@@ -21,6 +24,10 @@ const LoginButton = ({ className }) => {
     };
     fetchUser();
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   if (user) {
     return (
