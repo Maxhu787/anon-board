@@ -64,6 +64,9 @@ export default function Home() {
       {user ? (
         <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
           <div className="space-x-4 mb-2">
+            <Link href="/about" className="hover:underline">
+              {t("aboutus")}
+            </Link>
             <Link href="/terms-of-service" className="hover:underline">
               {t("tos")}
             </Link>
@@ -78,6 +81,9 @@ export default function Home() {
       ) : (
         <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400 absolute bottom-0 w-full">
           <div className="space-x-4 mb-2">
+            <Link href="/about" className="hover:underline">
+              {t("aboutus")}
+            </Link>
             <Link href="/terms-of-service" className="hover:underline">
               {t("tos")}
             </Link>

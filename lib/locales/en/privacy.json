@@ -1,0 +1,40 @@
+{
+  "title": "Privacy Policy",
+  "effectiveDate": "Effective Date: July 1, 2025",
+  "intro": "Your privacy is important to us. This Privacy Policy explains how g4o2.me (\"we\", \"our\", or \"us\") collects, uses, and protects your personal information when you use our service.",
+  "section1": {
+    "title": "1. Information We Collect",
+    "point1": "Personal Information: When you sign up, we may collect your email, name, and other relevant details.",
+    "point2": "Usage Data: We collect anonymous data on how you use the app to improve functionality and experience.",
+    "point3": "Cookies and Tracking: We may use cookies or similar technologies for analytics and personalization."
+  },
+  "section2": {
+    "title": "2. How We Use Your Information",
+    "intro": "We use your information to:",
+    "point1": "Provide and maintain the app",
+    "point2": "Communicate with you",
+    "point3": "Improve the app",
+    "point4": "Ensure security and prevent fraud"
+  },
+  "section3": {
+    "title": "3. Data Sharing",
+    "content": "We do not sell your personal data. We may share it only with trusted service providers or when required by law."
+  },
+  "section4": {
+    "title": "4. Your Rights",
+    "content": "You have the right to access, update, or delete your data. You may also withdraw consent at any time."
+  },
+  "section5": {
+    "title": "5. Data Security",
+    "content": "We take reasonable measures to protect your data, though no method of transmission is 100% secure."
+  },
+  "section6": {
+    "title": "6. Changes to This Policy",
+    "content": "We may update this policy. Significant changes will be communicated via email or in-app notice."
+  },
+  "section7": {
+    "title": "7. Contact",
+    "content": "If you have any questions or concerns, contact us at"
+  },
+  "email": "g4o2dotme@googlegroups.com"
+}
