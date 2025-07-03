@@ -32,7 +32,7 @@ const LoginButton = ({ className }) => {
   if (user) {
     return (
       <Button
-        variant="outline"
+        // variant="outline"
         onClick={() => {
           signout();
           setUser(null);

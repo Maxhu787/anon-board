@@ -92,7 +92,7 @@ export default function UserPage({ params }) {
             <span className="font-semibold">Name:</span> {fullName}
           </p>
           <p className="mb-6">
-            <span className="font-semibold">Email:</span> {email}
+            <span className="font-semibold">Email:</span> hidden{/*{email}*/}
           </p>
           <Link href="/" className="text-blue-500 hover:underline">
             ← Back to all posts
