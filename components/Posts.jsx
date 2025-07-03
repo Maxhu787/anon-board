@@ -17,6 +17,8 @@ import { useEffect, useRef, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
+import PostComments from "./PostComments";
+import PostCommentForm from "./PostCommentForm";
 
 const PAGE_SIZE = 10;
 
@@ -27,6 +29,7 @@ export default function Posts() {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [userId, setUserId] = useState(null);
+  const [commentingPostId, setCommentingPostId] = useState(null);
   const loaderRef = useRef(null);
 
   const supabase = createClient();
@@ -37,7 +40,6 @@ export default function Posts() {
 
     setLoading(true);
 
-    // get user on first load
     if (!userId) {
       const {
         data: { user },
@@ -117,7 +119,6 @@ export default function Posts() {
 
     if (existingVote) {
       if (existingVote.vote_type === type) {
-        // Same vote pressed again - remove vote
         await supabase
           .from("votes")
           .delete()
@@ -131,7 +132,6 @@ export default function Posts() {
         setPosts(newPosts);
         return;
       } else {
-        // Different vote pressed - update existing vote_type
         await supabase
           .from("votes")
           .update({ vote_type: type })
@@ -149,7 +149,6 @@ export default function Posts() {
       }
     }
 
-    // No existing vote, insert new
     await supabase.from("votes").insert({
       user_id: user.id,
       post_id: postId,
@@ -174,6 +173,7 @@ export default function Posts() {
           post.votes?.filter((v) => v.vote_type === "dislike").length || 0;
 
         const userVote = post.votes?.find((v) => v.user_id === userId);
+        const isCommenting = commentingPostId === post.id;
 
         return (
           <li key={post.id} className="w-full max-w-xl">
@@ -233,7 +233,8 @@ export default function Posts() {
               <CardContent className="mt-[-18] whitespace-pre-wrap pl-17">
                 <p className="text-[15px]">{post.content}</p>
               </CardContent>
-              <CardFooter className="gap-2 mt-[-12] mb-[-8]">
+              <PostComments postId={post.id} />
+              <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
                 <Button
                   className={clsx(
                     "w-[70px] cursor-pointer active:scale-95 transition-all",
@@ -246,7 +247,6 @@ export default function Posts() {
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
-                    // toast("Liked");
                     handleVote(post.id, "like");
                   }}
                 >
@@ -265,15 +265,38 @@ export default function Posts() {
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
-                    // toast("Disliked");
                     handleVote(post.id, "dislike");
                   }}
                 >
                   {dislikes}
                   <ThumbsDown />
                 </Button>
+
+                <Button
+                  className="w-[70px] cursor-pointer active:scale-95 transition-all bg-green-100 text-green-600 hover:bg-green-200 dark:bg-green-800 dark:text-green-300 dark:hover:bg-green-900"
+                  variant="outline"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setCommentingPostId(isCommenting ? null : post.id);
+                  }}
+                >
+                  Comment
+                </Button>
               </CardFooter>
             </Card>
+            {isCommenting && (
+              <div className="pl-17 pb-4">
+                <PostCommentForm
+                  postId={post.id}
+                  onCommentAdded={(comment) => {
+                    setCommentingPostId(null);
+                    toast.success("Comment added");
+                  }}
+                  onCancel={() => setCommentingPostId(null)}
+                />
+              </div>
+            )}
           </li>
         );
       })}

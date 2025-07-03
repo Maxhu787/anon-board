@@ -18,6 +18,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 import clsx from "clsx";
+import PostComments from "@/components/PostComments";
 
 export default function PostPage(promiseParams) {
   const { id } = use(promiseParams.params);
@@ -234,6 +235,7 @@ export default function PostPage(promiseParams) {
         <CardContent className="mt-[-18] pl-17">
           <p className="text-[15px] whitespace-pre-wrap">{post.content}</p>
         </CardContent>
+        <PostComments postId={post.id} />
         <CardFooter className="gap-2 mt-[-12] mb-[-8]">
           <Button
             className={clsx(
