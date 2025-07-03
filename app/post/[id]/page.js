@@ -28,6 +28,7 @@ export default function PostPage(promiseParams) {
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [commenting, setCommenting] = useState(false);
+  const [localComments, setLocalComments] = useState([]);
 
   const supabase = createClient();
   const router = useRouter();
@@ -234,7 +235,7 @@ export default function PostPage(promiseParams) {
         <CardContent className="mt-[-18] pl-17">
           <p className="text-[15px] whitespace-pre-wrap">{post.content}</p>
         </CardContent>
-        <PostComments postId={post.id} />
+        <PostComments postId={post.id} comments={localComments} />
         <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
           <Button
             className={clsx(
@@ -290,8 +291,9 @@ export default function PostPage(promiseParams) {
         <div>
           <PostCommentForm
             postId={post.id}
-            onCommentAdded={() => {
+            onCommentAdded={(comment) => {
               setCommenting(false);
+              setLocalComments((prev) => [...prev, comment]);
               toast.success("Comment added");
             }}
             onCancel={() => setCommenting(false)}
