@@ -3,7 +3,7 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
-- add comments to comments soon
+- add comments to comments soon, and anonymouse comments
 
 - add news header tab
 - refresh page or something when comment and post posted

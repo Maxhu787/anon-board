@@ -130,7 +130,7 @@ export default function PostPage(promiseParams) {
       <div className="max-w-xl mx-auto p-8 mt-15">
         <Link
           href="/"
-          className="inline-block mt-2 text-blue-600 hover:underline"
+          className="inline-block mt-2 text-blue-400 hover:underline"
         >
           ← Back to all posts
         </Link>
@@ -180,7 +180,7 @@ export default function PostPage(promiseParams) {
     <div className="max-w-xl mx-auto p-8 mt-15">
       <Link
         href="/"
-        className="inline-block mt-2 text-blue-600 hover:underline"
+        className="inline-block mt-2 text-blue-400 hover:underline"
       >
         ← Back to all posts
       </Link>
@@ -240,7 +240,7 @@ export default function PostPage(promiseParams) {
             className={clsx(
               "w-[70px] cursor-pointer active:scale-95 transition-all",
               userVote?.vote_type === "like"
-                ? "bg-blue-100 text-blue-600 hover:bg-blue-200 dark:bg-blue-800 dark:text-blue-300 dark:hover:bg-blue-900"
+                ? "bg-blue-100 text-blue-600 hover:bg-blue-200 hover:text-blue-600 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800"
                 : "bg-transparent border",
               "active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
             )}
@@ -258,7 +258,7 @@ export default function PostPage(promiseParams) {
             className={clsx(
               "w-[70px] cursor-pointer active:scale-95 transition-all",
               userVote?.vote_type === "dislike"
-                ? "bg-red-100 text-red-600 hover:bg-red-200 dark:bg-red-800 dark:text-red-300 dark:hover:bg-red-900"
+                ? "bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-600 dark:bg-red-900 dark:text-red-300 dark:hover:bg-red-800"
                 : "bg-transparent border",
               "active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
             )}

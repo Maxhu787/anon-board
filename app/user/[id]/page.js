@@ -94,7 +94,7 @@ export default function UserPage({ params }) {
           <p className="mb-6">
             <span className="font-semibold">Email:</span> hidden{/*{email}*/}
           </p>
-          <Link href="/" className="text-blue-500 hover:underline">
+          <Link href="/" className="text-blue-400 hover:underline">
             ← Back to all posts
           </Link>
         </div>

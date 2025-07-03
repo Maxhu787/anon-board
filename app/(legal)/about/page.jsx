@@ -19,7 +19,7 @@ export default function About() {
               href={t("creatorSection.websiteUrl")}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 underline"
+              className="text-blue-400 hover:underline"
             >
               {t("creatorSection.websiteText")}
             </a>
