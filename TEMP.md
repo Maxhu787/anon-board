@@ -1,6 +1,7 @@
 # anon-board
 
 g4o2.me domain expires in 2025/6/10
+reply to google verify email to resolve issue
 
 - add comments
 - add create username step

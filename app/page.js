@@ -67,10 +67,10 @@ export default function Home() {
             <Link href="/about" className="hover:underline">
               {t("aboutus")}
             </Link>
-            <Link href="/terms-of-service.html" className="hover:underline">
+            <Link href="/terms-of-service" className="hover:underline">
               {t("tos")}
             </Link>
-            <Link href="/privacy-policy.html" className="hover:underline">
+            <Link href="/privacy-policy" className="hover:underline">
               {t("privacyPolicy")}
             </Link>
           </div>
@@ -84,10 +84,10 @@ export default function Home() {
             <Link href="/about" className="hover:underline">
               {t("aboutus")}
             </Link>
-            <Link href="/terms-of-service.html" className="hover:underline">
+            <Link href="/terms-of-service" className="hover:underline">
               {t("tos")}
             </Link>
-            <Link href="/privacy-policy.html" className="hover:underline">
+            <Link href="/privacy-policy" className="hover:underline">
               {t("privacyPolicy")}
             </Link>
           </div>
