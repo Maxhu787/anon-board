@@ -43,7 +43,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="p-8 flex-grow">
         {user ? (
-          <div className="mt-20">
+          <div className="mt-15">
             <Posts />
           </div>
         ) : (
