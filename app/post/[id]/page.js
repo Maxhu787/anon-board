@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 import clsx from "clsx";
 import PostComments from "@/components/PostComments";
+import PostCommentForm from "@/components/PostCommentForm";
 
 export default function PostPage(promiseParams) {
   const { id } = use(promiseParams.params);
@@ -26,6 +27,7 @@ export default function PostPage(promiseParams) {
   const [userId, setUserId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [commenting, setCommenting] = useState(false);
 
   const supabase = createClient();
   const router = useRouter();
@@ -84,7 +86,6 @@ export default function PostPage(promiseParams) {
 
     if (existingVote) {
       if (existingVote.vote_type === type) {
-        // Same vote pressed again -> remove it
         await supabase
           .from("votes")
           .delete()
@@ -96,7 +97,6 @@ export default function PostPage(promiseParams) {
         setPost({ ...post, votes: updatedVotes });
         return;
       } else {
-        // Different vote pressed -> update vote_type
         await supabase
           .from("votes")
           .update({ vote_type: type })
@@ -112,7 +112,6 @@ export default function PostPage(promiseParams) {
       }
     }
 
-    // No existing vote, add new
     await supabase.from("votes").insert({
       user_id: user.id,
       post_id: post.id,
@@ -236,7 +235,7 @@ export default function PostPage(promiseParams) {
           <p className="text-[15px] whitespace-pre-wrap">{post.content}</p>
         </CardContent>
         <PostComments postId={post.id} />
-        <CardFooter className="gap-2 mt-[-12] mb-[-8]">
+        <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
           <Button
             className={clsx(
               "w-[70px] cursor-pointer active:scale-95 transition-all",
@@ -273,8 +272,33 @@ export default function PostPage(promiseParams) {
             {dislikes}
             <ThumbsDown />
           </Button>
+
+          <Button
+            className="w-[70px] cursor-pointer active:scale-95 transition-all bg-green-100 text-green-600 hover:bg-green-200 dark:bg-green-800 dark:text-green-300 dark:hover:bg-green-900"
+            variant="outline"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              setCommenting((c) => !c);
+            }}
+          >
+            Comment
+          </Button>
         </CardFooter>
       </Card>
+
+      {commenting && (
+        <div className="pl-17 pb-4">
+          <PostCommentForm
+            postId={post.id}
+            onCommentAdded={() => {
+              setCommenting(false);
+              toast.success("Comment added");
+            }}
+            onCancel={() => setCommenting(false)}
+          />
+        </div>
+      )}
     </div>
   );
 }
