@@ -3,6 +3,8 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
+- refresh page or something when comment and post posted
+- add local dates for other contries, change tolocalestring properties
 - add comments
 - add create username step
 - change top nav color

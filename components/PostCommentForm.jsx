@@ -41,9 +41,8 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       toast.error("Failed to submit comment");
       console.error(error);
     } else {
-      toast.success("Comment added");
       setContent("");
-      if (onCommentAdded) onCommentAdded(data[0]);
+      if (onCommentAdded) onCommentAdded();
       if (onCancel) onCancel();
     }
   };
@@ -60,6 +59,7 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       />
       <div className="flex gap-2 justify-end">
         <Button
+          className="w-[70px] cursor-pointer active:scale-95 transition-all active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
           type="button"
           variant="outline"
           onClick={onCancel}
@@ -67,7 +67,11 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
         >
           Cancel
         </Button>
-        <Button type="submit" disabled={submitting}>
+        <Button
+          className="cursor-pointer active:scale-95 transition-all"
+          type="submit"
+          disabled={submitting}
+        >
           {submitting ? "Submitting..." : "Submit"}
         </Button>
       </div>

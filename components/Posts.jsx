@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { ThumbsDown, ThumbsUp } from "lucide-react";
+import { MessageSquareText, ThumbsDown, ThumbsUp } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useEffect, useRef, useState } from "react";
@@ -196,7 +196,11 @@ export default function Posts() {
                   }}
                 >
                   {post.is_anonymous ? (
-                    <AvatarFallback>A</AvatarFallback>
+                    <AvatarFallback>
+                      {post.is_anonymous
+                        ? "A"
+                        : post.profiles?.full_name?.[0]?.toUpperCase() ?? "U"}
+                    </AvatarFallback>
                   ) : post.profiles?.avatar_url ? (
                     <AvatarImage src={post.profiles.avatar_url} />
                   ) : (
@@ -273,7 +277,7 @@ export default function Posts() {
                 </Button>
 
                 <Button
-                  className="w-[70px] cursor-pointer active:scale-95 transition-all bg-green-100 text-green-600 hover:bg-green-200 dark:bg-green-800 dark:text-green-300 dark:hover:bg-green-900"
+                  className="w-[70px] cursor-pointer active:scale-95 transition-all active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
                   variant="outline"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -281,12 +285,12 @@ export default function Posts() {
                     setCommentingPostId(isCommenting ? null : post.id);
                   }}
                 >
-                  Comment
+                  <MessageSquareText />
                 </Button>
               </CardFooter>
             </Card>
             {isCommenting && (
-              <div className="pl-17 pb-4">
+              <div>
                 <PostCommentForm
                   postId={post.id}
                   onCommentAdded={(comment) => {
