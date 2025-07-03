@@ -1,16 +1,15 @@
-create table 
-  public.posts (
-    id uuid not null default gen_random_uuid() primary key,
-    user_id uuid references public.profiles(id) on delete set null,
-    content text not null,
-    created_at timestamptz not null default now(),
-    is_anonymous boolean not null default false
-  );
+create table public.posts (
+  id uuid not null default gen_random_uuid() primary key,
+  user_id uuid references public.profiles(id) on delete set null,
+  content text not null,
+  created_at timestamptz not null default now(),
+  is_anonymous boolean not null default false
+);
 
 alter table public.posts enable row level security;
 
-create policy "Anyone can view posts." on posts for
-select
+create policy "Anyone can view posts." on public.posts
+for select
   using (true);
 
 create policy "Users can insert their own posts." on public.posts 

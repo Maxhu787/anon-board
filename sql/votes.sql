@@ -9,13 +9,13 @@ create table public.votes (
 
 alter table public.votes enable row level security;
 
-create policy "Anyone can view post votes." on votes for
-select
+create policy "Anyone can view post votes." on public.votes
+for select
   using (true);
 
-create policy "Users can insert their own post votes." on public.votes for insert
-with
-  check (auth.uid() = user_id);
+create policy "Users can insert their own post votes." on public.votes 
+for insert
+  with check (auth.uid() = user_id);
 
 create policy "Users can update their own post votes." on public.votes
 for update

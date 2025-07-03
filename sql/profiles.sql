@@ -1,21 +1,20 @@
-create table
-  public.profiles (
-    id uuid not null references auth.users on delete cascade,
-    full_name text,
-    email text unique,
-    avatar_url text,
-    primary key (id)
-  );
+create table public.profiles (
+  id uuid not null references auth.users on delete cascade,
+  full_name text,
+  email text unique,
+  avatar_url text,
+  primary key (id)
+);
 
 alter table profiles enable row level security;
 
-create policy "Public profiles are viewable by everyone." on profiles for
-select
+create policy "Public profiles are viewable by everyone." on public.profiles
+for select
   using (true);
 
-create policy "Users can insert their own profile." on profiles for insert
-with
-  check (auth.uid () = id);
+create policy "Users can insert their own profile." on profiles 
+for insert
+  with check (auth.uid () = id);
 
 create policy "Users can update own profile." on profiles
 for update
