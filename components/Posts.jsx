@@ -183,7 +183,7 @@ export default function Posts() {
                 e.preventDefault();
                 router.push(`/post/${post.id}`);
               }}
-              className="border-1 dark:border-gray-800 border-gray-300 border-solid shadow-none hover:cursor-pointer"
+              className="border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer"
             >
               <CardHeader className="flex flex-row gap-3">
                 <Avatar

@@ -184,7 +184,7 @@ export default function PostPage(promiseParams) {
       >
         ← Back to all posts
       </Link>
-      <Card className="mt-3 border-1 dark:border-gray-800 border-gray-300 border-solid shadow-none">
+      <Card className="mt-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none">
         <CardHeader className="flex flex-row gap-3">
           <Avatar
             onClick={(e) => {

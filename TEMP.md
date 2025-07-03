@@ -3,9 +3,11 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
+- add comments to comments soon
+
+- add news header tab
 - refresh page or something when comment and post posted
 - add local dates for other contries, change tolocalestring properties
-- add comments
 - add create username step
 - change top nav color
 - fix up home page (maybe add threejs playground)

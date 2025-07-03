@@ -46,13 +46,13 @@ export default function NavBar() {
             <Button
               variant="none"
               asChild
-              className="p-0 min-w-[50px] min-h-[50px] cursor-pointer active:scale-85 transition-all"
+              className="p-0 ml-1 min-w-[50px] min-h-[50px] cursor-pointer active:scale-85 transition-all"
             >
               <Link href="/">
                 <Image
                   src="/logo.png"
-                  width={iconSize + 18}
-                  height={iconSize + 18}
+                  width={iconSize + 19}
+                  height={iconSize + 19}
                   className="rounded-full"
                   alt="logo"
                 />
