@@ -3,7 +3,7 @@ export default function sitemap() {
     {
       url: "https://g4o2.me",
       lastModified: new Date(),
-      changeFrequency: "yearly",
+      changeFrequency: "monthly",
       priority: 1,
     },
     {
@@ -13,9 +13,15 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
-      url: "https://g4o2.me/blog",
+      url: "https://g4o2.me/terms-of-service.html",
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: "https://g4o2.me/privacy-policy.html",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
       priority: 0.5,
     },
   ];
