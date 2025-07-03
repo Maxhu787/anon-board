@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { nanoid } from "nanoid";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/utils/supabase/client";
 import { toast } from "sonner";
@@ -27,7 +28,10 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       return;
     }
 
+    const commentId = nanoid(11); // Generate short comment ID
+
     const { data, error } = await supabase.from("comments").insert({
+      id: commentId,
       post_id: postId,
       parent_id: null,
       user_id: user.id,

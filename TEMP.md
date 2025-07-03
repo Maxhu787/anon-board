@@ -3,7 +3,6 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
-- use nano id for smaller postids
 - make header thinner
 - restructure the post layout maybe make like dislike buttons smaller and move them above the comments? or something
 - add comments to comments soon, and anonymouse comments

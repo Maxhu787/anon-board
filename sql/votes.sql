@@ -1,7 +1,7 @@
 create table public.votes (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
-  post_id uuid not null references public.posts(id) on delete cascade,
+  post_id text not null references public.posts(id) on delete cascade,
   vote_type text not null check (vote_type in ('like', 'dislike')),
   created_at timestamptz not null default now(),
   unique (user_id, post_id)

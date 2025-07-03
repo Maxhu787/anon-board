@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import { nanoid } from "nanoid";
 import { Button } from "./ui/button";
 import {
   DrawerClose,
@@ -32,7 +33,10 @@ export default function SendPost() {
     setLoading(true);
     const { data: user } = await supabase.auth.getUser();
 
+    const postId = nanoid(11); // generate Threads-style ID
+
     const { error } = await supabase.from("posts").insert({
+      id: postId, // custom short ID
       content,
       is_anonymous: isAnonymous,
       user_id: user?.user?.id ?? null,
