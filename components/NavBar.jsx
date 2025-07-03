@@ -39,7 +39,7 @@ export default function NavBar() {
   }
 
   return (
-    <NavigationMenu className="py-4 mt-0 rounded-b-2xl shadow w-full max-w-5xl mx-auto fixed z-10 bg-white dark:bg-[rgb(43,43,43)]">
+    <NavigationMenu className="py-3 mt-0 rounded-b-2xl shadow w-full max-w-5xl mx-auto fixed z-10 bg-white dark:bg-[rgb(43,43,43)]">
       <div className="relative w-full pl-5 pr-4">
         <div className="float-left list-none">
           <NavigationMenuItem>

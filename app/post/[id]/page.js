@@ -238,7 +238,7 @@ export default function PostPage(promiseParams) {
         <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
           <Button
             className={clsx(
-              "w-[70px] cursor-pointer active:scale-95 transition-all",
+              "w-[65px] cursor-pointer active:scale-95 transition-all",
               userVote?.vote_type === "like"
                 ? "bg-blue-100 text-blue-600 hover:bg-blue-200 hover:text-blue-600 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800"
                 : "bg-transparent border",
@@ -251,12 +251,12 @@ export default function PostPage(promiseParams) {
               handleVote("like");
             }}
           >
-            {likes}
+            <span className="mr-[-3]">{likes}</span>
             <ThumbsUp />
           </Button>
           <Button
             className={clsx(
-              "w-[70px] cursor-pointer active:scale-95 transition-all",
+              "w-[65px] cursor-pointer active:scale-95 transition-all",
               userVote?.vote_type === "dislike"
                 ? "bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-600 dark:bg-red-900 dark:text-red-300 dark:hover:bg-red-800"
                 : "bg-transparent border",
@@ -269,12 +269,11 @@ export default function PostPage(promiseParams) {
               handleVote("dislike");
             }}
           >
-            {dislikes}
+            <span className="mr-[-3]">{dislikes}</span>
             <ThumbsDown />
           </Button>
-
           <Button
-            className="w-[70px] cursor-pointer active:scale-95 transition-all active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
+            className="w-[65px] cursor-pointer active:scale-95 transition-all active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
             variant="outline"
             onClick={(e) => {
               e.stopPropagation();
