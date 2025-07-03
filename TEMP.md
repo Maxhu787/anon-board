@@ -8,6 +8,9 @@ reply to google verify email to resolve issue
 - change top nav color
 - fix up home page (maybe add threejs playground)
 
+- setup when not logged in /landing page then another page for the posts to be seen too
+  (remember to update sitemap)
+
 - add custom pfps if there arent any (github identicon or something better)
 - add school tag? db schema design needed (link school email)
 - add country auto detect for profile (small flag)
