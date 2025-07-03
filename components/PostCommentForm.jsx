@@ -30,14 +30,18 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
 
     const commentId = nanoid(11); // Generate short comment ID
 
-    const { data, error } = await supabase.from("comments").insert({
-      id: commentId,
-      post_id: postId,
-      parent_id: null,
-      user_id: user.id,
-      content,
-      is_anonymous: false,
-    });
+    const { data, error } = await supabase
+      .from("comments")
+      .insert({
+        id: commentId,
+        post_id: postId,
+        parent_id: null,
+        user_id: user.id,
+        content,
+        is_anonymous: false,
+      })
+      .select()
+      .single();
 
     setSubmitting(false);
 
@@ -46,7 +50,8 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       console.error(error);
     } else {
       setContent("");
-      if (onCommentAdded) onCommentAdded();
+      // Pass the new comment object to onCommentAdded
+      if (onCommentAdded) onCommentAdded(data);
       if (onCancel) onCancel();
     }
   };

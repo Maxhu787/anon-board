@@ -35,6 +35,7 @@ export default function Posts() {
   const supabase = createClient();
   const { t } = useTranslation();
 
+  // Add a comments property to each post after fetching
   const fetchPosts = async (pageIndex) => {
     if (!hasMore) return;
 
@@ -72,7 +73,14 @@ export default function Posts() {
       console.error("Error fetching posts:", error);
     } else {
       if (data.length < PAGE_SIZE) setHasMore(false);
-      if (data.length) setPosts((prev) => [...prev, ...data]);
+      if (data.length) {
+        // Add comments: [] to each post for local state
+        const postsWithComments = data.map((post) => ({
+          ...post,
+          comments: [],
+        }));
+        setPosts((prev) => [...prev, ...postsWithComments]);
+      }
     }
 
     setLoading(false);
@@ -164,6 +172,20 @@ export default function Posts() {
     setPosts(newPosts);
   };
 
+  // Helper to append a comment to a post in state
+  const appendCommentToPost = (postId, comment) => {
+    setPosts((prevPosts) =>
+      prevPosts.map((p) =>
+        p.id === postId
+          ? {
+              ...p,
+              comments: [...(p.comments || []), comment],
+            }
+          : p
+      )
+    );
+  };
+
   return (
     <ul className="mb-8 flex flex-col items-center space-y-2">
       {posts.map((post) => {
@@ -237,7 +259,8 @@ export default function Posts() {
               <CardContent className="mt-[-18] whitespace-pre-wrap pl-17">
                 <p className="text-[15px]">{post.content}</p>
               </CardContent>
-              <PostComments postId={post.id} />
+              {/* Pass comments and appendCommentToPost to PostComments */}
+              <PostComments postId={post.id} comments={post.comments} />
               <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
                 <Button
                   className={clsx(
@@ -295,6 +318,8 @@ export default function Posts() {
                   onCommentAdded={(comment) => {
                     setCommentingPostId(null);
                     toast.success("Comment added");
+                    // Append the new comment to the post's comments
+                    appendCommentToPost(post.id, comment);
                   }}
                   onCancel={() => setCommentingPostId(null)}
                 />

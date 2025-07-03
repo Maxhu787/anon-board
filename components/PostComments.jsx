@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { Separator } from "./ui/separator";
 
-export default function PostComments({ postId }) {
+export default function PostComments({ postId, comments: localComments = [] }) {
   const [comments, setComments] = useState([]);
   const supabase = createClient();
 
@@ -35,16 +35,22 @@ export default function PostComments({ postId }) {
     if (postId) fetchComments();
   }, [postId, supabase]);
 
+  // Merge fetched comments and local comments, avoiding duplicates by id
+  const allComments = [
+    ...comments,
+    ...localComments.filter((lc) => !comments.some((c) => c.id === lc.id)),
+  ];
+
   return (
     <div className="mt-[-15]">
       <Separator />
-      {comments.length === 0 && (
+      {allComments.length === 0 && (
         <p className="text-[14px] pl-8 pt-3 text-gray-500 mb-[-10]">
           No comments yet.
         </p>
       )}
       <ul className="pl-8 pt-3">
-        {comments.map((comment) => (
+        {allComments.map((comment) => (
           <li key={comment.id}>
             <strong className="text-[14px]">
               {comment.is_anonymous
