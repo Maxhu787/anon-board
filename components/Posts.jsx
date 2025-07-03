@@ -317,7 +317,6 @@ export default function Posts() {
                   postId={post.id}
                   onCommentAdded={(comment) => {
                     setCommentingPostId(null);
-                    toast.success("Comment added");
                     // Append the new comment to the post's comments
                     appendCommentToPost(post.id, comment);
                   }}

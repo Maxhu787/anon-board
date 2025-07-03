@@ -294,7 +294,6 @@ export default function PostPage(promiseParams) {
             onCommentAdded={(comment) => {
               setCommenting(false);
               setLocalComments((prev) => [...prev, comment]);
-              toast.success("Comment added");
             }}
             onCancel={() => setCommenting(false)}
           />
