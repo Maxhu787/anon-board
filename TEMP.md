@@ -4,7 +4,7 @@ g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
 - change landing page
-- fix borken comments
+- scroll area for comments
 
 - restructure the post layout maybe make like dislike buttons smaller and move them above the comments? or something
 - ~~add comments to comments soon, and anonymouse comments~~

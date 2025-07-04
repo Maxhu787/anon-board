@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { Separator } from "./ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function PostComments({ postId, comments: localComments = [] }) {
   const [comments, setComments] = useState([]);
@@ -35,7 +36,6 @@ export default function PostComments({ postId, comments: localComments = [] }) {
     if (postId) fetchComments();
   }, [postId, supabase]);
 
-  // Merge fetched comments and local comments, avoiding duplicates by id
   const allComments = [
     ...comments,
     ...localComments.filter((lc) => !comments.some((c) => c.id === lc.id)),
@@ -44,31 +44,35 @@ export default function PostComments({ postId, comments: localComments = [] }) {
   return (
     <div className="mt-[-15]">
       <Separator />
-      {allComments.length === 0 && (
+      {allComments.length === 0 ? (
         <p className="text-[14px] pl-8 pt-3 text-gray-500 mb-[-10]">
           No comments yet.
         </p>
+      ) : (
+        <ScrollArea className="max-h-[300px] w-full pl-8 pr-4 pt-3">
+          <ul className="space-y-0">
+            {/* <ul className="pl-8 pt-3"> */}
+            {allComments.map((comment) => (
+              <li key={comment.id}>
+                <strong className="text-[14px]">
+                  {comment.is_anonymous
+                    ? "Anonymous"
+                    : comment.profiles?.full_name || "Unknown"}
+                </strong>
+                <small className="text-[12px] ml-1">
+                  {new Date(comment.created_at).toLocaleString("zh-TW", {
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </small>
+                <p className="text-[14px] ml-0">{comment.content}</p>
+              </li>
+            ))}
+          </ul>
+        </ScrollArea>
       )}
-      <ul className="pl-8 pt-3">
-        {allComments.map((comment) => (
-          <li key={comment.id}>
-            <strong className="text-[14px]">
-              {comment.is_anonymous
-                ? "Anonymous"
-                : comment.profiles?.full_name || "Unknown"}
-            </strong>
-            <small className="text-[12px] ml-1">
-              {new Date(comment.created_at).toLocaleString("zh-TW", {
-                month: "short",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </small>
-            <p className="text-[14px] ml-0">{comment.content}</p>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
