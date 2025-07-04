@@ -28,16 +28,10 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       return;
     }
 
-    // Fetch full_name and avatar_url from profiles
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("full_name, avatar_url")
-      .eq("id", user.id)
-      .single();
+    const commentId = nanoid(11); // Short comment ID
 
-    const commentId = nanoid(11); // Generate short comment ID
-
-    const { data, error } = await supabase
+    // Insert the comment
+    const { data: comment, error } = await supabase
       .from("comments")
       .insert({
         id: commentId,
@@ -50,23 +44,33 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       .select()
       .single();
 
-    setSubmitting(false);
-
-    if (error) {
+    if (error || !comment) {
       toast.error("Failed to submit comment");
       console.error(error);
-    } else {
-      setContent("");
-      const commentWithProfile = {
-        ...data,
-        profiles: {
-          full_name: profile?.full_name || "",
-          avatar_url: profile?.avatar_url || "",
-        },
-      };
-      if (onCommentAdded) onCommentAdded(commentWithProfile);
-      if (onCancel) onCancel();
+      setSubmitting(false);
+      return;
     }
+
+    // Fetch profile by user_id after comment is inserted
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("full_name, avatar_url")
+      .eq("id", comment.user_id)
+      .single();
+
+    setSubmitting(false);
+
+    const commentWithProfile = {
+      ...comment,
+      profiles: {
+        full_name: profile?.full_name || "",
+        avatar_url: profile?.avatar_url || "",
+      },
+    };
+
+    if (onCommentAdded) onCommentAdded(commentWithProfile);
+    if (onCancel) onCancel();
+    setContent("");
   };
 
   return (
