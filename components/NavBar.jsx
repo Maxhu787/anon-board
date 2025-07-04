@@ -94,19 +94,12 @@ export default function NavBar() {
                 </Link>
               </Button>
             ) : (
-              <Button variant="outline" asChild className={buttonClass}>
-                <Link href="/login">
-                  <User style={{ height: iconSize, width: iconSize }} />
-                </Link>
-              </Button>
+              <LoginButton
+                variant="outline"
+                asChild
+                className="min-w-[58px] min-h-[50px] cursor-pointer active:scale-95 transition-all"
+              />
             )}
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <LoginButton
-              variant="outline"
-              asChild
-              className="min-w-[58px] min-h-[50px] cursor-pointer active:scale-95 transition-all"
-            />
           </NavigationMenuItem>
         </div>
       </div>

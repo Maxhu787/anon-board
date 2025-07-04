@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 export function SignUpForm() {
   const { t } = useTranslation();
   return (
-    <Card className="mx-auto max-w-sm">
+    <Card className="mx-auto w-[350px]">
       <CardHeader>
         <CardTitle className="text-2xl">{t("signUpAccount")}</CardTitle>
         <CardDescription>
@@ -27,7 +27,7 @@ export function SignUpForm() {
       <CardContent>
         <form action="">
           <div className="grid gap-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 mt-[-10]">
               <div className="grid gap-2">
                 <Label htmlFor="first-name">First name</Label>
                 <Input
@@ -47,7 +47,7 @@ export function SignUpForm() {
                 />
               </div>
             </div>
-            <div className="grid gap-2">
+            <div className="grid gap-2 mt-[-7]">
               <Label htmlFor="email">Email</Label>
               <Input
                 name="email"
@@ -57,7 +57,7 @@ export function SignUpForm() {
                 required
               />
             </div>
-            <div className="grid gap-2">
+            <div className="grid gap-2 mt-[-7]">
               <Label htmlFor="password">Password</Label>
               <Input name="password" id="password" type="password" />
             </div>

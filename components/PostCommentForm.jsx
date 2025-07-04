@@ -28,6 +28,13 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       return;
     }
 
+    // Fetch full_name and avatar_url from profiles
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("full_name, avatar_url")
+      .eq("id", user.id)
+      .single();
+
     const commentId = nanoid(11); // Generate short comment ID
 
     const { data, error } = await supabase
@@ -50,8 +57,14 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       console.error(error);
     } else {
       setContent("");
-      // Pass the new comment object to onCommentAdded
-      if (onCommentAdded) onCommentAdded(data);
+      const commentWithProfile = {
+        ...data,
+        profiles: {
+          full_name: profile?.full_name || "",
+          avatar_url: profile?.avatar_url || "",
+        },
+      };
+      if (onCommentAdded) onCommentAdded(commentWithProfile);
       if (onCancel) onCancel();
     }
   };

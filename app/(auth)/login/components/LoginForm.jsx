@@ -19,7 +19,7 @@ export function LoginForm({ className, ...props }) {
   const { t } = useTranslation();
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className="w-[400px]">
+      <Card className="w-[350px]">
         <CardHeader>
           <CardTitle className="text-2xl">{t("logInAccount")}</CardTitle>
           {/* <CardDescription>
