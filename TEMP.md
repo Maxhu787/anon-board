@@ -4,7 +4,11 @@ g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
 - change landing page
-- scroll area for comments
+- change comment layout one line
+- fix private post logic
+- Shorter intro text for mobile or charge text align to not center
+- add padding bottom, check last post for fix
+- add joined at, user count
 
 - restructure the post layout maybe make like dislike buttons smaller and move them above the comments? or something
 - ~~add comments to comments soon, and anonymouse comments~~

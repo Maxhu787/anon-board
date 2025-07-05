@@ -260,7 +260,7 @@ export default function Posts() {
                 <p className="text-[15px]">{post.content}</p>
               </CardContent>
               {/* Pass comments and appendCommentToPost to PostComments */}
-              <PostComments postId={post.id} comments={post.comments} />
+              <PostComments postId={post.id} comments={post.comments} topOnly />
               <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
                 <Button
                   className={clsx(

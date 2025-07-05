@@ -5,36 +5,68 @@ import { createClient } from "@/utils/supabase/client";
 import { Separator } from "./ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-export default function PostComments({ postId, comments: localComments = [] }) {
+export default function PostComments({
+  postId,
+  comments: localComments = [],
+  topOnly = false, // NEW PROP: set true to show top 2–3 most liked comments
+}) {
   const [comments, setComments] = useState([]);
   const supabase = createClient();
 
   useEffect(() => {
     const fetchComments = async () => {
-      const { data, error } = await supabase
-        .from("comments")
-        .select(
-          `
-          *,
-          profiles:profiles!comments_user_id_fkey (
-            full_name,
-            avatar_url
-          )
-        `
-        )
-        .eq("post_id", postId)
-        .is("parent_id", null)
-        .order("created_at", { ascending: true });
+      if (!postId) return;
 
-      if (error) {
-        console.error("Error fetching comments:", error);
+      if (topOnly) {
+        const { data, error } = await supabase
+          .from("comments")
+          .select(
+            `
+            *,
+            profiles:profiles!comments_user_id_fkey (
+              full_name,
+              avatar_url
+            )
+          `
+          )
+          .eq("post_id", postId)
+          .is("parent_id", null)
+          .order("created_at", { ascending: false }) // newest first
+          .limit(3); // only top 3 by recency
+
+        if (error) {
+          console.error("Error fetching top comments:", error);
+          return;
+        }
+
+        setComments(data || []);
       } else {
-        setComments(data);
+        // Default: show all comments by created_at
+        const { data, error } = await supabase
+          .from("comments")
+          .select(
+            `
+            *,
+            profiles:profiles!comments_user_id_fkey (
+              full_name,
+              avatar_url
+            )
+          `
+          )
+          .eq("post_id", postId)
+          .is("parent_id", null)
+          .order("created_at", { ascending: true });
+
+        if (error) {
+          console.error("Error fetching comments:", error);
+        } else {
+          setComments(data);
+        }
       }
     };
 
-    if (postId) fetchComments();
-  }, [postId, supabase]);
+    fetchComments();
+  }, [postId, supabase, topOnly]);
 
   const allComments = [
     ...comments,
@@ -51,7 +83,6 @@ export default function PostComments({ postId, comments: localComments = [] }) {
       ) : (
         <ScrollArea className="max-h-[300px] w-full pl-8 pr-4 pt-3">
           <ul className="space-y-0">
-            {/* <ul className="pl-8 pt-3"> */}
             {allComments.map((comment) => (
               <li key={comment.id}>
                 <strong className="text-[14px]">
