@@ -149,7 +149,7 @@ export default function PostPage(promiseParams) {
     return (
       <div className="max-w-xl mx-auto p-8 mt-15">
         <Link
-          href="/"
+          href="/home"
           className="inline-block mt-2 text-blue-400 hover:underline"
         >
           ← Back to all posts
@@ -183,7 +183,7 @@ export default function PostPage(promiseParams) {
           Sorry, something went wrong.
         </p>
         <button
-          onClick={() => router.push("/")}
+          onClick={() => router.push("/home")}
           className="px-6 py-3 bg-white text-orange-700 font-semibold rounded-lg shadow-lg hover:bg-orange-50 active:bg-orange-200 active:scale-95 transition-all cursor-pointer"
         >
           Go Back Home
@@ -210,7 +210,7 @@ export default function PostPage(promiseParams) {
   return (
     <div className="max-w-xl mx-auto p-8 mt-15">
       <Link
-        href="/"
+        href="/home"
         className="inline-block mt-2 text-blue-400 hover:underline"
       >
         ← Back to all posts

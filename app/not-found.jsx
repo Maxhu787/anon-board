@@ -12,7 +12,7 @@ export default function NotFound() {
         Oops! The page you are looking for does not exist.
       </p>
       <button
-        onClick={() => router.push("/")}
+        onClick={() => router.push("/home")}
         className="px-6 py-3 bg-white text-orange-700 font-semibold rounded-lg shadow-lg hover:bg-orange-50 active:bg-orange-200 active:scale-95 transition-all cursor-pointer"
       >
         Go Back Home

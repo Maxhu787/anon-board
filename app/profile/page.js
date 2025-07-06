@@ -63,7 +63,7 @@ export default function ProfilePage() {
 
   return (
     <div className="flex items-center flex-col justify-center min-h-screen bg-gray-100 dark:bg-zinc-900">
-      <Link href="/" className="text-blue-400 hover:underline mb-8">
+      <Link href="/home" className="text-blue-400 hover:underline mb-8">
         ← Back to all posts
       </Link>
       <div className="bg-white dark:bg-zinc-800 text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
