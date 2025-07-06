@@ -196,6 +196,17 @@ export default function PostPage(promiseParams) {
     post.votes?.filter((v) => v.vote_type === "dislike").length || 0;
   const userVote = post.votes?.find((v) => v.user_id === userId);
 
+  const date = new Date(post.created_at);
+  const now = new Date();
+  const showYear = date.getFullYear() !== now.getFullYear();
+
+  const formattedDate = `${showYear ? date.getFullYear() + "/" : ""}${
+    date.getMonth() + 1
+  }/${date.getDate()} ${date.getHours()}:${date
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")}`;
+
   return (
     <div className="max-w-xl mx-auto p-8 mt-15">
       <Link
@@ -225,37 +236,34 @@ export default function PostPage(promiseParams) {
             )}
           </Avatar>
           <div>
-            <div
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                if (!post.is_anonymous) {
-                  router.push(`/user/${post.user_id}`);
-                }
-              }}
-              className="hover:underline cursor-pointer"
-            >
-              <CardTitle>
-                {post.is_anonymous
-                  ? "Anonymous user"
-                  : post.profiles?.full_name ?? post.user_id}
-              </CardTitle>
-            </div>
-            <CardDescription className="mt-1 text-[12px]">
-              {new Date(post.created_at).toLocaleString("zh-TW", {
-                month: "short",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </CardDescription>
+            <CardTitle className="flex flex-row items-center gap-1.5">
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  if (!post.is_anonymous) {
+                    router.push(`/user/${post.user_id}`);
+                  }
+                }}
+                className="hover:underline cursor-pointer"
+              >
+                <span className="text-[15px]">
+                  {post.is_anonymous
+                    ? "Anonymous user"
+                    : post.profiles?.full_name ?? post.user_id}
+                </span>
+              </div>
+              <div className="text-[15px] mt-[2px] text-gray-500 dark:text-gray-400">
+                {formattedDate}
+              </div>
+            </CardTitle>
+
+            <CardContent className="ml-[-25] mt-1">
+              <p className="text-[15px] whitespace-pre-wrap">{post.content}</p>
+            </CardContent>
           </div>
         </CardHeader>
-        <CardContent className="mt-[-18] pl-17">
-          <p className="text-[15px] whitespace-pre-wrap">{post.content}</p>
-        </CardContent>
-        <PostComments postId={post.id} comments={localComments} />
-        <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
+        <CardFooter className="gap-2 mt-[-20] flex flex-wrap items-center">
           <Button
             className={clsx(
               "cursor-pointer flex items-center gap-1 px-2 py-1 rounded-full transition-all duration-150",
@@ -323,24 +331,24 @@ export default function PostPage(promiseParams) {
             <span className="text-sm">{post.comment_count}</span>{" "}
           </Button>
         </CardFooter>
+        {commenting && (
+          <div>
+            <PostCommentForm
+              postId={post.id}
+              onCommentAdded={(comment) => {
+                setCommenting(false);
+                setLocalComments((prev) => [...prev, comment]);
+                setPost((prevPost) => ({
+                  ...prevPost,
+                  comment_count: (prevPost.comment_count || 0) + 1,
+                }));
+              }}
+              onCancel={() => setCommenting(false)}
+            />
+          </div>
+        )}
+        <PostComments postId={post.id} comments={localComments} />
       </Card>
-
-      {commenting && (
-        <div>
-          <PostCommentForm
-            postId={post.id}
-            onCommentAdded={(comment) => {
-              setCommenting(false);
-              setLocalComments((prev) => [...prev, comment]);
-              setPost((prevPost) => ({
-                ...prevPost,
-                comment_count: (prevPost.comment_count || 0) + 1,
-              }));
-            }}
-            onCancel={() => setCommenting(false)}
-          />
-        </div>
-      )}
     </div>
   );
 }

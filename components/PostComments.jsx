@@ -75,7 +75,7 @@ export default function PostComments({
       ]
     : comments;
 
-  return (
+  return topOnly ? (
     <div className="mt-[-15]">
       <Separator />
       {allComments.length === 0 ? (
@@ -103,6 +103,47 @@ export default function PostComments({
                 <p className="text-[14px] ml-0">{comment.content}</p>
               </li>
             ))}
+          </ul>
+        </ScrollArea>
+      )}
+    </div>
+  ) : (
+    <div className="mt-[-15]">
+      <Separator />
+      {allComments.length === 0 ? (
+        <p className="text-[14px] pl-8 pt-3 text-gray-500 mb-[-10]">
+          No comments yet.
+        </p>
+      ) : (
+        <ScrollArea className="w-full ">
+          <ul className="space-y-0 pl-8 pt-2 max-h-[300px]">
+            {allComments.map((comment) => {
+              const date = new Date(comment.created_at);
+              const now = new Date();
+              const showYear = date.getFullYear() !== now.getFullYear();
+
+              const formattedDate = `${
+                showYear ? date.getFullYear() + "/" : ""
+              }${
+                date.getMonth() + 1
+              }/${date.getDate()} ${date.getHours()}:${date
+                .getMinutes()
+                .toString()
+                .padStart(2, "0")}`;
+              return (
+                <li key={comment.id}>
+                  <strong className="text-[14px]">
+                    {comment.is_anonymous
+                      ? "Anonymous"
+                      : comment.profiles?.full_name || "Unknown"}
+                  </strong>
+                  <small className="font-bold text-[12px] ml-1 text-gray-500 dark:text-gray-400">
+                    {formattedDate}
+                  </small>
+                  <p className="text-[14px] ml-0">{comment.content}</p>
+                </li>
+              );
+            })}
           </ul>
         </ScrollArea>
       )}
