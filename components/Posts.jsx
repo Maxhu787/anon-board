@@ -259,55 +259,74 @@ export default function Posts() {
               <CardContent className="mt-[-18] whitespace-pre-wrap pl-17">
                 <p className="text-[15px]">{post.content}</p>
               </CardContent>
-              {/* Pass comments and appendCommentToPost to PostComments */}
               <PostComments postId={post.id} comments={post.comments} topOnly />
               <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
                 <Button
                   className={clsx(
-                    "w-[65px] cursor-pointer active:scale-95 transition-all",
+                    "cursor-pointer flex items-center gap-1 px-2 py-1 rounded-full transition-all duration-150",
                     userVote?.vote_type === "like"
-                      ? "bg-blue-100 text-blue-600 hover:bg-blue-200 hover:text-blue-600 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800"
-                      : "bg-transparent border",
-                    "active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
+                      ? "text-pink-600 dark:text-pink-400 hover:text-pink-600"
+                      : "text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400",
+                    "hover:bg-red-50 dark:hover:bg-[rgb(40,40,40)] active:scale-95 transition-all"
                   )}
-                  variant="outline"
+                  variant="ghost"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                     handleVote(post.id, "like");
                   }}
                 >
-                  <span className="mr-[-3]">{likes}</span>
-                  <ThumbsUp />
+                  <ThumbsUp
+                    className={clsx(
+                      "w-4 h-4 transition-colors",
+                      userVote?.vote_type === "like"
+                        ? "fill-pink-500"
+                        : "fill-none"
+                    )}
+                  />
+                  <span className="text-sm">{likes}</span>
                 </Button>
                 <Button
                   className={clsx(
-                    "w-[65px] cursor-pointer active:scale-95 transition-all",
+                    "cursor-pointer flex items-center gap-1 px-2 py-1 rounded-full transition-all duration-150",
                     userVote?.vote_type === "dislike"
-                      ? "bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-600 dark:bg-red-900 dark:text-red-300 dark:hover:bg-red-800"
-                      : "bg-transparent border",
-                    "active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
+                      ? "text-pink-600 dark:text-pink-400 hover:text-pink-600"
+                      : "text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400",
+                    "hover:bg-red-50 dark:hover:bg-[rgb(40,40,40)] active:scale-95 transition-all"
                   )}
-                  variant="outline"
+                  variant="ghost"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                     handleVote(post.id, "dislike");
                   }}
                 >
-                  <span className="mr-[-3]">{dislikes}</span>
-                  <ThumbsDown />
+                  <ThumbsDown
+                    className={clsx(
+                      "w-4 h-4 transition-colors",
+                      userVote?.vote_type === "dislike"
+                        ? "fill-pink-500"
+                        : "fill-none"
+                    )}
+                  />
+                  <span className="text-sm">{dislikes}</span>
                 </Button>
                 <Button
-                  className="w-[65px] cursor-pointer active:scale-95 transition-all active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
-                  variant="outline"
+                  className={clsx(
+                    "cursor-pointer flex items-center gap-1 px-2 py-1 rounded-full transition-all duration-150",
+                    isCommenting
+                      ? "text-blue-600 dark:text-blue-400 hover:text-blue-600"
+                      : "text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400",
+                    "hover:bg-blue-50 dark:hover:bg-[rgb(40,40,40)] active:scale-95 transition-all"
+                  )}
+                  variant="ghost"
                   onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
                     setCommentingPostId(isCommenting ? null : post.id);
                   }}
                 >
-                  <MessageSquareText />
+                  <MessageSquareText className="w-4 h-4" />
                 </Button>
               </CardFooter>
             </Card>
