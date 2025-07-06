@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>g4o2.me</title>
       </head>
-      <body className="bg-[rgb(250,250,250)] dark:bg-[rgb(30,30,30)]">
+      <body className="bg-[rgb(250,250,250)] dark:bg-[rgb(30,30,30)] ">
         <I18nProvider>
           <ThemeProvider
             attribute="class"
@@ -30,12 +30,12 @@ export default function RootLayout({ children }) {
             <ToggleThemeButton
               variant="outline"
               asChild
-              className="bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-6 top-40"
+              className="backdrop-blur-[1px] bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-6 top-40"
             />
             <ToggleLanguageButton
               variant="outline"
               asChild
-              className="bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-6 top-25"
+              className="backdrop-blur-[1px] bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-6 top-25"
             />
           </ThemeProvider>
         </I18nProvider>
