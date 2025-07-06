@@ -35,7 +35,6 @@ export default function Posts() {
   const supabase = createClient();
   const { t } = useTranslation();
 
-  // Add a comments property to each post after fetching
   const fetchPosts = async (pageIndex) => {
     if (!hasMore) return;
 
@@ -71,18 +70,37 @@ export default function Posts() {
 
     if (error) {
       console.error("Error fetching posts:", error);
-    } else {
-      if (data.length < PAGE_SIZE) setHasMore(false);
-      if (data.length) {
-        // Add comments: [] to each post for local state
-        const postsWithComments = data.map((post) => ({
-          ...post,
-          comments: [],
-        }));
-        setPosts((prev) => [...prev, ...postsWithComments]);
-      }
+      setLoading(false);
+      return;
     }
 
+    if (data.length < PAGE_SIZE) setHasMore(false);
+
+    // For each post, get comment count by querying comments table
+    const postsWithComments = await Promise.all(
+      data.map(async (post) => {
+        const { count, error: countError } = await supabase
+          .from("comments")
+          .select("id", { count: "exact", head: true }) // head:true means only count, no rows
+          .eq("post_id", post.id);
+
+        if (countError) {
+          console.error(
+            "Error fetching comment count for post",
+            post.id,
+            countError
+          );
+        }
+
+        return {
+          ...post,
+          comments: [],
+          comment_count: count || 0,
+        };
+      })
+    );
+
+    setPosts((prev) => [...prev, ...postsWithComments]);
     setLoading(false);
   };
 
@@ -327,6 +345,7 @@ export default function Posts() {
                   }}
                 >
                   <MessageSquareText className="w-4 h-4" />
+                  <span className="text-sm">{post.comment_count}</span>
                 </Button>
               </CardFooter>
             </Card>
@@ -336,8 +355,14 @@ export default function Posts() {
                   postId={post.id}
                   onCommentAdded={(comment) => {
                     setCommentingPostId(null);
-                    // Append the new comment to the post's comments
                     appendCommentToPost(post.id, comment);
+                    setPosts((prevPosts) =>
+                      prevPosts.map((p) =>
+                        p.id === post.id
+                          ? { ...p, comment_count: (p.comment_count || 0) + 1 }
+                          : p
+                      )
+                    );
                   }}
                   onCancel={() => setCommentingPostId(null)}
                 />
