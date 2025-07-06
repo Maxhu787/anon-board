@@ -76,14 +76,23 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-2 flex flex-col gap-2">
+    <form
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+      onSubmit={handleSubmit}
+      className="mt-2 flex flex-col gap-2"
+    >
       <textarea
-        className="w-full rounded border p-2"
+        className="w-full rounded border-2 p-2 pl-3"
         rows={3}
         placeholder="Write your comment..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
         disabled={submitting}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       />
       <div className="flex gap-2 justify-end">
         <Button

@@ -277,8 +277,7 @@ export default function Posts() {
               <CardContent className="mt-[-18] whitespace-pre-wrap pl-17">
                 <p className="text-[15px]">{post.content}</p>
               </CardContent>
-              <PostComments postId={post.id} comments={post.comments} topOnly />
-              <CardFooter className="gap-2 mt-[-12] mb-[-8] flex flex-wrap items-center">
+              <CardFooter className="gap-2 mt-[-24] mb-[-2] flex flex-wrap items-center">
                 <Button
                   className={clsx(
                     "cursor-pointer flex items-center gap-1 px-2 py-1 rounded-full transition-all duration-150",
@@ -348,26 +347,42 @@ export default function Posts() {
                   <span className="text-sm">{post.comment_count}</span>
                 </Button>
               </CardFooter>
-            </Card>
-            {isCommenting && (
+
+              {isCommenting && (
+                <div
+                  // onClickCapture={(e) => {
+                  //   // e.stopPropagation();
+                  // }}
+                  className="pl-4 pr-4 mt-[-25]"
+                >
+                  <PostCommentForm
+                    postId={post.id}
+                    onCommentAdded={(comment) => {
+                      setCommentingPostId(null);
+                      appendCommentToPost(post.id, comment);
+                      setPosts((prevPosts) =>
+                        prevPosts.map((p) =>
+                          p.id === post.id
+                            ? {
+                                ...p,
+                                comment_count: (p.comment_count || 0) + 1,
+                              }
+                            : p
+                        )
+                      );
+                    }}
+                    onCancel={() => setCommentingPostId(null)}
+                  />
+                </div>
+              )}
               <div>
-                <PostCommentForm
+                <PostComments
                   postId={post.id}
-                  onCommentAdded={(comment) => {
-                    setCommentingPostId(null);
-                    appendCommentToPost(post.id, comment);
-                    setPosts((prevPosts) =>
-                      prevPosts.map((p) =>
-                        p.id === post.id
-                          ? { ...p, comment_count: (p.comment_count || 0) + 1 }
-                          : p
-                      )
-                    );
-                  }}
-                  onCancel={() => setCommentingPostId(null)}
+                  comments={post.comments}
+                  topOnly
                 />
               </div>
-            )}
+            </Card>
           </li>
         );
       })}

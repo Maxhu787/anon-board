@@ -225,7 +225,7 @@ export default function PostPage(promiseParams) {
                 router.push(`/user/${post.user_id}`);
               }
             }}
-            className="cursor-pointer"
+            className="cursor-pointer w-10 h-10"
           >
             {post.is_anonymous ? (
               <AvatarFallback>A</AvatarFallback>
@@ -263,7 +263,7 @@ export default function PostPage(promiseParams) {
             </CardContent>
           </div>
         </CardHeader>
-        <CardFooter className="gap-2 mt-[-20] flex flex-wrap items-center">
+        <CardFooter className="gap-2 mt-[-20] mb-[-18] flex flex-wrap items-center">
           <Button
             className={clsx(
               "cursor-pointer flex items-center gap-1 px-2 py-1 rounded-full transition-all duration-150",
@@ -332,7 +332,7 @@ export default function PostPage(promiseParams) {
           </Button>
         </CardFooter>
         {commenting && (
-          <div>
+          <div className="p-4 mt-[-20] mb-[-30]">
             <PostCommentForm
               postId={post.id}
               onCommentAdded={(comment) => {
