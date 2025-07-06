@@ -259,7 +259,9 @@ export default function PostPage(promiseParams) {
             </CardTitle>
 
             <CardContent className="ml-[-25] mt-1">
-              <p className="text-[15px] whitespace-pre-wrap">{post.content}</p>
+              <p className="text-[15px] whitespace-pre-wrap wrap-break-word">
+                {post.content}
+              </p>
             </CardContent>
           </div>
         </CardHeader>

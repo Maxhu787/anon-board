@@ -223,7 +223,7 @@ export default function Posts() {
                 e.preventDefault();
                 router.push(`/post/${post.id}`);
               }}
-              className="border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer"
+              className="pb-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer"
             >
               <CardHeader className="flex flex-row gap-3">
                 <Avatar
@@ -274,7 +274,7 @@ export default function Posts() {
                   </CardDescription>
                 </div>
               </CardHeader>
-              <CardContent className="mt-[-18] whitespace-pre-wrap pl-17">
+              <CardContent className="mt-[-18] whitespace-pre-wrap wrap-break-word pl-17">
                 <p className="text-[15px]">{post.content}</p>
               </CardContent>
               <CardFooter className="gap-2 mt-[-24] mb-[-2] flex flex-wrap items-center">
@@ -375,13 +375,7 @@ export default function Posts() {
                   />
                 </div>
               )}
-              <div>
-                <PostComments
-                  postId={post.id}
-                  comments={post.comments}
-                  topOnly
-                />
-              </div>
+              <PostComments postId={post.id} comments={post.comments} topOnly />
             </Card>
           </li>
         );

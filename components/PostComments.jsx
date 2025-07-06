@@ -69,12 +69,12 @@ export default function PostComments({
     <div className="mt-[-15]">
       <Separator />
       {allComments.length === 0 ? (
-        <p className="text-[14px] pl-8 pt-3 text-gray-500 mb-[-10]">
+        <p className="text-[14px] pl-8 pt-2 pb-5 text-gray-500 mb-[-10]">
           No comments yet.
         </p>
       ) : (
         <ScrollArea className="w-full">
-          <ul className="space-y-4 pl-8 pt-2 max-h-[300px] pr-4">
+          <ul className="space-y-0 pl-8 pb-0 pt-2 max-h-[150px] max-w-[300px] pr-4">
             {allComments.map((comment) => {
               const date = new Date(comment.created_at);
               const now = new Date();
@@ -101,7 +101,9 @@ export default function PostComments({
                       {formattedDate}
                     </small>
                   </div>
-                  <p className="text-[14px] ml-0">{comment.content}</p>
+                  <p className="text-[14px] ml-0 whitespace-pre-wrap wrap-break-word">
+                    {comment.content}
+                  </p>
                 </li>
               );
             })}
@@ -159,7 +161,9 @@ export default function PostComments({
                     {formattedDate}
                   </small>
                 </div>
-                <p className="text-[14px] ml-8 mt-[-13]">{comment.content}</p>
+                <p className="text-[14px] ml-8 mt-[-13] whitespace-pre-wrap wrap-break-word">
+                  {comment.content}
+                </p>
                 <div className="flex items-center gap-2 mt-0">
                   <Button
                     className={clsx(
