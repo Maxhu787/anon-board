@@ -68,10 +68,12 @@ export default function PostComments({
     fetchComments();
   }, [postId, supabase, topOnly]);
 
-  const allComments = [
-    ...comments,
-    ...localComments.filter((lc) => !comments.some((c) => c.id === lc.id)),
-  ];
+  const allComments = !topOnly
+    ? [
+        ...comments,
+        ...localComments.filter((lc) => !comments.some((c) => c.id === lc.id)),
+      ]
+    : comments;
 
   return (
     <div className="mt-[-15]">
@@ -81,8 +83,8 @@ export default function PostComments({
           No comments yet.
         </p>
       ) : (
-        <ScrollArea className="max-h-[300px] w-full pl-8 pr-4 pt-3">
-          <ul className="space-y-0">
+        <ScrollArea className="w-full ">
+          <ul className="space-y-0 pl-8 pt-2 max-h-[300px]">
             {allComments.map((comment) => (
               <li key={comment.id}>
                 <strong className="text-[14px]">

@@ -51,6 +51,8 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       return;
     }
 
+    toast.success("Comment Posted");
+
     // Fetch profile by user_id after comment is inserted
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
