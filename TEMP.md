@@ -3,6 +3,8 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
+- make landing page posts take up full height page scroll
+- login in navbar brings straight to google auth
 - limit msg length 2500 words, timeout rules for anti spam
 - change landing page, add posts view to loading page too
 - Shorter intro text for mobile or charge text align to not center

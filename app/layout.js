@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>g4o2.me</title>
       </head>
-      <body className="bg-[rgb(250,250,250)] dark:bg-[rgb(30,30,30)] ">
+      <body className="overscroll-none bg-[rgb(250,250,250)] dark:bg-[rgb(30,30,30)] ">
         <I18nProvider>
           <ThemeProvider
             attribute="class"

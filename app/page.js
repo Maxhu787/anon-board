@@ -34,53 +34,58 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex flex-col md:flex-row flex-grow w-full">
-        {/* Left Section: Landing Text */}
         <section className="w-full md:w-1/2 p-8 flex items-center justify-center bg-white dark:bg-black">
-          <div className="space-y-8 max-w-xl text-left">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-black dark:text-white">
-              Got something to rant about?
-              <br />
-              Or just need to talk?
+          <div className="space-y-8 max-w-xl text-left mt-20">
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-[50px] md:leading-[57px] text-black dark:text-white">
+              {t("title1")}
+            </h1>
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-[50px] md:leading-[57px] mt-[-10] text-black dark:text-white">
+              {t("title2")}
             </h1>
             <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300">
-              <span className="font-semibold">g4o2.me</span> {t("description")}
+              <span className="font-semibold">g4o2.me</span> {t("description1")}
             </p>
-            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300">
+            <p className="text-lg mt-[-12] md:text-xl text-gray-700 dark:text-gray-300">
               {t("description2")}
             </p>
-            {!user && (
+            {user ? (
+              <Link
+                href="/home"
+                className="active:scale-95 transition-all inline-block px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+              >
+                Browse Posts
+              </Link>
+            ) : (
               <Link
                 href="/login"
-                className="inline-block px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition"
+                className="active:scale-95 transition-all inline-block px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
               >
                 Get Started
               </Link>
             )}
+            <div className="border-t-2 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex flex-row space-x-3">
+                <Link href="/about" className="hover:underline">
+                  {t("aboutus")}
+                </Link>
+                <Link href="/terms-of-service" className="hover:underline">
+                  {t("tos")}
+                </Link>
+                <Link href="/privacy-policy" className="hover:underline">
+                  {t("privacyPolicy")}
+                </Link>
+              </div>
+              <div>
+                © {new Date().getFullYear()} g4o2.me - {t("legal")}
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Right Section: Posts Preview */}
-        <section className="w-full md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto max-h-[100vh]">
+        <section className="w-full pt-30 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto max-h-[100vh]">
           <Posts />
         </section>
       </main>
-
-      <footer className="border-t py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
-        <div className="space-x-4 mb-2">
-          <Link href="/about" className="hover:underline">
-            {t("aboutus")}
-          </Link>
-          <Link href="/terms-of-service" className="hover:underline">
-            {t("tos")}
-          </Link>
-          <Link href="/privacy-policy" className="hover:underline">
-            {t("privacyPolicy")}
-          </Link>
-        </div>
-        <div>
-          © {new Date().getFullYear()} g4o2.me - {t("legal")}
-        </div>
-      </footer>
     </div>
   );
 }

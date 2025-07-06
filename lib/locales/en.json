@@ -1,6 +1,8 @@
 {
-  "description": "is a simple space to post what's on your mind — publicly or anonymously. It's all about your thoughts.",
-  "description2": "Engage in a clean feed, and post freely. Just real people saying real stuff.",
+  "title1": "Got something to rant about?",
+  "title2": "Or just need to talk?",
+  "description1": "is a simple space to post what's on your mind - publicly or anonymously. It's all about your thoughts.",
+  "description2": "Post freely. Just real people saying real stuff.",
   "logIn": "Login",
   "logOut": "Logout",
   "logInAccount": "Login",
