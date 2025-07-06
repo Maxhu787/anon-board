@@ -135,7 +135,7 @@ export default function Posts() {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    if (!user) return toast("You must be logged in");
+    if (!user) return toast.error("You must be logged in");
 
     const postIndex = posts.findIndex((p) => p.id === postId);
     if (postIndex === -1) return;

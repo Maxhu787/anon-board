@@ -100,7 +100,7 @@ export default function PostPage(promiseParams) {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    if (!user) return toast("You must be logged in");
+    if (!user) return toast.error("You must be logged in");
 
     const existingVote = post.votes?.find((v) => v.user_id === user.id);
 

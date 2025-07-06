@@ -1,5 +1,6 @@
 "use client";
 
+import Posts from "@/components/Posts";
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
@@ -14,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-    document.title = "g4o2.me";
+    document.title = "g4o2.me | Home";
 
     const fetchUser = async () => {
       const {
@@ -41,21 +42,11 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="p-8 flex-grow">
-        {user ? <Link href="/home">Go to home</Link> : ""}
-        <div className="flex flex-col items-center justify-center text-center space-y-4 h-full min-h-[calc(100vh-5rem)]">
-          {/* <Link href="https://g4o2.me"> */}
-          <h1 className="text-5xl font-extrabold tracking-tight text-black dark:text-white">
-            g4o2.me
-          </h1>
-          {/* </Link> */}
-          <p className="text-lg text-gray-600 dark:text-gray-400">
-            {t("description")}
-            <br />
-            {t("description2")}
-          </p>
+        <div className="mt-15">
+          <Posts />
         </div>
       </main>
-      <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400 absolute bottom-0 w-full">
+      <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
         <div className="space-x-4 mb-2">
           <Link href="/about" className="hover:underline">
             {t("aboutus")}

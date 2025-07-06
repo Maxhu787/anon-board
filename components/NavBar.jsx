@@ -14,8 +14,11 @@ import LoginButton from "./LoginLogoutButton";
 import SendPost from "./SendPost";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 export default function NavBar() {
+  const searchParams = useSearchParams();
+  const isLoggedOut = searchParams.get("logout");
   const iconSize = 24;
   const buttonClass =
     "min-w-[58px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)]";
@@ -25,13 +28,21 @@ export default function NavBar() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    if (isLoggedOut) {
+      const url = new URL(window.location.href);
+      url.search = "";
+      window.history.replaceState({}, "", url.toString());
+
+      window.location.reload();
+      // reloads the page after logout, to render the logout button properly
+    }
     setMounted(true);
     const checkUser = async () => {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
     };
     checkUser();
-  }, []);
+  }, [isLoggedOut]);
 
   if (!mounted) {
     // Prevent hydration mismatch by not rendering until mounted
@@ -63,7 +74,7 @@ export default function NavBar() {
         <div className="float-right flex items-center gap-3 list-none">
           <NavigationMenuItem>
             <Button variant="outline" asChild className={buttonClass}>
-              <Link href="/">
+              <Link href="/home">
                 <House style={{ height: iconSize, width: iconSize }} />
               </Link>
             </Button>

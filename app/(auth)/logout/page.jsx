@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const LogoutPage = () => {
   const router = useRouter();
   useEffect(() => {
-    setTimeout(() => router.push("/"), 2000);
+    setTimeout(() => router.push("/?logout=true"), 2000);
   }, []);
   return (
     <div className="text-center mt-30">

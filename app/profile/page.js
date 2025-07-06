@@ -8,6 +8,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslation } from "react-i18next";
+import LoginButton from "@/components/LoginLogoutButton";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
@@ -61,7 +62,10 @@ export default function ProfilePage() {
   const avatarUrl = user?.user_metadata?.avatar_url || "";
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-zinc-900">
+    <div className="flex items-center flex-col justify-center min-h-screen bg-gray-100 dark:bg-zinc-900">
+      <Link href="/" className="text-blue-400 hover:underline mb-8">
+        ← Back to all posts
+      </Link>
       <div className="bg-white dark:bg-zinc-800 text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
         <div className="flex flex-col items-center mb-6">
           <Avatar className="w-28 h-28 mt-6 mb-2">
@@ -83,9 +87,7 @@ export default function ProfilePage() {
           <p className="mb-6">
             <span className="font-semibold">Email:</span> {email}
           </p>
-          <Link href="/" className="text-blue-400 hover:underline">
-            ← Back to all posts
-          </Link>
+          <LoginButton className="cursor-pointer" />
         </div>
       </div>
     </div>
