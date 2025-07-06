@@ -5,12 +5,9 @@ reply to google verify email to resolve issue
 
 - limit msg length
 - change landing page, add posts view to loading page too
-- change comment layout one line
 - fix private post logic
 - Shorter intro text for mobile or charge text align to not center
-- add joined at, user count
 
-- restructure the post layout maybe make like dislike buttons smaller and move them above the comments? or something
 - ~~add comments to comments soon, and anonymouse comments~~
   instead, have one layer of comments, they get layed out according to time, and replying to someone would add a @username at the front
 - refresh or do something when posted a post
