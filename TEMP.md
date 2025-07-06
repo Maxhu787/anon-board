@@ -3,7 +3,6 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
-- comment like\dislike, comments commenting form section, schema and fetching
 - limit msg length
 - change landing page, add posts view to loading page too
 - change comment layout one line

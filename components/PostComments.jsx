@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { ThumbsUp, ThumbsDown, MessageSquareText } from "lucide-react";
 import clsx from "clsx";
-import { Avatar, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import { useTranslation } from "react-i18next";
 
 export default function PostComments({
@@ -97,7 +97,7 @@ export default function PostComments({
                     <strong className="text-[14px]">
                       {comment.is_anonymous
                         ? "Anonymous"
-                        : comment.profiles?.full_name || "Unknown"}
+                        : comment.profiles?.full_name || "Deleted user"}
                     </strong>
                     <small className="font-bold text-[12px] text-gray-500 dark:text-gray-400">
                       {formattedDate}
@@ -151,13 +151,13 @@ export default function PostComments({
                     ) : comment.profiles?.avatar_url ? (
                       <AvatarImage src={comment.profiles.avatar_url} />
                     ) : (
-                      <AvatarImage src="https://github.com/shadcn.png" />
+                      <AvatarFallback>D</AvatarFallback>
                     )}
                   </Avatar>
                   <strong className="text-[12px] ml-1">
                     {comment.is_anonymous
                       ? "Anonymous"
-                      : comment.profiles?.full_name || "Unknown"}
+                      : comment.profiles?.full_name || "Deleted user"}
                   </strong>
                   <small className="font-bold text-[12px] text-gray-500 dark:text-gray-400">
                     {formattedDate}

@@ -232,7 +232,7 @@ export default function PostPage(promiseParams) {
             ) : post.profiles?.avatar_url ? (
               <AvatarImage src={post.profiles.avatar_url} />
             ) : (
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>D</AvatarFallback>
             )}
           </Avatar>
           <div>
@@ -250,7 +250,9 @@ export default function PostPage(promiseParams) {
                 <span className="text-[15px]">
                   {post.is_anonymous
                     ? "Anonymous user"
-                    : post.profiles?.full_name ?? post.user_id}
+                    : post.profiles?.full_name
+                    ? post.profiles?.full_name
+                    : "Deleted user"}
                 </span>
               </div>
               <div className="text-[15px] mt-[2px] text-gray-500 dark:text-gray-400">

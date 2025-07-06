@@ -244,7 +244,7 @@ export default function Posts() {
                   ) : post.profiles?.avatar_url ? (
                     <AvatarImage src={post.profiles.avatar_url} />
                   ) : (
-                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>D</AvatarFallback>
                   )}
                 </Avatar>
                 <div>
@@ -261,7 +261,9 @@ export default function Posts() {
                     <CardTitle>
                       {post.is_anonymous
                         ? "Anonymous user"
-                        : post.profiles?.full_name ?? post.user_id}
+                        : post.profiles?.full_name
+                        ? post.profiles?.full_name
+                        : "Deleted user"}
                     </CardTitle>
                   </div>
                   <CardDescription className="mt-1 text-[12px]">

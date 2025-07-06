@@ -3,6 +3,8 @@ create table public.profiles (
   full_name text,
   email text unique,
   avatar_url text,
+  joined_at timestamptz default now(),
+  user_number integer,
   primary key (id)
 );
 
@@ -20,15 +22,32 @@ create policy "Users can update own profile." on profiles
 for update
   using (auth.uid () = id);
 
-create function public.handle_new_user () returns trigger as $$
+create function public.handle_new_user()
+returns trigger as $$
+declare
+  next_user_number integer;
 begin
-  insert into public.profiles (id, full_name, avatar_url, email)
+  -- Get the next user number
+  select count(*) + 1 into next_user_number from public.profiles;
+
+  -- Insert into profiles with additional fields
+  insert into public.profiles (
+    id, 
+    full_name, 
+    avatar_url, 
+    email,
+    user_number, 
+    joined_at
+  )
   values (
-    new.id, 
-    new.raw_user_meta_data->>'full_name', 
+    new.id,
+    new.raw_user_meta_data->>'full_name',
     new.raw_user_meta_data->>'avatar_url',
-    new.raw_user_meta_data->>'email'
-    );
+    new.raw_user_meta_data->>'email',
+    next_user_number,
+    now()
+  );
+
   return new;
 end;
 $$ language plpgsql security definer;
