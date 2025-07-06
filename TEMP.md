@@ -3,36 +3,30 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
-- limit msg length
+- limit msg length 2500 words, timeout rules for anti spam
 - change landing page, add posts view to loading page too
-- fix private post logic
 - Shorter intro text for mobile or charge text align to not center
+- fix private post logic
 
-- ~~add comments to comments soon, and anonymouse comments~~
-  instead, have one layer of comments, they get layed out according to time, and replying to someone would add a @username at the front
+- anonymouse comments
+  two layers of comments, the second layer gets layed out according to time, and replying to someone would add a @username at the front
 - refresh or do something when posted a post
 - add create username step
 
 - add announcments tab
-- setup when not logged in /landing page then another page for the posts to be seen too
 - fix website loading cycle, like load skeleton page faster than fetch data
 - fix logout cycle, add loading screen, and fix up the delay
 
-- fix up home page (maybe add threejs playground)
+- fix up home page https://github.com/klevron/threejs-toys?tab=readme-ov-file
 - add shadcn progress bar for loading screen
-- add some colors and stuff to make it less plain
 
 - add school tag? db schema design needed (link school email)
 - add country tag for profile (small flag)
 
-- add local dates for other contries, change tolocalestring properties
-
-- add custom pfps if there arent any (github identicon or something better)
-- add social queues like register number count, verified check, tags
+- add social queues like register number count, verified check, tags, badges
 - add share feature
 - add analytics
 - add micro transaction shop
-- setup timeout rules for anti spam
 - contact more people for promotion
 
 somehow not fetch the userid when anon is true
