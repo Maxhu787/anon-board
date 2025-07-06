@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ThumbsUp, ThumbsDown, MessageSquareText } from "lucide-react";
 import clsx from "clsx";
 import { Avatar, AvatarImage } from "./ui/avatar";
+import { useTranslation } from "react-i18next";
 
 export default function PostComments({
   postId,
@@ -16,6 +17,7 @@ export default function PostComments({
 }) {
   const [comments, setComments] = useState([]);
   const supabase = createClient();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -69,8 +71,8 @@ export default function PostComments({
     <div className="mt-[-15]">
       <Separator />
       {allComments.length === 0 ? (
-        <p className="text-[14px] pl-8 pt-2 pb-5 text-gray-500 mb-[-10]">
-          No comments yet.
+        <p className="text-[14px] pl-8 pt-3 pb-3 text-gray-500 mb-[-10]">
+          {t("nocomment")}
         </p>
       ) : (
         <ScrollArea className="w-full">
@@ -115,7 +117,7 @@ export default function PostComments({
     <div className="border-t-2">
       {allComments.length === 0 ? (
         <p className="text-[14px] pl-8 pt-3 text-gray-500 mb-[-10]">
-          No comments yet.
+          {t("nocomment")}
         </p>
       ) : (
         <ul>
