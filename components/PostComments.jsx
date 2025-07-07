@@ -302,7 +302,7 @@ export default function PostComments({
                     />
                     <span className="text-sm">{dislikes}</span>
                   </Button>
-                  <Button
+                  {/* <Button
                     className={clsx(
                       "cursor-pointer flex items-center gap-1 px-2 py-1 rounded-full transition-all duration-150",
                       false
@@ -320,7 +320,7 @@ export default function PostComments({
                   >
                     <MessageSquareText className="w-4 h-4" />
                     <span className="text-sm">{0}</span>
-                  </Button>
+                  </Button> */}
                 </div>
               </li>
             );

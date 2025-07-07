@@ -47,7 +47,7 @@ export default function SendPost() {
       setContent("");
       setIsAnonymous(false);
       closeRef.current?.click();
-      toast("Posted!");
+      toast.success("Posted!");
     } else {
       console.error("Error posting:", error);
     }
