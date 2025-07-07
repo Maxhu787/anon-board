@@ -66,7 +66,7 @@ export default function Home() {
             {user ? (
               <Link
                 href="/home"
-                className="active:scale-95 transition-all inline-block px-6 py-3 bg-blue-400 text-white rounded-xl text-lg hover:bg-blue-500 dark:bg-blue-500 dark:text-white dark:hover:bg-blue-600"
+                className="active:scale-95 transition-all inline-block px-6 py-3 bg-blue-500 text-white rounded-xl text-lg hover:bg-blue-600 dark:bg-blue-500 dark:text-white dark:hover:bg-blue-600"
               >
                 {t("browseposts")}
               </Link>
