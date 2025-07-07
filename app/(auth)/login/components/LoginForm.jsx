@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { login } from "@/lib/auth-actions";
 import { SignInWithGoogleButton } from "./SignInWithGoogleButton";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
 
 export function LoginForm({ className, ...props }) {
   const { t } = useTranslation();
@@ -60,6 +61,18 @@ export function LoginForm({ className, ...props }) {
                   Login
                 </Button> */}
                 <SignInWithGoogleButton />
+
+                <p className="mt-3 text-xs text-gray-500 text-center">
+                  By loggin in, you agree to our{" "}
+                  <Link href="/privacy-policy" className="underline">
+                    Privacy Policy
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="/terms-of-service" className="underline">
+                    Terms of Service
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
             {/* <div className="mt-4 text-center text-sm">

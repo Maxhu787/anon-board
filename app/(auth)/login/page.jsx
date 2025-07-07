@@ -1,11 +1,15 @@
 "use client";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { LoginForm } from "./components/LoginForm";
 import { useSearchParams } from "next/navigation";
 
 function ToastMessage() {
   const searchParams = useSearchParams();
   const toastParam = searchParams.get("toast");
+
+  useEffect(() => {
+    document.title = "g4o2.me | Login";
+  }, []);
 
   if (toastParam === "email_sent") {
     return (

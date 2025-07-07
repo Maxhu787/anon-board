@@ -1,19 +1,19 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function About() {
   const { t } = useTranslation("about");
+  useEffect(() => {
+    document.title = "g4o2.me | About";
+  }, []);
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12 mt-18 space-y-8">
-      <h1 className="text-3xl font-bold">{t("title")}</h1>
-      <p className="mt-[-20]">{t("intro")}</p>
+      <h1 className="text-5xl font-bold">{t("title")}</h1>
+      <p className="text-xl">{t("intro")}</p>
       <section>
-        <h2 className="text-2xl font-semibold mb-4">
-          {t("creatorSection.title")}
-        </h2>
-        <ul className="list-disc pl-6 space-y-2">
+        <ul className="list-disc text-xl pl-6 space-y-2">
           <li>
             <a
               href={t("creatorSection.websiteUrl")}

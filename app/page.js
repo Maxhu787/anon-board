@@ -13,7 +13,22 @@ export default function Home() {
   const supabase = createClient();
   const { t } = useTranslation();
 
+  // const searchParams = useSearchParams();
+  // const isLoggedOut = searchParams.get("logout");
+  // const params = new URLSearchParams(window.location.search);
+  // const isLoggedOut = params.get("logout");
+
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const isLoggedOut = params.get("logout");
+
+    if (isLoggedOut) {
+      const url = new URL(window.location.href);
+      url.search = "";
+      window.history.replaceState({}, "", url.toString());
+      window.location.reload();
+    }
+
     setMounted(true);
     document.title = "g4o2.me";
 
@@ -51,7 +66,7 @@ export default function Home() {
             {user ? (
               <Link
                 href="/home"
-                className="active:scale-95 transition-all inline-block px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+                className="active:scale-95 transition-all inline-block px-6 py-3 bg-blue-500 text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-blue-500 dark:text-white dark:hover:bg-blue-600"
               >
                 Browse Posts
               </Link>
@@ -64,7 +79,7 @@ export default function Home() {
               </Link>
             )}
             <div className="border-t-2 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
-              <div className="flex flex-row space-x-3">
+              <div className="flex flex-row space-x-2.5">
                 <Link href="/about" className="hover:underline">
                   {t("aboutus")}
                 </Link>

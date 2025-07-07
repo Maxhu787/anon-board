@@ -1,13 +1,16 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function TermsOfService() {
   const { t } = useTranslation("tos");
+  useEffect(() => {
+    document.title = "g4o2.me | Terms of Service";
+  }, []);
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12 mt-18">
-      <h1 className="text-3xl font-bold mb-6">{t("title")}</h1>
+      <h1 className="text-5xl font-bold mb-6">{t("title")}</h1>
 
       <p className="mb-4">{t("effectiveDate")}</p>
 

@@ -3,6 +3,7 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
+- add delete button
 - make landing page posts take up full height page scroll
 - login in navbar brings straight to google auth
 - limit msg length 2500 words, timeout rules for anti spam
