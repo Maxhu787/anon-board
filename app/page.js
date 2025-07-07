@@ -66,16 +66,16 @@ export default function Home() {
             {user ? (
               <Link
                 href="/home"
-                className="active:scale-95 transition-all inline-block px-6 py-3 bg-blue-500 text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-blue-500 dark:text-white dark:hover:bg-blue-600"
+                className="active:scale-95 transition-all inline-block px-6 py-3 bg-blue-400 text-white rounded-xl text-lg hover:bg-blue-500 dark:bg-blue-500 dark:text-white dark:hover:bg-blue-600"
               >
-                Browse Posts
+                {t("browseposts")}
               </Link>
             ) : (
               <Link
                 href="/login"
                 className="active:scale-95 transition-all inline-block px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
               >
-                Get Started
+                {t("getstarted")}
               </Link>
             )}
             <div className="border-t-2 mt-5 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
