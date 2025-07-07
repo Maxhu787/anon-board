@@ -50,7 +50,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex flex-col md:flex-row flex-grow w-full">
         <section className="w-full md:w-1/2 p-8 flex items-center justify-center bg-white dark:bg-black">
-          <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-25 md:pl-12 md:pr-12">
+          <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-25 md:pl-12 md:pr-8">
             <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-black dark:text-white">
               {t("title1")}
             </h1>
@@ -97,7 +97,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full pt-8 md:pt-30 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh]">
+        <section className="w-full pt-8 md:pt-28 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh]">
           <Posts />
         </section>
       </main>
