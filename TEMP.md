@@ -3,13 +3,9 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
-- add delete button
-- make landing page posts take up full height page scroll
-- login in navbar brings straight to google auth
-- limit msg length 2500 words, timeout rules for anti spam
-- change landing page, add posts view to loading page too
-- Shorter intro text for mobile or charge text align to not center
+- add delete button, share feature
 - fix private post logic
+- limit msg length 500 words, timeout rules for anti spam
 
 - anonymouse comments
   two layers of comments, the second layer gets layed out according to time, and replying to someone would add a @username at the front
@@ -27,7 +23,7 @@ reply to google verify email to resolve issue
 - add country tag for profile (small flag)
 
 - add social queues like register number count, verified check, tags, badges
-- add share feature
+- share feature for created account
 - add analytics
 - add micro transaction shop
 - contact more people for promotion

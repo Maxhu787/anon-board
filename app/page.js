@@ -50,17 +50,17 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex flex-col md:flex-row flex-grow w-full">
         <section className="w-full md:w-1/2 p-8 flex items-center justify-center bg-white dark:bg-black">
-          <div className="space-y-8 max-w-xl text-left mt-20">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-[50px] md:leading-[57px] text-black dark:text-white">
+          <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-25 md:pl-12 md:pr-12">
+            <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-black dark:text-white">
               {t("title1")}
             </h1>
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-[50px] md:leading-[57px] mt-[-10] text-black dark:text-white">
+            <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] mt-[-10] text-black dark:text-white">
               {t("title2")}
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300">
+            <p className="text-lg md:text-[18px] text-gray-700 dark:text-gray-300">
               <span className="font-semibold">g4o2.me</span> {t("description1")}
             </p>
-            <p className="text-lg mt-[-12] md:text-xl text-gray-700 dark:text-gray-300">
+            <p className="text-lg mt-[-12] md:text-[18px] text-gray-700 dark:text-gray-300">
               {t("description2")}
             </p>
             {user ? (
@@ -78,7 +78,7 @@ export default function Home() {
                 Get Started
               </Link>
             )}
-            <div className="border-t-2 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
+            <div className="border-t-2 mt-5 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
               <div className="flex flex-row space-x-2.5">
                 <Link href="/about" className="hover:underline">
                   {t("aboutus")}
@@ -97,7 +97,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full pt-30 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh]">
+        <section className="w-full pt-8 md:pt-30 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh]">
           <Posts />
         </section>
       </main>
