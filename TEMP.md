@@ -3,11 +3,13 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
-- add delete button, share feature
+- add delete button
+- share feature (mobile), copy link (desktop)
 - fix private post logic
+- fix website loading cycle, like load skeleton page faster than fetch data
+
 - timeout rules for anti spam
 - add create username step
-- fix website loading cycle, like load skeleton page faster than fetch data
 
 - two layers of comments, the second layer gets layed out according to time, and replying to someone would add a @username at the front
 
@@ -17,7 +19,7 @@ reply to google verify email to resolve issue
 - add country tag for profile (small flag)
 
 - add social queues like register number count, verified check, tags, badges
-- share feature for created account
+- share my newly created account etc
 - add analytics
 - add micro transaction shop
 - contact more people for promotion
