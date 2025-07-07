@@ -1,7 +1,7 @@
 {
   "title1": "有什麼想分享的事情嗎？",
   "title2": "想抱怨的嗎？",
-  "description1": "是一個輕型的平台，可用來公開、匿名分享貼文。",
+  "description1": "是一個輕型的平台，讓學生公開、匿名分享貼文。",
   "description2": "自由的發布貼文，享受簡潔的瀏覽體驗。",
   "browseposts": "瀏覽貼文",
   "getstarted": "開始使用",
@@ -24,5 +24,6 @@
   "legal": "保留所有權利。",
   "nomore": "沒有更多貼文了。",
   "loading": "載入中...",
-  "nocomment": "尚無留言。"
+  "nocomment": "尚無留言。",
+  "madeby": "Made by 一位屏中學生"
 }

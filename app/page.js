@@ -13,11 +13,6 @@ export default function Home() {
   const supabase = createClient();
   const { t } = useTranslation();
 
-  // const searchParams = useSearchParams();
-  // const isLoggedOut = searchParams.get("logout");
-  // const params = new URLSearchParams(window.location.search);
-  // const isLoggedOut = params.get("logout");
-
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const isLoggedOut = params.get("logout");
@@ -50,7 +45,10 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <main className="flex flex-col md:flex-row flex-grow w-full">
         <section className="w-full md:w-1/2 p-8 flex items-center justify-center bg-white dark:bg-black">
-          <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-25 md:pl-12 md:pr-8">
+          <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-18 md:pl-12 md:pr-8">
+            <div className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
+              {t("madeby")}
+            </div>
             <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-black dark:text-white">
               {t("title1")}
             </h1>
@@ -78,7 +76,7 @@ export default function Home() {
                 {t("getstarted")}
               </Link>
             )}
-            <div className="border-t-2 mt-5 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
+            <div className="border-t-2 mt-10 md:mt-5 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
               <div className="flex flex-row space-x-2.5">
                 <Link href="/about" className="hover:underline">
                   {t("aboutus")}
