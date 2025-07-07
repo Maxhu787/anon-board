@@ -1,11 +1,11 @@
 {
   "title": "About",
-  "intro": "g4o2.me was created by hukaixiang as a fun side project, primarily for students to share and discuss topics anonymously (or not).",
+  "intro": "g4o2.me was created by hukaixiang as a fun side project, primarily for students to share and discuss topics publicly and anonymously.",
   "creatorSection": {
     "school": "Pingtung Senior High School",
     "club": "Circ Club Principal",
-    "grade": "2nd grade in high school",
-    "websiteText": "Personal Website",
+    "grade": "2nd grade in highschool soon",
+    "websiteText": "Portfolio Website",
     "websiteUrl": "https://maxhu787.github.io/"
   }
 }
