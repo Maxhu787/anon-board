@@ -13,6 +13,21 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <title>g4o2.me</title>
+        <meta
+          name="description"
+          content="Your website's short and compelling description goes here."
+        />
+        <meta name="author" content="Hu Kai-Hsiang @ tagme" />
+        <meta name="robots" content="index, follow" />
+
+        <meta property="og:title" content="g4o2.me - 學生匿名留言網站" />
+        <meta
+          property="og:description"
+          content="一個輕型的平台，讓學生能公開、匿名分享貼文，享受簡潔的瀏覽體驗。"
+        />
+        <meta property="og:image" content="https://g4o2.me/logo.png" />
+        <meta property="og:url" content="https://g4o2.me" />
+        <meta property="og:type" content="website" />
       </head>
       <body className="overscroll-none bg-[rgb(250,250,250)] dark:bg-[rgb(30,30,30)] ">
         <I18nProvider>
