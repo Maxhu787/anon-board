@@ -5,13 +5,13 @@ reply to google verify email to resolve issue
 
 - add delete button, share feature
 - fix private post logic
-- limit msg length 500 words, timeout rules for anti spam
+- timeout rules for anti spam
+- add create username step
+- fix website loading cycle, like load skeleton page faster than fetch data
 
 - two layers of comments, the second layer gets layed out according to time, and replying to someone would add a @username at the front
-- add create username step
 
 - add announcments tab
-- fix website loading cycle, like load skeleton page faster than fetch data
 
 - add school tag? db schema design needed (link school email)
 - add country tag for profile (small flag)

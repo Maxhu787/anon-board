@@ -7,13 +7,14 @@ import { createClient } from "@/utils/supabase/client";
 import { toast } from "sonner";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { useTranslation } from "react-i18next";
 
 export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [isAnonymous, setIsAnonymous] = useState(false);
   const supabase = createClient();
-
+  const { t } = useTranslation();
   const handleSubmit = async (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -100,31 +101,34 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
           e.stopPropagation();
         }}
       />
-      <div className="flex items-center gap-2">
-        <Switch
-          id="anonymous-mode"
-          checked={isAnonymous}
-          onCheckedChange={setIsAnonymous}
-        />
-        <Label htmlFor="anonymous-mode">Post Anonymously</Label>
-      </div>
-      <div className="flex gap-2 justify-end">
-        <Button
-          className="w-[70px] cursor-pointer active:scale-95 transition-all active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
-          type="button"
-          variant="outline"
-          onClick={onCancel}
-          disabled={submitting}
-        >
-          Cancel
-        </Button>
-        <Button
-          className="cursor-pointer active:scale-95 transition-all"
-          type="submit"
-          disabled={submitting}
-        >
-          {submitting ? "Submitting..." : "Submit"}
-        </Button>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2 mt-[-4]">
+          <Switch
+            id="anonymous-mode"
+            checked={isAnonymous}
+            onCheckedChange={setIsAnonymous}
+            className="cursor-pointer mt-[-1]"
+          />
+          <Label htmlFor="anonymous-mode">{t("postAnon")}</Label>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            className="w-[70px] cursor-pointer active:scale-95 transition-all active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"
+            type="button"
+            variant="outline"
+            onClick={onCancel}
+            disabled={submitting}
+          >
+            Cancel
+          </Button>
+          <Button
+            className="cursor-pointer active:scale-95 transition-all"
+            type="submit"
+            disabled={submitting}
+          >
+            {submitting ? "Submitting..." : "Submit"}
+          </Button>
+        </div>
       </div>
     </form>
   );
