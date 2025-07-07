@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import Link from "next/link";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslation } from "react-i18next";
 import LoginButton from "@/components/LoginLogoutButton";
+import { ToggleThemeButton } from "@/components/ToggleThemeButton";
+import { ToggleLanguageButton } from "@/components/ToggleLanguageButton";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
@@ -62,11 +63,8 @@ export default function ProfilePage() {
   const avatarUrl = user?.user_metadata?.avatar_url || "";
 
   return (
-    <div className="flex items-center flex-col justify-center min-h-screen bg-gray-100 dark:bg-zinc-900">
-      <Link href="/home" className="text-blue-400 hover:underline mb-8">
-        ← Back to all posts
-      </Link>
-      <div className="bg-white dark:bg-zinc-800 text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    <div className="flex items-center flex-col justify-center min-h-screen bg-[rgb(250,250,250)] dark:bg-[rgb(10,10,10)]">
+      <div className="bg-white dark:bg-[rgb(23,23,23)] text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
         <div className="flex flex-col items-center mb-6">
           <Avatar className="w-28 h-28 mt-6 mb-2">
             <AvatarImage src={avatarUrl} alt={fullName} />
@@ -87,7 +85,17 @@ export default function ProfilePage() {
           <p className="mb-6">
             <span className="font-semibold">Email:</span> {email}
           </p>
-          <LoginButton className="cursor-pointer" />
+          <div className="gap-2 flex">
+            <ToggleThemeButton
+              asChild
+              className="cursor-pointer active:scale-95 transition-all"
+            />
+            <ToggleLanguageButton
+              asChild
+              className="cursor-pointer active:scale-95 transition-all"
+            />
+            <LoginButton className="cursor-pointer" />
+          </div>
         </div>
       </div>
     </div>

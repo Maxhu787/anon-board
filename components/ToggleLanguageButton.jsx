@@ -3,9 +3,9 @@
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Globe, Languages } from "lucide-react";
+import { Languages } from "lucide-react";
 
-export function ToggleLanguageButton({ className }) {
+export function ToggleLanguageButton({ className, variant }) {
   const { i18n } = useTranslation();
   const [mounted, setMounted] = useState(false);
 
@@ -19,9 +19,9 @@ export function ToggleLanguageButton({ className }) {
 
   return (
     <Button
+      variant={variant}
       className={className}
       onClick={toggleLang}
-      variant="outline"
       size="icon"
     >
       <Languages className="h-[1.2rem] w-[1.2rem]" />

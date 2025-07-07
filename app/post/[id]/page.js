@@ -11,7 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { MessageSquareText, ThumbsDown, ThumbsUp } from "lucide-react";
+import {
+  ArrowLeft,
+  MessageSquareText,
+  ThumbsDown,
+  ThumbsUp,
+} from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -20,6 +25,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import clsx from "clsx";
 import PostComments from "@/components/PostComments";
 import PostCommentForm from "@/components/PostCommentForm";
+import BackButton from "@/components/BackButton";
 
 export default function PostPage(promiseParams) {
   const { id } = use(promiseParams.params);
@@ -148,12 +154,11 @@ export default function PostPage(promiseParams) {
   if (loading)
     return (
       <div className="max-w-xl mx-auto p-8 mt-15">
-        <Link
-          href="/home"
-          className="inline-block mt-2 text-blue-400 hover:underline"
-        >
-          ← Back to all posts
-        </Link>
+        <BackButton
+          onClick={() => {
+            router.back();
+          }}
+        />
         <Card className="mt-3 border-none">
           <CardHeader className="flex flex-row gap-3 items-center">
             <Skeleton className="h-10 w-10 rounded-full" />
@@ -167,10 +172,10 @@ export default function PostPage(promiseParams) {
             <Skeleton className="h-4 w-4/5" />
             <Skeleton className="h-4 w-3/5" />
           </CardContent>
-          <CardFooter className="gap-2 mt-[-12] mb-[-8]">
+          {/* <CardFooter className="gap-2 mt-[-12] mb-[-8]">
             <Skeleton className="h-9 w-[70px] rounded-md" />
             <Skeleton className="h-9 w-[70px] rounded-md" />
-          </CardFooter>
+          </CardFooter> */}
         </Card>
       </div>
     );
@@ -183,7 +188,7 @@ export default function PostPage(promiseParams) {
           Sorry, something went wrong.
         </p>
         <button
-          onClick={() => router.push("/home")}
+          onClick={() => router.replace("/home")}
           className="px-6 py-3 bg-white text-orange-700 font-semibold rounded-lg shadow-lg hover:bg-orange-50 active:bg-orange-200 active:scale-95 transition-all cursor-pointer"
         >
           Go Back Home
@@ -209,12 +214,11 @@ export default function PostPage(promiseParams) {
 
   return (
     <div className="max-w-xl mx-auto p-8 mt-15">
-      <Link
-        href="/home"
-        className="inline-block mt-2 text-blue-400 hover:underline"
-      >
-        ← Back to all posts
-      </Link>
+      <BackButton
+        onClick={() => {
+          router.back();
+        }}
+      />
       <Card className="mt-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none">
         <CardHeader className="flex flex-row gap-3">
           <Avatar

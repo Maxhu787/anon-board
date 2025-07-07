@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function ToggleThemeButton({ className }) {
+export function ToggleThemeButton({ className, variant }) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -21,9 +21,9 @@ export function ToggleThemeButton({ className }) {
 
   return (
     <Button
+      variant={variant}
       className={className}
       onClick={toggleTheme}
-      variant="outline"
       size="icon"
     >
       {resolvedTheme === "dark" ? (
