@@ -228,11 +228,15 @@ export default function PostPage(promiseParams) {
             className="cursor-pointer w-10 h-10"
           >
             {post.is_anonymous ? (
-              <AvatarFallback>A</AvatarFallback>
+              <AvatarFallback className="bg-blue-400 text-white">
+                A
+              </AvatarFallback>
             ) : post.profiles?.avatar_url ? (
               <AvatarImage src={post.profiles.avatar_url} />
             ) : (
-              <AvatarFallback>D</AvatarFallback>
+              <AvatarFallback className="bg-red-400 text-white">
+                D
+              </AvatarFallback>
             )}
           </Avatar>
           <div>

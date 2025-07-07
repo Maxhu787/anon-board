@@ -236,15 +236,15 @@ export default function Posts() {
                   }}
                 >
                   {post.is_anonymous ? (
-                    <AvatarFallback>
-                      {post.is_anonymous
-                        ? "A"
-                        : post.profiles?.full_name?.[0]?.toUpperCase() ?? "U"}
+                    <AvatarFallback className="bg-blue-400 text-white">
+                      A
                     </AvatarFallback>
                   ) : post.profiles?.avatar_url ? (
                     <AvatarImage src={post.profiles.avatar_url} />
                   ) : (
-                    <AvatarFallback>D</AvatarFallback>
+                    <AvatarFallback className="bg-red-400 text-white">
+                      D
+                    </AvatarFallback>
                   )}
                 </Avatar>
                 <div>

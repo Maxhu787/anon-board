@@ -237,11 +237,15 @@ export default function PostComments({
                     className="cursor-pointer w-6 h-6 mt-3"
                   >
                     {comment.is_anonymous ? (
-                      <AvatarFallback>A</AvatarFallback>
+                      <AvatarFallback className="bg-blue-400 text-white text-[10px]">
+                        A
+                      </AvatarFallback>
                     ) : comment.profiles?.avatar_url ? (
                       <AvatarImage src={comment.profiles.avatar_url} />
                     ) : (
-                      <AvatarFallback>D</AvatarFallback>
+                      <AvatarFallback className="bg-red-400 text-white text-[10px]">
+                        D
+                      </AvatarFallback>
                     )}
                   </Avatar>
                   <strong className="text-[12px] ml-1">
