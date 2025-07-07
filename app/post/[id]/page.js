@@ -229,7 +229,7 @@ export default function PostPage(promiseParams) {
                 router.push(`/user/${post.user_id}`);
               }
             }}
-            className="cursor-pointer w-10 h-10"
+            className={post.is_anonymous ? "" : "cursor-pointer w-10 h-10"}
           >
             {post.is_anonymous ? (
               <AvatarFallback className="bg-blue-400 text-white">
@@ -253,7 +253,9 @@ export default function PostPage(promiseParams) {
                     router.push(`/user/${post.user_id}`);
                   }
                 }}
-                className="hover:underline cursor-pointer"
+                className={
+                  post.is_anonymous ? "" : "cursor-pointer hover:underline"
+                }
               >
                 <span className="text-[15px]">
                   {post.is_anonymous

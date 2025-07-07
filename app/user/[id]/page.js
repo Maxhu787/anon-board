@@ -61,8 +61,17 @@ export default function UserPage({ params }) {
 
   if (!profile) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p>User not found</p>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-orange-400 via-orange-500 to-yellow-400 text-white px-4">
+        <h1 className="text-9xl font-extrabold mb-6 select-none">Oops...</h1>
+        <p className="text-2xl md:text-3xl mb-8 max-w-md text-center">
+          User not found.
+        </p>
+        <button
+          onClick={() => router.replace("/home")}
+          className="px-6 py-3 bg-white text-orange-700 font-semibold rounded-lg shadow-lg hover:bg-orange-50 active:bg-orange-200 active:scale-95 transition-all cursor-pointer"
+        >
+          Go Back Home
+        </button>
       </div>
     );
   }

@@ -256,7 +256,7 @@ export default function Posts() {
                         router.push(`/user/${post.user_id}`);
                       }
                     }}
-                    className="hover:underline"
+                    className={post.is_anonymous ? "" : "hover:underline"}
                   >
                     <CardTitle>
                       {post.is_anonymous
