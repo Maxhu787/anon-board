@@ -57,7 +57,7 @@ export default function PostComments({
         .is("parent_id", null);
 
       const { data, error } = topOnly
-        ? await baseQuery.order("created_at", { ascending: false }).limit(3)
+        ? await baseQuery.order("created_at", { ascending: false }).limit(1)
         : await baseQuery.order("created_at", { ascending: true });
 
       if (error) {

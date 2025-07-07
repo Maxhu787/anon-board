@@ -255,8 +255,14 @@ export default function PostPage(promiseParams) {
                     : "Deleted user"}
                 </span>
               </div>
-              <div className="text-[15px] mt-[2px] text-gray-500 dark:text-gray-400">
-                {formattedDate}
+              <div className="text-[12px] mt-[2px] text-gray-500 dark:text-gray-400">
+                {/* {formattedDate} */}
+                {new Date(post.created_at).toLocaleString("zh-TW", {
+                  month: "short",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </div>
             </CardTitle>
 
