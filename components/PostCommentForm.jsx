@@ -52,6 +52,7 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
     }
 
     toast.success("Comment Posted");
+    window.location.reload(); // temporary solution for getting newly post comments
 
     // Fetch profile by user_id after comment is inserted
     const { data: profile, error: profileError } = await supabase

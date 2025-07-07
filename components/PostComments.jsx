@@ -191,6 +191,11 @@ export default function PostComments({
     </div>
   ) : (
     <div className="border-t-2">
+      <div className="pl-4 pt-2 pb-0">
+        <span className="font-semibold text-gray-500 dark:text-gray-300 text-[15px]">
+          {t("comments")}
+        </span>
+      </div>
       {allComments.length === 0 ? (
         <p className="text-[14px] pl-8 pt-3 text-gray-500 mb-[-10]">
           {t("nocomment")}
