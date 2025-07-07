@@ -48,6 +48,7 @@ export default function SendPost() {
       setIsAnonymous(false);
       closeRef.current?.click();
       toast.success("Posted!");
+      window.location.reload(); // temporary solution for getting newly posted post
     } else {
       console.error("Error posting:", error);
     }
