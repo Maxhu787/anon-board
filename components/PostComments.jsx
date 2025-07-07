@@ -248,7 +248,16 @@ export default function PostComments({
                       </AvatarFallback>
                     )}
                   </Avatar>
-                  <strong className="text-[12px] ml-1">
+                  <strong
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      if (!comment.is_anonymous) {
+                        router.push(`/user/${comment.user_id}`);
+                      }
+                    }}
+                    className="text-[12px] ml-1 cursor-pointer hover:underline"
+                  >
                     {comment.is_anonymous
                       ? "Anonymous"
                       : comment.profiles?.full_name || "Deleted user"}

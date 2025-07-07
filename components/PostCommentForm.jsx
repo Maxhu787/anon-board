@@ -5,10 +5,13 @@ import { nanoid } from "nanoid";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/utils/supabase/client";
 import { toast } from "sonner";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 
 export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [isAnonymous, setIsAnonymous] = useState(false);
   const supabase = createClient();
 
   const handleSubmit = async (e) => {
@@ -28,9 +31,8 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       return;
     }
 
-    const commentId = nanoid(11); // Short comment ID
+    const commentId = nanoid(11);
 
-    // Insert the comment
     const { data: comment, error } = await supabase
       .from("comments")
       .insert({
@@ -39,7 +41,7 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
         parent_id: null,
         user_id: user.id,
         content,
-        is_anonymous: false,
+        is_anonymous: isAnonymous,
       })
       .select()
       .single();
@@ -52,9 +54,8 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
     }
 
     toast.success("Comment Posted");
-    window.location.reload(); // temporary solution for getting newly post comments
+    window.location.reload(); // temporary solution
 
-    // Fetch profile by user_id after comment is inserted
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
       .select("full_name, avatar_url")
@@ -95,6 +96,14 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
           e.stopPropagation();
         }}
       />
+      <div className="flex items-center gap-2">
+        <Switch
+          id="anonymous-mode"
+          checked={isAnonymous}
+          onCheckedChange={setIsAnonymous}
+        />
+        <Label htmlFor="anonymous-mode">Post Anonymously</Label>
+      </div>
       <div className="flex gap-2 justify-end">
         <Button
           className="w-[70px] cursor-pointer active:scale-95 transition-all active:bg-gray-200 dark:active:bg-[rgb(60,60,60)]"

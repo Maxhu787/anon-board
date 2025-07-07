@@ -8,6 +8,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslation } from "react-i18next";
+import BackButton from "@/components/BackButton";
 
 export default function UserPage({ params }) {
   const unwrappedParams = React.use(params);
@@ -83,6 +84,11 @@ export default function UserPage({ params }) {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-zinc-900">
       <div className="bg-white dark:bg-zinc-800 text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <BackButton
+          onClick={() => {
+            router.back();
+          }}
+        />
         <div className="flex flex-col items-center mb-6">
           <Avatar className="w-28 h-28 mt-6 mb-2">
             <AvatarImage src={avatarUrl} alt={fullName} />
@@ -103,9 +109,6 @@ export default function UserPage({ params }) {
           <p className="mb-6">
             <span className="font-semibold">Email:</span> hidden{/*{email}*/}
           </p>
-          <Link href="/home" className="text-blue-400 hover:underline">
-            ← Back to all posts
-          </Link>
         </div>
       </div>
     </div>

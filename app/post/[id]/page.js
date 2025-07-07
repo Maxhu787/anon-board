@@ -156,7 +156,7 @@ export default function PostPage(promiseParams) {
       <div className="max-w-xl mx-auto p-8 mt-15">
         <BackButton
           onClick={() => {
-            router.back();
+            router.replace("/home");
           }}
         />
         <Card className="mt-3 border-none">
@@ -216,7 +216,7 @@ export default function PostPage(promiseParams) {
     <div className="max-w-xl mx-auto p-8 mt-15">
       <BackButton
         onClick={() => {
-          router.back();
+          router.replace("/home");
         }}
       />
       <Card className="mt-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none">
