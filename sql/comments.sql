@@ -3,7 +3,7 @@ create table public.comments (
   post_id text references public.posts(id) on delete cascade,
   user_id uuid references public.profiles(id) on delete set null,
   parent_id text references public.comments(id) on delete set null,
-  content text not null,
+  content text not null check (char_length(content) <= 2000),
   created_at timestamptz not null default now(),
   is_anonymous boolean not null default false,
   is_parent boolean not null default false

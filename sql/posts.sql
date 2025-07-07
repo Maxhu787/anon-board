@@ -1,7 +1,7 @@
 create table public.posts (
   id text not null primary key,
   user_id uuid references public.profiles(id) on delete set null,
-  content text not null,
+  content text not null check (char_length(content) <= 2000),
   created_at timestamptz not null default now(),
   is_anonymous boolean not null default false
 );

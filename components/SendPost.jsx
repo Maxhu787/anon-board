@@ -29,6 +29,10 @@ export default function SendPost() {
 
   const handleSubmit = async () => {
     if (!content.trim()) return;
+    if (content.length > 2000) {
+      toast.error("Content is too long (max 2000 characters)");
+      return;
+    }
 
     setLoading(true);
     const { data: user } = await supabase.auth.getUser();
@@ -70,6 +74,7 @@ export default function SendPost() {
               onChange={(e) => setContent(e.target.value)}
               placeholder={t("cardPlaceholder")}
               rows={4}
+              maxLength={2000}
               className="mt-2 min-h-40 max-h-40 overflow-y-auto resize-none"
             />
           </div>

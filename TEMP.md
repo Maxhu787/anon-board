@@ -7,17 +7,11 @@ reply to google verify email to resolve issue
 - fix private post logic
 - limit msg length 500 words, timeout rules for anti spam
 
-- anonymouse comments
-  two layers of comments, the second layer gets layed out according to time, and replying to someone would add a @username at the front
-- refresh or do something when posted a post
+- two layers of comments, the second layer gets layed out according to time, and replying to someone would add a @username at the front
 - add create username step
 
 - add announcments tab
 - fix website loading cycle, like load skeleton page faster than fetch data
-- fix logout cycle, add loading screen, and fix up the delay
-
-- fix up home page https://github.com/klevron/threejs-toys?tab=readme-ov-file
-- add shadcn progress bar for loading screen
 
 - add school tag? db schema design needed (link school email)
 - add country tag for profile (small flag)
@@ -53,3 +47,5 @@ https://supabase.com/docs/guides/auth/server-side/nextjs
 https://ui.shadcn.com/docs/components/separator
 https://ui.shadcn.com/docs/components/select
 https://ui.shadcn.com/docs/components/toggle-group
+
+https://github.com/klevron/threejs-toys?tab=readme-ov-file

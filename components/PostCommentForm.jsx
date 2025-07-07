@@ -17,7 +17,10 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
   const handleSubmit = async (e) => {
     e.stopPropagation();
     e.preventDefault();
+
     if (!content.trim()) return toast.error("Comment cannot be empty");
+    if (content.length > 2000)
+      return toast.error("Comment must be 2000 characters or less");
 
     setSubmitting(true);
 
@@ -91,6 +94,7 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
         placeholder="Write your comment..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
+        maxLength={2000}
         disabled={submitting}
         onClick={(e) => {
           e.stopPropagation();
