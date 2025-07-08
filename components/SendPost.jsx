@@ -51,9 +51,10 @@ export default function SendPost() {
       setContent("");
       setIsAnonymous(false);
       closeRef.current?.click();
-      toast.success("Posted!");
+      // toast.success("Posted!");
       window.location.reload(); // temporary solution for getting newly posted post
     } else {
+      toast.error("Something went wrong.");
       console.error("Error posting:", error);
     }
   };

@@ -26,6 +26,25 @@ import clsx from "clsx";
 import PostComments from "@/components/PostComments";
 import PostCommentForm from "@/components/PostCommentForm";
 import BackButton from "@/components/BackButton";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export default function PostPage(promiseParams) {
   const { id } = use(promiseParams.params);
@@ -117,7 +136,7 @@ export default function PostPage(promiseParams) {
           .delete()
           .eq("user_id", user.id)
           .eq("post_id", post.id);
-        toast(`${type} removed`);
+        // toast(`${type} removed`);
 
         const updatedVotes = post.votes.filter((v) => v.user_id !== user.id);
         setPost({ ...post, votes: updatedVotes });
@@ -128,7 +147,7 @@ export default function PostPage(promiseParams) {
           .update({ vote_type: type })
           .eq("user_id", user.id)
           .eq("post_id", post.id);
-        toast(`${type === "like" ? "Liked" : "Disliked"}`);
+        // toast(`${type === "like" ? "Liked" : "Disliked"}`);
 
         const updatedVotes = post.votes.map((v) =>
           v.user_id === user.id ? { ...v, vote_type: type } : v
@@ -143,13 +162,25 @@ export default function PostPage(promiseParams) {
       post_id: post.id,
       vote_type: type,
     });
-    toast(`${type === "like" ? "Liked" : "Disliked"}`);
+    // toast(`${type === "like" ? "Liked" : "Disliked"}`);
 
     setPost({
       ...post,
       votes: [...(post.votes || []), { user_id: user.id, vote_type: type }],
     });
   };
+
+  async function handleDeletePost(e) {
+    e.stopPropagation();
+    const { error } = await supabase.from("posts").delete().eq("id", id);
+
+    if (error) {
+      toast.error("Something went wrong.");
+    } else {
+      toast.success("Post deleted.");
+      router.replace("/home");
+    }
+  }
 
   if (loading)
     return (
@@ -282,6 +313,80 @@ export default function PostPage(promiseParams) {
               </p>
             </CardContent>
           </div>
+
+          <AlertDialog>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0 absolute top-[-16] right-2 cursor-pointer h-9 w-9 rounded-full p-0 text-muted-foreground hover:bg-muted"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                  }}
+                >
+                  <span className="sr-only">Open menu</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent side="bottom" align="end" className="w-28">
+                <DropdownMenuItem
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    toast("Share clicked");
+                  }}
+                  className="cursor-pointer"
+                >
+                  Share
+                </DropdownMenuItem>
+                {post.user_id === userId && (
+                  <AlertDialogTrigger asChild>
+                    <DropdownMenuItem
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                      className="cursor-pointer"
+                    >
+                      Delete
+                    </DropdownMenuItem>
+                  </AlertDialogTrigger>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Sure to delete post?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This cannot be undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  className="cursor-pointer"
+                >
+                  Cancel
+                </AlertDialogCancel>
+                <AlertDialogAction
+                  className="bg-red-500 text-white hover:bg-red-600 active:bg-red-700 cursor-pointer"
+                  onClick={(e) => handleDeletePost(e)}
+                  type="submit"
+                >
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </CardHeader>
         <CardFooter className="gap-2 mt-[-20] mb-[-18] flex flex-wrap items-center">
           <Button

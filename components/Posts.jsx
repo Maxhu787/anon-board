@@ -19,6 +19,25 @@ import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import PostComments from "./PostComments";
 import PostCommentForm from "./PostCommentForm";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 const PAGE_SIZE = 10;
 
@@ -150,7 +169,7 @@ export default function Posts() {
           .delete()
           .eq("user_id", user.id)
           .eq("post_id", postId);
-        toast(`${type} removed`);
+        // toast(`${type} removed`);
 
         const updatedVotes = post.votes.filter((v) => v.user_id !== user.id);
         const newPosts = [...posts];
@@ -163,7 +182,7 @@ export default function Posts() {
           .update({ vote_type: type })
           .eq("user_id", user.id)
           .eq("post_id", postId);
-        toast(`${type === "like" ? "Liked" : "Disliked"}`);
+        // toast(`${type === "like" ? "Liked" : "Disliked"}`);
 
         const updatedVotes = post.votes.map((v) =>
           v.user_id === user.id ? { ...v, vote_type: type } : v
@@ -180,7 +199,7 @@ export default function Posts() {
       post_id: postId,
       vote_type: type,
     });
-    toast(`${type === "like" ? "Liked" : "Disliked"}`);
+    // toast(`${type === "like" ? "Liked" : "Disliked"}`);
 
     const newPosts = [...posts];
     newPosts[postIndex] = {
@@ -190,7 +209,18 @@ export default function Posts() {
     setPosts(newPosts);
   };
 
-  // Helper to append a comment to a post in state
+  async function handleDeletePost(postId, e) {
+    e.stopPropagation();
+    const { error } = await supabase.from("posts").delete().eq("id", postId);
+
+    if (error) {
+      toast.error("Something went wrong.");
+    } else {
+      toast.success("Post deleted.");
+      setPosts((prev) => prev.filter((p) => p.id !== postId));
+    }
+  }
+
   const appendCommentToPost = (postId, comment) => {
     setPosts((prevPosts) =>
       prevPosts.map((p) =>
@@ -225,30 +255,9 @@ export default function Posts() {
               }}
               className="pb-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer"
             >
-              <CardHeader className="flex flex-row gap-3">
-                <Avatar
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    if (!post.is_anonymous) {
-                      router.push(`/user/${post.user_id}`);
-                    }
-                  }}
-                >
-                  {post.is_anonymous ? (
-                    <AvatarFallback className="bg-blue-400 text-white">
-                      A
-                    </AvatarFallback>
-                  ) : post.profiles?.avatar_url ? (
-                    <AvatarImage src={post.profiles.avatar_url} />
-                  ) : (
-                    <AvatarFallback className="bg-red-400 text-white">
-                      D
-                    </AvatarFallback>
-                  )}
-                </Avatar>
-                <div>
-                  <div
+              <CardHeader className="flex flex-row gap-3 justify-between items-start">
+                <div className="flex flex-row gap-3">
+                  <Avatar
                     onClick={(e) => {
                       e.stopPropagation();
                       e.preventDefault();
@@ -256,26 +265,127 @@ export default function Posts() {
                         router.push(`/user/${post.user_id}`);
                       }
                     }}
-                    className={post.is_anonymous ? "" : "hover:underline"}
                   >
-                    <CardTitle>
-                      {post.is_anonymous
-                        ? "Anonymous user"
-                        : post.profiles?.full_name
-                        ? post.profiles?.full_name
-                        : "Deleted user"}
-                    </CardTitle>
+                    {post.is_anonymous ? (
+                      <AvatarFallback className="bg-blue-400 text-white">
+                        A
+                      </AvatarFallback>
+                    ) : post.profiles?.avatar_url ? (
+                      <AvatarImage src={post.profiles.avatar_url} />
+                    ) : (
+                      <AvatarFallback className="bg-red-400 text-white">
+                        D
+                      </AvatarFallback>
+                    )}
+                  </Avatar>
+                  <div>
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        if (!post.is_anonymous) {
+                          router.push(`/user/${post.user_id}`);
+                        }
+                      }}
+                      className={post.is_anonymous ? "" : "hover:underline"}
+                    >
+                      <CardTitle>
+                        {post.is_anonymous
+                          ? "Anonymous user"
+                          : post.profiles?.full_name
+                          ? post.profiles?.full_name
+                          : "Deleted user"}
+                      </CardTitle>
+                    </div>
+                    <CardDescription className="mt-1 text-[12px]">
+                      {new Date(post.created_at).toLocaleString("zh-TW", {
+                        month: "short",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </CardDescription>
                   </div>
-                  <CardDescription className="mt-1 text-[12px]">
-                    {new Date(post.created_at).toLocaleString("zh-TW", {
-                      month: "short",
-                      day: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </CardDescription>
                 </div>
+                <AlertDialog>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className="ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0 absolute top-[-16] right-2 cursor-pointer h-9 w-9 rounded-full p-0 text-muted-foreground hover:bg-muted"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                        }}
+                      >
+                        <span className="sr-only">Open menu</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-4 h-4"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      side="bottom"
+                      align="end"
+                      className="w-28"
+                    >
+                      <DropdownMenuItem
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          toast("Share clicked");
+                        }}
+                        className="cursor-pointer"
+                      >
+                        Share
+                      </DropdownMenuItem>
+                      {post.user_id === userId && (
+                        <AlertDialogTrigger asChild>
+                          <DropdownMenuItem
+                            onClick={(e) => {
+                              e.stopPropagation();
+                            }}
+                            className="cursor-pointer"
+                          >
+                            Delete
+                          </DropdownMenuItem>
+                        </AlertDialogTrigger>
+                      )}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Sure to delete post?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This cannot be undone.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel
+                        onClick={(e) => {
+                          e.stopPropagation();
+                        }}
+                        className="cursor-pointer"
+                      >
+                        Cancel
+                      </AlertDialogCancel>
+                      <AlertDialogAction
+                        className="bg-red-500 text-white hover:bg-red-600 active:bg-red-700 cursor-pointer"
+                        onClick={(e) => handleDeletePost(post.id, e)}
+                        type="submit"
+                      >
+                        Delete
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </CardHeader>
+
               <CardContent className="mt-[-18] whitespace-pre-wrap wrap-break-word pl-17">
                 <p className="text-[15px]">{post.content}</p>
               </CardContent>

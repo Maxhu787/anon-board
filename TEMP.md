@@ -39,6 +39,7 @@ A anonymous forum website for posts on various topics for discussion, targeted t
 - or something like a button to press to donwload the post with some comments as a image to post on other platforms
 - home page with list of posts
 
+https://dashboard.simpleanalytics.com/g4o2.me
 https://lucide.dev/icons/
 https://tailwindcss.com/docs
 

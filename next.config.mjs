@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   crossOrigin: "anonymous",
+  devIndicators: false,
 };
 
 export default nextConfig;
