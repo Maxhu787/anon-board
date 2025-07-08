@@ -340,8 +340,9 @@ export default function Posts() {
                       <DropdownMenuItem
                         onClick={(e) => {
                           e.stopPropagation();
-                          // e.preventDefault();
-                          navigator.clipboard.writeText(window.location.href);
+                          navigator.clipboard.writeText(
+                            `https://g4o2.me/post/${post.id}`
+                          );
                           toast(t("linkcopy"));
                         }}
                         className="cursor-pointer"
