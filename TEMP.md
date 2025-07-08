@@ -3,17 +3,15 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
+- fix website loading cycle, like load skeleton page faster than fetch data
 - share when on mobile, copy link for desktop
 - fix private post logic
-- fix website loading cycle, like load skeleton page faster than fetch data
-
 - timeout rules for anti spam
+- clean up
+
 - add create username step
-
 - two layers of comments, the second layer gets layed out according to time, and replying to someone would add a @username at the front
-
 - add announcments tab
-
 - add school tag? db schema design needed (link school email)
 - add country tag for profile (small flag)
 

@@ -24,7 +24,7 @@ export default function UserPage({ params }) {
     const fetchProfile = async () => {
       const { data, error } = await supabase
         .from("profiles")
-        .select("full_name, email, avatar_url")
+        .select("full_name, avatar_url")
         .eq("id", id)
         .single();
 
@@ -107,7 +107,7 @@ export default function UserPage({ params }) {
             <span className="font-semibold">Name:</span> {fullName}
           </p>
           <p className="mb-6">
-            <span className="font-semibold">Email:</span> hidden{/*{email}*/}
+            <span className="font-semibold">Email:</span> hidden
           </p>
         </div>
       </div>
