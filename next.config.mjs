@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   crossOrigin: "anonymous",
-  devIndicators: false,
+  devIndicators: true,
 };
 
 export default nextConfig;
