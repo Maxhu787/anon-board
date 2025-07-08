@@ -24,9 +24,9 @@ export default function About() {
               {t("creatorSection.websiteText")}
             </a>
           </li>
-          <li>{t("creatorSection.school")}</li>
+          {/* <li>{t("creatorSection.school")}</li>
           <li>{t("creatorSection.club")}</li>
-          <li>{t("creatorSection.grade")}</li>
+          <li>{t("creatorSection.grade")}</li> */}
         </ul>
       </section>
     </div>
