@@ -291,10 +291,10 @@ export default function Posts() {
                     >
                       <CardTitle>
                         {post.is_anonymous
-                          ? "Anonymous user"
+                          ? t("userAnon")
                           : post.profiles?.full_name
                           ? post.profiles?.full_name
-                          : "Deleted user"}
+                          : t("userDeleted")}
                       </CardTitle>
                     </div>
                     <CardDescription className="mt-1 text-[12px]">

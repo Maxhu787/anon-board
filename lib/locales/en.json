@@ -26,5 +26,7 @@
   "loading": "Loading...",
   "nocomment": "No comments yet.",
   "madeby": "Made by a PTHS student",
-  "comments": "Comments"
+  "comments": "Comments",
+  "userAnon": "Anonymous user",
+  "userDeleted": "Deleted user"
 }

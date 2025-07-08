@@ -11,6 +11,25 @@ import clsx from "clsx";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export default function PostComments({
   postId,
@@ -144,6 +163,21 @@ export default function PostComments({
     setComments(newComments);
   };
 
+  async function handleDeleteComment(commentId, e) {
+    e.stopPropagation();
+    const { error } = await supabase
+      .from("comments")
+      .delete()
+      .eq("id", commentId);
+
+    if (error) {
+      toast.error("Something went wrong.");
+    } else {
+      toast.success("Comment deleted.");
+      setComments((prev) => prev.filter((p) => p.id !== commentId));
+    }
+  }
+
   return topOnly ? (
     <div className="mt-[-15]">
       <Separator />
@@ -172,8 +206,8 @@ export default function PostComments({
                   <div className="flex items-center gap-1">
                     <strong className="text-[14px]">
                       {comment.is_anonymous
-                        ? "Anonymous"
-                        : comment.profiles?.full_name || "Deleted user"}
+                        ? t("userAnon")
+                        : comment.profiles?.full_name || t("userDeleted")}
                     </strong>
                     <small className="font-bold text-[12px] text-gray-500 dark:text-gray-400">
                       {formattedDate}
@@ -259,12 +293,91 @@ export default function PostComments({
                     className="text-[12px] ml-1 cursor-pointer hover:underline"
                   >
                     {comment.is_anonymous
-                      ? "Anonymous"
-                      : comment.profiles?.full_name || "Deleted user"}
+                      ? t("userAnon")
+                      : comment.profiles?.full_name || t("userDeleted")}
                   </strong>
                   <small className="font-bold text-[12px] text-gray-500 dark:text-gray-400">
                     {formattedDate}
                   </small>
+                  <AlertDialog>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          className="ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0 absolute top-[-16] right-2 cursor-pointer h-9 w-9 rounded-full p-0 text-muted-foreground hover:bg-muted"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                          }}
+                        >
+                          <span className="sr-only">Open menu</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0z" />
+                          </svg>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent
+                        side="bottom"
+                        align="end"
+                        className="w-28"
+                      >
+                        <DropdownMenuItem
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            toast("Share clicked");
+                          }}
+                          className="cursor-pointer"
+                        >
+                          Share
+                        </DropdownMenuItem>
+                        {comment.user_id === userId && (
+                          <AlertDialogTrigger asChild>
+                            <DropdownMenuItem
+                              onClick={(e) => {
+                                e.stopPropagation();
+                              }}
+                              className="cursor-pointer"
+                            >
+                              Delete
+                            </DropdownMenuItem>
+                          </AlertDialogTrigger>
+                        )}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>
+                          Sure to delete post?
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This cannot be undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                          className="cursor-pointer"
+                        >
+                          Cancel
+                        </AlertDialogCancel>
+                        <AlertDialogAction
+                          className="bg-red-500 text-white hover:bg-red-600 active:bg-red-700 cursor-pointer"
+                          onClick={(e) => handleDeleteComment(comment.id, e)}
+                          type="submit"
+                        >
+                          Delete
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </div>
                 <p className="text-[14px] ml-8 mt-[-13] whitespace-pre-wrap wrap-break-word">
                   {comment.content}

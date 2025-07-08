@@ -45,6 +45,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useTranslation } from "react-i18next";
 
 export default function PostPage(promiseParams) {
   const { id } = use(promiseParams.params);
@@ -54,7 +55,7 @@ export default function PostPage(promiseParams) {
   const [hasError, setHasError] = useState(false);
   const [commenting, setCommenting] = useState(false);
   const [localComments, setLocalComments] = useState([]);
-
+  const { t } = useTranslation();
   const supabase = createClient();
   const router = useRouter();
 
@@ -290,10 +291,10 @@ export default function PostPage(promiseParams) {
               >
                 <span className="text-[15px]">
                   {post.is_anonymous
-                    ? "Anonymous user"
+                    ? t("userAnon")
                     : post.profiles?.full_name
                     ? post.profiles?.full_name
-                    : "Deleted user"}
+                    : t("userDeleted")}
                 </span>
               </div>
               <div className="text-[12px] mt-[2px] text-gray-500 dark:text-gray-400">
