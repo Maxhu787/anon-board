@@ -214,7 +214,7 @@ export default function PostComments({
                       {formattedDate}
                     </small>
                   </div>
-                  <p className="text-[14px] ml-0 whitespace-pre-wrap wrap-break-word">
+                  <p className="text-[14px] ml-0 pr-12 whitespace-pre-wrap wrap-break-word">
                     {comment.content}
                   </p>
                 </li>
@@ -389,7 +389,7 @@ export default function PostComments({
                     </AlertDialogContent>
                   </AlertDialog>
                 </div>
-                <p className="text-[14px] ml-8 mt-[-13] whitespace-pre-wrap wrap-break-word">
+                <p className="text-[14px] ml-8 pr-12 mt-[-13] whitespace-pre-wrap wrap-break-word">
                   {comment.content}
                 </p>
                 <div className="flex items-center gap-2 mt-0">
