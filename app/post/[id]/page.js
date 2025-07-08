@@ -16,6 +16,7 @@ import {
   MessageSquareText,
   ThumbsDown,
   ThumbsUp,
+  User,
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
@@ -46,6 +47,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useTranslation } from "react-i18next";
+import { getColorFromId } from "@/lib/getColorFromId";
 
 export default function PostPage(promiseParams) {
   const { id } = use(promiseParams.params);
@@ -261,17 +263,17 @@ export default function PostPage(promiseParams) {
                 router.push(`/user/${post.user_id}`);
               }
             }}
-            className={post.is_anonymous ? "" : "cursor-pointer w-10 h-10"}
+            className="cursor-pointer w-10 h-10"
           >
             {post.is_anonymous ? (
-              <AvatarFallback className="bg-blue-400 text-white">
-                A
+              <AvatarFallback className={`${getColorFromId(post.user_id)}`}>
+                <User className="w-5 h-5" strokeWidth={3} />
               </AvatarFallback>
             ) : post.profiles?.avatar_url ? (
               <AvatarImage src={post.profiles.avatar_url} />
             ) : (
               <AvatarFallback className="bg-red-400 text-white">
-                D
+                <User className="w-4 h-4" strokeWidth={3} />
               </AvatarFallback>
             )}
           </Avatar>

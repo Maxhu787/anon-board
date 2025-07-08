@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { MessageSquareText, ThumbsDown, ThumbsUp } from "lucide-react";
+import { MessageSquareText, ThumbsDown, ThumbsUp, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useEffect, useRef, useState } from "react";
@@ -38,6 +38,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { getColorFromId } from "@/lib/getColorFromId";
 
 const PAGE_SIZE = 10;
 
@@ -267,14 +268,16 @@ export default function Posts() {
                     }}
                   >
                     {post.is_anonymous ? (
-                      <AvatarFallback className="bg-blue-400 text-white">
-                        A
+                      <AvatarFallback
+                        className={`${getColorFromId(post.user_id)}`}
+                      >
+                        <User className="w-4 h-4" strokeWidth={3} />
                       </AvatarFallback>
                     ) : post.profiles?.avatar_url ? (
                       <AvatarImage src={post.profiles.avatar_url} />
                     ) : (
                       <AvatarFallback className="bg-red-400 text-white">
-                        D
+                        <User className="w-4 h-4" strokeWidth={3} />
                       </AvatarFallback>
                     )}
                   </Avatar>

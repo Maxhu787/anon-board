@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { Separator } from "./ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { ThumbsUp, ThumbsDown, MessageSquareText } from "lucide-react";
+import { ThumbsUp, ThumbsDown, MessageSquareText, User } from "lucide-react";
 import clsx from "clsx";
 import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 import { useTranslation } from "react-i18next";
@@ -30,6 +30,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { getColorFromId } from "@/lib/getColorFromId";
 
 export default function PostComments({
   postId,
@@ -271,14 +272,16 @@ export default function PostComments({
                     className="cursor-pointer w-6 h-6 mt-3"
                   >
                     {comment.is_anonymous ? (
-                      <AvatarFallback className="bg-blue-400 text-white text-[10px]">
-                        A
+                      <AvatarFallback
+                        className={`${getColorFromId(comment.user_id)}`}
+                      >
+                        <User className="w-3 h-3" strokeWidth={3} />
                       </AvatarFallback>
                     ) : comment.profiles?.avatar_url ? (
                       <AvatarImage src={comment.profiles.avatar_url} />
                     ) : (
-                      <AvatarFallback className="bg-red-400 text-white text-[10px]">
-                        D
+                      <AvatarFallback className="bg-red-400 text-white">
+                        <User className="w-3 h-3" strokeWidth={3} />
                       </AvatarFallback>
                     )}
                   </Avatar>
@@ -290,7 +293,11 @@ export default function PostComments({
                         router.push(`/user/${comment.user_id}`);
                       }
                     }}
-                    className="text-[12px] ml-1 cursor-pointer hover:underline"
+                    className={
+                      comment.is_anonymous
+                        ? "text-[12px] ml-1"
+                        : "text-[12px] ml-1 cursor-pointer hover:underline"
+                    }
                   >
                     {comment.is_anonymous
                       ? t("userAnon")
