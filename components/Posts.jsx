@@ -340,8 +340,9 @@ export default function Posts() {
                       <DropdownMenuItem
                         onClick={(e) => {
                           e.stopPropagation();
-                          e.preventDefault();
-                          toast("Share clicked");
+                          // e.preventDefault();
+                          navigator.clipboard.writeText(window.location.href);
+                          toast(t("linkcopy"));
                         }}
                         className="cursor-pointer"
                       >

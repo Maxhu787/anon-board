@@ -343,8 +343,9 @@ export default function PostPage(promiseParams) {
                 <DropdownMenuItem
                   onClick={(e) => {
                     e.stopPropagation();
-                    e.preventDefault();
-                    toast("Share clicked");
+                    // e.preventDefault();
+                    navigator.clipboard.writeText(window.location.href);
+                    toast("Link copied");
                   }}
                   className="cursor-pointer"
                 >

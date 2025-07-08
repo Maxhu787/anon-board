@@ -333,16 +333,6 @@ export default function PostComments({
                         align="end"
                         className="w-28"
                       >
-                        <DropdownMenuItem
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            e.preventDefault();
-                            toast("Share clicked");
-                          }}
-                          className="cursor-pointer"
-                        >
-                          Share
-                        </DropdownMenuItem>
                         {comment.user_id === userId && (
                           <AlertDialogTrigger asChild>
                             <DropdownMenuItem
