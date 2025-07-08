@@ -217,7 +217,7 @@ export default function Posts() {
     if (error) {
       toast.error("Something went wrong.");
     } else {
-      toast.success("Post deleted.");
+      toast.success(t("postDeleted"));
       setPosts((prev) => prev.filter((p) => p.id !== postId));
     }
   }
@@ -347,7 +347,7 @@ export default function Posts() {
                         }}
                         className="cursor-pointer"
                       >
-                        Share
+                        {t("share")}
                       </DropdownMenuItem>
                       {post.user_id === userId && (
                         <AlertDialogTrigger asChild>
@@ -357,7 +357,7 @@ export default function Posts() {
                             }}
                             className="cursor-pointer"
                           >
-                            Delete
+                            {t("delete")}
                           </DropdownMenuItem>
                         </AlertDialogTrigger>
                       )}
@@ -365,9 +365,9 @@ export default function Posts() {
                   </DropdownMenu>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle>Sure to delete post?</AlertDialogTitle>
+                      <AlertDialogTitle>{t("postDeleteSure")}</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This cannot be undone.
+                        {t("noundone")}
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
@@ -377,14 +377,14 @@ export default function Posts() {
                         }}
                         className="cursor-pointer"
                       >
-                        Cancel
+                        {t("cancel")}
                       </AlertDialogCancel>
                       <AlertDialogAction
                         className="bg-red-500 text-white hover:bg-red-600 active:bg-red-700 cursor-pointer"
                         onClick={(e) => handleDeletePost(post.id, e)}
                         type="submit"
                       >
-                        Delete
+                        {t("delete")}
                       </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>

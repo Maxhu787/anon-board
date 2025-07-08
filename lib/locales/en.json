@@ -20,6 +20,8 @@
   "post": "Post",
   "posting": "Posting...",
   "cancel": "Cancel",
+  "delete": "Delete",
+  "share": "Share",
   "profile": "Profile",
   "legal": "All rights reserved.",
   "nomore": "No more posts to load.",
@@ -29,5 +31,10 @@
   "comments": "Comments",
   "userAnon": "Anonymous user",
   "userDeleted": "Deleted user",
-  "linkcopy": "Link copied"
+  "linkcopy": "Link copied",
+  "commentDeleteSure": "Sure to delete comment?",
+  "postDeleteSure": "Sure to delete post?",
+  "noundone": "This cannot be undone.",
+  "commentDeleted": "Comment deleted",
+  "postDeleted": "Post deleted"
 }

@@ -20,6 +20,8 @@
   "post": "發布",
   "posting": "發布中...",
   "cancel": "取消",
+  "delete": "刪除",
+  "share": "分享",
   "profile": "個人檔案",
   "legal": "保留所有權利。",
   "nomore": "沒有更多貼文了。",
@@ -29,5 +31,10 @@
   "comments": "留言",
   "userAnon": "匿名使用者",
   "userDeleted": "用戶已刪除",
-  "linkcopy": "連結已複製"
+  "linkcopy": "連結已複製",
+  "commentDeleteSure": "確定要刪除留言？",
+  "postDeleteSure": "確定要刪除貼文？",
+  "noundone": "此操作無法還原",
+  "commentDeleted": "留言已刪除",
+  "postDeleted": "貼文已刪除"
 }

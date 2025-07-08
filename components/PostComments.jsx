@@ -174,7 +174,7 @@ export default function PostComments({
     if (error) {
       toast.error("Something went wrong.");
     } else {
-      toast.success("Comment deleted.");
+      toast.success(t("commentDeleted"));
       setComments((prev) => prev.filter((p) => p.id !== commentId));
     }
   }
@@ -259,7 +259,10 @@ export default function PostComments({
             );
 
             return (
-              <li key={comment.id} className="pl-8 pt-1 pb-1 border-b-2">
+              <li
+                key={comment.id}
+                className="pl-8 pt-1 pb-1 border-b-2 relative"
+              >
                 <div className="flex items-center gap-1">
                   <Avatar
                     onClick={(e) => {
@@ -311,7 +314,7 @@ export default function PostComments({
                       <DropdownMenuTrigger asChild>
                         <Button
                           variant="ghost"
-                          className="ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0 absolute top-[-16] right-2 cursor-pointer h-9 w-9 rounded-full p-0 text-muted-foreground hover:bg-muted"
+                          className="ring-0 border-0 focus-visible:ring-offset-0 focus-visible:ring-0 absolute top-1 right-1 cursor-pointer h-9 w-9 rounded-full p-0 text-muted-foreground hover:bg-muted"
                           onClick={(e) => {
                             e.stopPropagation();
                             e.preventDefault();
@@ -333,6 +336,16 @@ export default function PostComments({
                         align="end"
                         className="w-28"
                       >
+                        <DropdownMenuItem
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigator.clipboard.writeText(window.location.href);
+                            toast(t("linkcopy"));
+                          }}
+                          className="cursor-pointer"
+                        >
+                          {t("share")}
+                        </DropdownMenuItem>
                         {comment.user_id === userId && (
                           <AlertDialogTrigger asChild>
                             <DropdownMenuItem
@@ -341,7 +354,7 @@ export default function PostComments({
                               }}
                               className="cursor-pointer"
                             >
-                              Delete
+                              {t("delete")}
                             </DropdownMenuItem>
                           </AlertDialogTrigger>
                         )}
@@ -350,10 +363,10 @@ export default function PostComments({
                     <AlertDialogContent>
                       <AlertDialogHeader>
                         <AlertDialogTitle>
-                          Sure to delete post?
+                          {t("commentDeleteSure")}
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                          This cannot be undone.
+                          {t("noundone")}
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
@@ -363,14 +376,14 @@ export default function PostComments({
                           }}
                           className="cursor-pointer"
                         >
-                          Cancel
+                          {t("cancel")}
                         </AlertDialogCancel>
                         <AlertDialogAction
                           className="bg-red-500 text-white hover:bg-red-600 active:bg-red-700 cursor-pointer"
                           onClick={(e) => handleDeleteComment(comment.id, e)}
                           type="submit"
                         >
-                          Delete
+                          {t("delete")}
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>

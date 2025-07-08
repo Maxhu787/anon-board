@@ -180,7 +180,7 @@ export default function PostPage(promiseParams) {
     if (error) {
       toast.error("Something went wrong.");
     } else {
-      toast.success("Post deleted.");
+      toast.success(t("postDeleted"));
       router.replace("/home");
     }
   }
@@ -348,7 +348,7 @@ export default function PostPage(promiseParams) {
                   }}
                   className="cursor-pointer"
                 >
-                  Share
+                  {t("share")}
                 </DropdownMenuItem>
                 {post.user_id === userId && (
                   <AlertDialogTrigger asChild>
@@ -358,7 +358,7 @@ export default function PostPage(promiseParams) {
                       }}
                       className="cursor-pointer"
                     >
-                      Delete
+                      {t("delete")}
                     </DropdownMenuItem>
                   </AlertDialogTrigger>
                 )}
@@ -366,10 +366,8 @@ export default function PostPage(promiseParams) {
             </DropdownMenu>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Sure to delete post?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  This cannot be undone.
-                </AlertDialogDescription>
+                <AlertDialogTitle>{t("postDeleteSure")}</AlertDialogTitle>
+                <AlertDialogDescription>{t("noundone")}</AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel
@@ -378,14 +376,14 @@ export default function PostPage(promiseParams) {
                   }}
                   className="cursor-pointer"
                 >
-                  Cancel
+                  {t("cancel")}
                 </AlertDialogCancel>
                 <AlertDialogAction
                   className="bg-red-500 text-white hover:bg-red-600 active:bg-red-700 cursor-pointer"
                   onClick={(e) => handleDeletePost(e)}
                   type="submit"
                 >
-                  Delete
+                  {t("delete")}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
