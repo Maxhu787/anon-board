@@ -3,7 +3,7 @@
 g4o2.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
-- share feature (mobile), copy link (desktop)
+- share when on mobile, copy link for desktop
 - fix private post logic
 - fix website loading cycle, like load skeleton page faster than fetch data
 

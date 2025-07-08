@@ -36,5 +36,9 @@
   "postDeleteSure": "確定要刪除貼文？",
   "noundone": "此操作無法還原",
   "commentDeleted": "留言已刪除",
-  "postDeleted": "貼文已刪除"
+  "postDeleted": "貼文已刪除",
+  "loginlegal1": "透過登錄，您同意我們的 ",
+  "loginlegal2": " 和 ",
+  "loginlegal3": "。",
+  "goog": "使用 Google 登入"
 }

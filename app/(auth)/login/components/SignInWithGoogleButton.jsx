@@ -2,8 +2,10 @@
 import { Button } from "@/components/ui/button";
 import { signInWithGoogle } from "@/lib/auth-actions";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export const SignInWithGoogleButton = () => {
+  const { t } = useTranslation();
   return (
     <Button
       type="button"
@@ -13,7 +15,7 @@ export const SignInWithGoogleButton = () => {
         signInWithGoogle();
       }}
     >
-      Login with Google
+      {t("goog")}
     </Button>
   );
 };

@@ -63,15 +63,15 @@ export function LoginForm({ className, ...props }) {
                 <SignInWithGoogleButton />
 
                 <p className="mt-3 text-xs text-gray-500 text-center">
-                  By loggin in, you agree to our{" "}
+                  {t("loginlegal1")}
                   <Link href="/privacy-policy" className="underline">
-                    Privacy Policy
-                  </Link>{" "}
-                  and{" "}
-                  <Link href="/terms-of-service" className="underline">
-                    Terms of Service
+                    {t("privacyPolicy")}
                   </Link>
-                  .
+                  {t("loginlegal2")}
+                  <Link href="/terms-of-service" className="underline">
+                    {t("tos")}
+                  </Link>
+                  {t("loginlegal3")}
                 </p>
               </div>
             </div>
