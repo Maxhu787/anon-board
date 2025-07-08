@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# g4o2.me - Anonymous Student Message Board
+
+A lightweight, modern web platform for students to share posts and comments anonymously or publicly. Built with Next.js, Supabase, and Tailwind CSS.
+
+## Features
+
+- Anonymous or public posting and commenting
+- User authentication (sign up, login, profile, google oauth)
+- Voting (like/dislike) on posts and comments
+- Responsive UI with dark mode
+- Internationalization (i18n) support (English, Chinese Traditional)
+- Privacy Policy and Terms of Service pages
+- Simple analytics integration
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/)
+- [Supabase](https://supabase.com/) (database & auth)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn](https://shadcn.com/) for ui
+- [i18next](https://www.i18next.com/) for translations
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   git clone https://github.com/Maxhu787/anon-board.git
+   cd anon-board
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies:**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Set up environment variables:**
 
-## Learn More
+   Create `.env.local` and fill in your Supabase credentials:
 
-To learn more about Next.js, take a look at the following resources:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the development server:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/app` - Next.js app directory (pages, layouts, routes)
+- `/components` - ui components
+- `/lib` - Utility functions and i18n setup and translations
+- `/utils` - Supabase client/server utilities
+- `/public` - Static files
+- `/sql` - Sql schema designs for supabase
+
+## License
+
+CC BY-NC
+(https://creativecommons.org/licenses/by-nc/4.0/)
+
+---
+
+For questions or feedback, you can contact me via social links on my website [maxhu787.github.io](https://maxhu787.github.io).
