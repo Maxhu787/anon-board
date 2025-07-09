@@ -256,7 +256,7 @@ export default function Posts() {
               }}
               className="pb-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer"
             >
-              <CardHeader className="flex flex-row gap-3 justify-between items-start">
+              <CardHeader className="relative flex flex-row gap-3 justify-between items-start">
                 <div className="flex flex-row gap-3">
                   <Avatar
                     onClick={(e) => {

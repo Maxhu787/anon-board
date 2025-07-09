@@ -254,7 +254,7 @@ export default function PostPage(promiseParams) {
         }}
       />
       <Card className="mt-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none">
-        <CardHeader className="flex flex-row gap-3">
+        <CardHeader className="relative flex flex-row gap-3">
           <Avatar
             onClick={(e) => {
               e.stopPropagation();
