@@ -1,6 +1,8 @@
 {
-  "title1": "Got something to rant about?",
-  "title2": "Or just need to talk?",
+  "title1old": "Got something to rant about?",
+  "title2old": "Or just need to talk?",
+  "title1": "Student Commenting Platform",
+  "title2": "anonymous posting",
   "description1": "is a simple space to post what's on your mind - publicly or anonymously. It's all about your thoughts.",
   "description2": "Post freely. Just real people saying real stuff.",
   "browseposts": "Browse Posts",
