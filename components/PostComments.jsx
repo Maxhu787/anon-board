@@ -73,8 +73,7 @@ export default function PostComments({
           )
         `
         )
-        .eq("post_id", postId)
-        .is("parent_id", null);
+        .eq("post_id", postId);
 
       const { data, error } = topOnly
         ? await baseQuery.order("created_at", { ascending: false }).limit(1)
