@@ -52,7 +52,7 @@ export default function Home() {
             <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-blue-500 dark:text-blue-400">
               {t("title1")}
             </h1>
-            <h2 className="text-[39px] md:text-[50px] font-extrabold leading-[50px] md:leading-[50px] mt-[-10] text-black dark:text-white">
+            <h2 className="text-[43px] md:text-[50px] font-extrabold leading-[50px] md:leading-[50px] mt-[-10] text-black dark:text-white">
               {t("title2")}
             </h2>
             <p className="text-lg md:text-[18px] text-gray-700 dark:text-gray-300">
