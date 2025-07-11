@@ -49,7 +49,7 @@ export default function Home() {
             <div className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
               {t("madeby")}
             </div>
-            <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-black dark:text-blue-400">
+            <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-blue-500 dark:text-blue-400">
               {t("title1")}
             </h1>
             <h2 className="text-[39px] md:text-[50px] font-extrabold leading-[50px] md:leading-[50px] mt-[-10] text-black dark:text-white">
