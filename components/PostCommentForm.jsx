@@ -42,7 +42,6 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       .insert({
         id: commentId,
         post_id: postId,
-        parent_id: null,
         user_id: user.id,
         content,
         is_anonymous: isAnonymous,
