@@ -68,6 +68,9 @@ export default function Home() {
             <div className="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
               {t("madeby")}
             </div>
+            <div className="ml-2 inline-block bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
+              {t("testversion")}
+            </div>
             <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-blue-500 dark:text-blue-400">
               {t("title1")}
             </h1>

@@ -40,7 +40,8 @@ export default function GoogleOneTap({ onSuccess, onError, disabled = false }) {
 
               if (data.user) {
                 onSuccess?.(data.user);
-                router.refresh();
+                // router.refresh();
+                window.location.reload(); // temporary solution
               }
             } catch (err) {
               console.error("One Tap error:", err);
