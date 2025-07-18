@@ -7,6 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ToggleThemeButton } from "@/components/ToggleThemeButton";
 import { I18nProvider } from "@/components/i18nProvider";
 import { ToggleLanguageButton } from "@/components/ToggleLanguageButton";
+import Script from "next/script";
+import Analytics from "@/utils/analytics";
 
 export default function RootLayout({ children }) {
   return (
@@ -61,6 +63,20 @@ export default function RootLayout({ children }) {
             />
           </ThemeProvider>
         </I18nProvider>
+        <Analytics />
+        {/* Move Google Analytics Scripts here */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-DXLYE91G0P`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DXLYE91G0P');
+          `}
+        </Script>
         <script
           data-collect-dnt="true"
           async
