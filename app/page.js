@@ -5,6 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import Posts from "@/components/Posts";
+import GoogleOneTap from "@/components/GoogleOneTap";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -38,11 +39,29 @@ export default function Home() {
     fetchUser();
   }, []);
 
+  const handleOneTapSuccess = (user) => {
+    setUser(user);
+    // Optional: redirect to home page or show success message
+  };
+
+  const handleOneTapError = (error) => {
+    console.error("One Tap authentication failed:", error);
+    // Optional: show error message to user
+  };
+
   if (!mounted) return null;
   if (loading) return <></>;
 
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Google One Tap - only show if user is not logged in */}
+      {!user && (
+        <GoogleOneTap
+          onSuccess={handleOneTapSuccess}
+          onError={handleOneTapError}
+        />
+      )}
+
       <main className="flex flex-col md:flex-row flex-grow w-full">
         <section className="w-full md:w-1/2 p-8 flex items-center justify-center bg-white dark:bg-black">
           <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-18 md:pl-12 md:pr-0">

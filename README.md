@@ -11,7 +11,7 @@ A lightweight, modern web platform for students to share posts and comments anon
 ## Features
 
 - Anonymous or public posting and commenting
-- User authentication (sign up, login, profile, google oauth)
+- User authentication (sign up, login, profile, google oauth, google one tap login)
 - Voting (like/dislike) on posts and comments
 - Responsive UI with dark mode
 - Internationalization (i18n) support (English, Chinese Traditional)

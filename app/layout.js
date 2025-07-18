@@ -28,6 +28,13 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content="https://g4o2.me/logo.png" />
         <meta property="og:url" content="https://g4o2.me" />
         <meta property="og:type" content="website" />
+
+        {/* Google One Tap Script */}
+        <script
+          src="https://accounts.google.com/gsi/client"
+          async
+          defer
+        ></script>
       </head>
       <body className="overscroll-none bg-[rgb(250,250,250)] dark:bg-[rgb(10,10,10)] ">
         <I18nProvider>
