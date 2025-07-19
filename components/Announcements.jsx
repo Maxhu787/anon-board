@@ -56,9 +56,10 @@ export default function Announcements() {
   }, [supabase]);
 
   function animateStats(targetStats) {
-    const duration = 800; // ms
+    const duration = 800;
     const start = performance.now();
-    const initialStats = { ...displayStats };
+    // const initialStats = { ...displayStats }; // or { posts: 0, users: 0 } if you want to always animate from 0
+    const initialStats = { posts: 0, users: 0 };
 
     function animate(now) {
       const progress = Math.min((now - start) / duration, 1);
@@ -102,7 +103,10 @@ export default function Announcements() {
   return (
     <div className="flex flex-col items-center min-h-screen">
       <div className="w-full max-w-xl mb-8">
-        <Card className="pb-10 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer">
+        <Card
+          onClick={() => animateStats(stats)}
+          className="pb-10 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none cursor-pointer hover:opacity-90 transition-opacity"
+        >
           <CardHeader>
             <CardTitle className="text-2xl">平台統計</CardTitle>
           </CardHeader>
