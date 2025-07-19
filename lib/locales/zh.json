@@ -44,5 +44,14 @@
   "loginlegal2": " 和 ",
   "loginlegal3": "。",
   "goog": "使用 Google 登入",
-  "announcements": "公告"
+  "announcements": "公告",
+  "admin": "管理者",
+  "platformstats": "平台統計",
+  "followus": "追蹤我們",
+  "updatedsocialmedia": "我們最新的消息都會在這",
+  "feedback": "意見回饋",
+  "feedback_description": "意見回饋、你想要的新功能",
+  "submit": "送出",
+  "posts": "發布貼文",
+  "users": "註冊帳號"
 }

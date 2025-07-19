@@ -44,5 +44,14 @@
   "loginlegal2": " and ",
   "loginlegal3": ".",
   "goog": "Login with Google",
-  "announcements": "Announcements"
+  "announcements": "Announcements",
+  "admin": "Admin",
+  "platformstats": "Platform stats",
+  "followus": "Follow us",
+  "updatedsocialmedia": "Stay updated via our social media",
+  "feedback": "Feedback",
+  "feedback_description": "Give us your feed back and features you want",
+  "submit": "submit",
+  "posts": "Posts",
+  "users": "Users"
 }

@@ -108,7 +108,7 @@ export default function Announcements() {
           className="pb-10 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none cursor-pointer hover:opacity-90 transition-opacity"
         >
           <CardHeader>
-            <CardTitle className="text-2xl">平台統計</CardTitle>
+            <CardTitle className="text-2xl">{t("platformstats")}</CardTitle>
           </CardHeader>
           <CardContent className="mt-[-12] flex flex-row gap-35 justify-center items-center">
             <div className="flex flex-col items-center">
@@ -116,7 +116,7 @@ export default function Announcements() {
                 {displayStats.posts}
               </span>
               <span className="text-gray-600 dark:text-gray-300 text-[18px]">
-                發布貼文
+                {t("posts")}
               </span>
             </div>
             <div className="flex flex-col items-center">
@@ -124,18 +124,18 @@ export default function Announcements() {
                 {displayStats.users}
               </span>
               <span className="text-gray-600 dark:text-gray-300 text-[18px]">
-                註冊帳號
+                {t("users")}
               </span>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      <div className="w-full max-w-xl mb-8">
-        <Card className="pb-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer">
+      <div className="w-full max-w-xl mt-[-8] mb-8">
+        <Card className="pb-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none">
           <CardHeader>
-            <CardTitle className="text-xl">Follow Us</CardTitle>
-            <CardDescription>Stay updated via our social media</CardDescription>
+            <CardTitle className="mt-[-8] text-xl">{t("followus")}</CardTitle>
+            <CardDescription>{t("updatedsocialmedia")}</CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="flex flex-row gap-4">
@@ -144,7 +144,7 @@ export default function Announcements() {
                   href="https://instagram.com/g4o2.me"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-pink-500 hover:underline"
+                  className="text-pink-500 underline"
                 >
                   Instagram
                 </a>
@@ -154,7 +154,7 @@ export default function Announcements() {
                   href="https://threads.com/g4o2.me"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-800 dark:text-gray-200 hover:underline"
+                  className="text-gray-800 dark:text-gray-200 underline"
                 >
                   Threads
                 </a>
@@ -202,10 +202,10 @@ export default function Announcements() {
 
       <div className="w-full max-w-xl mb-8">
         <Separator className="mb-8" />
-        <Card className="pb-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer">
+        <Card className="pb-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none">
           <CardHeader>
-            <CardTitle className="text-xl">💡 意見回饋</CardTitle>
-            <CardDescription>意見回饋、你想要的新功能</CardDescription>
+            <CardTitle className="text-xl">💡 {t("feedback")}</CardTitle>
+            <CardDescription>{t("feedback_description")}</CardDescription>
           </CardHeader>
           <form onSubmit={handleSuggestionSubmit}>
             <CardContent>
