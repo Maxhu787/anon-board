@@ -20,6 +20,13 @@ import { Separator } from "./ui/separator";
 
 const ANNOUNCEMENTS = [
   {
+    id: 2,
+    title: "更新",
+    content: "昨天瀏覽數破1450！註冊用戶+10",
+    author: "Admin",
+    date: "2024-07-20T10:00:00Z",
+  },
+  {
     id: 1,
     title: " 🎉 測試版網站正式上線 🎉",
     content:
@@ -108,9 +115,11 @@ export default function Announcements() {
           className="pb-10 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none cursor-pointer hover:opacity-90 transition-opacity"
         >
           <CardHeader>
-            <CardTitle className="text-2xl">{t("platformstats")}</CardTitle>
+            <CardTitle className="mt-[-4] text-2xl">
+              {t("platformstats")}
+            </CardTitle>
           </CardHeader>
-          <CardContent className="mt-[-12] flex flex-row gap-35 justify-center items-center">
+          <CardContent className="mt-[-12] flex flex-row gap-15 md:gap-25 justify-center items-center">
             <div className="flex flex-col items-center">
               <span className="text-7xl font-bold text-blue-600 dark:text-blue-400">
                 {displayStats.posts}
@@ -172,7 +181,7 @@ export default function Announcements() {
           {ANNOUNCEMENTS.map((a) => (
             <li key={a.id} className="w-full">
               <Card className="border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none">
-                <CardHeader className="flex flex-row gap-3 items-center">
+                <CardHeader className="mt-[-8] flex flex-row gap-3 items-center">
                   <Avatar>
                     <AvatarFallback className="bg-blue-400 text-white">
                       <User className="w-4 h-4" strokeWidth={3} />
@@ -191,7 +200,7 @@ export default function Announcements() {
                     </CardDescription>
                   </div>
                 </CardHeader>
-                <CardContent className="mt-[-18] whitespace-pre-wrap wrap-break-word pl-17">
+                <CardContent className="mt-[-18] mb-[-6] whitespace-pre-wrap wrap-break-word pl-17">
                   <p className="text-[15px]">{a.content}</p>
                 </CardContent>
               </Card>
