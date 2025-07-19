@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Instagram, User } from "lucide-react";
+import { User } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
@@ -32,6 +32,7 @@ const ANNOUNCEMENTS = [
 export default function Announcements() {
   const { t } = useTranslation();
   const [stats, setStats] = useState({ posts: 0, users: 0 });
+  const [displayStats, setDisplayStats] = useState({ posts: 0, users: 0 });
   const [suggestion, setSuggestion] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const supabase = createClient();
@@ -43,13 +44,41 @@ export default function Announcements() {
         supabase.from("posts").select("id", { count: "exact", head: true }),
         supabase.from("profiles").select("id", { count: "exact", head: true }),
       ]);
-      setStats({
+      const finalStats = {
         posts: posts || 0,
         users: users || 0,
-      });
+      };
+      setStats(finalStats);
+      animateStats(finalStats);
     }
+
     fetchStats();
   }, [supabase]);
+
+  function animateStats(targetStats) {
+    const duration = 800; // ms
+    const start = performance.now();
+    const initialStats = { ...displayStats };
+
+    function animate(now) {
+      const progress = Math.min((now - start) / duration, 1);
+
+      setDisplayStats({
+        posts: Math.floor(
+          initialStats.posts +
+            (targetStats.posts - initialStats.posts) * progress
+        ),
+        users: Math.floor(
+          initialStats.users +
+            (targetStats.users - initialStats.users) * progress
+        ),
+      });
+
+      if (progress < 1) requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  }
 
   async function handleSuggestionSubmit(e) {
     e.preventDefault();
@@ -80,7 +109,7 @@ export default function Announcements() {
           <CardContent className="mt-[-12] flex flex-row gap-35 justify-center items-center">
             <div className="flex flex-col items-center">
               <span className="text-7xl font-bold text-blue-600 dark:text-blue-400">
-                {stats.posts}
+                {displayStats.posts}
               </span>
               <span className="text-gray-600 dark:text-gray-300 text-[18px]">
                 發布貼文
@@ -88,7 +117,7 @@ export default function Announcements() {
             </div>
             <div className="flex flex-col items-center">
               <span className="text-7xl font-bold text-green-600 dark:text-green-400">
-                {stats.users}
+                {displayStats.users}
               </span>
               <span className="text-gray-600 dark:text-gray-300 text-[18px]">
                 註冊帳號
@@ -166,6 +195,7 @@ export default function Announcements() {
           ))}
         </ul>
       </div>
+
       <div className="w-full max-w-xl mb-8">
         <Separator className="mb-8" />
         <Card className="pb-3 border-1 dark:border-[rgb(23,23,23)] border-gray-300 border-solid shadow-none hover:cursor-pointer">
