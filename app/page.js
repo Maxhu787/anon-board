@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import Posts from "@/components/Posts";
 import GoogleOneTap from "@/components/GoogleOneTap";
+import Announcements from "@/components/Announcements";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -118,7 +119,8 @@ export default function Home() {
         </section>
 
         <section className="w-full pt-8 md:pt-28 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh]">
-          <Posts />
+          {/* <Posts /> */}
+          <Announcements />
         </section>
       </main>
     </div>
