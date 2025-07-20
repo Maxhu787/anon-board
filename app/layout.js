@@ -15,21 +15,27 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <title>g4o2.me</title>
-        <meta
-          name="description"
-          content="Your website's short and compelling description goes here."
-        />
+        <meta name="title" content="g4o2.me - 學生留言平台" />
+        <meta name="description" content="匿名或公開發布貼文、留言" />
         <meta name="author" content="Hu Kai-Hsiang @ tagme" />
         <meta name="robots" content="index, follow" />
 
-        <meta property="og:title" content="g4o2.me - 學生匿名留言網站" />
-        <meta
-          property="og:description"
-          content="一個輕型的平台，讓學生能公開、匿名分享貼文，享受簡潔的瀏覽體驗。"
-        />
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:title" content="g4o2.me - 學生留言平台" />
+        <meta property="og:description" content="匿名或公開發布貼文、留言" />
         <meta property="og:image" content="https://g4o2.me/logo.png" />
         <meta property="og:url" content="https://g4o2.me" />
         <meta property="og:type" content="website" />
+
+        {/* <!-- X (Twitter) --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://g4o2.me/" />
+        <meta property="twitter:title" content="g4o2.me - 學生留言平台" />
+        <meta
+          property="twitter:description"
+          content="匿名或公開發布貼文、留言"
+        />
+        <meta property="twitter:image" content="https://g4o2.me/logo.png" />
 
         {/* Google One Tap Script */}
         <script
@@ -64,7 +70,7 @@ export default function RootLayout({ children }) {
           </ThemeProvider>
         </I18nProvider>
         <Analytics />
-        {/* Move Google Analytics Scripts here */}
+        {/* Google Analytics */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-DXLYE91G0P`}
           strategy="afterInteractive"
@@ -77,6 +83,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-DXLYE91G0P');
           `}
         </Script>
+        {/* Simple Analytics */}
         <script
           data-collect-dnt="true"
           async

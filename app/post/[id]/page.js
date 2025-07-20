@@ -48,6 +48,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useTranslation } from "react-i18next";
 import { getColorFromId } from "@/lib/getColorFromId";
+import Head from "next/head";
 
 export default function PostPage(promiseParams) {
   const { id } = use(promiseParams.params);
@@ -248,6 +249,40 @@ export default function PostPage(promiseParams) {
 
   return (
     <div className="max-w-xl mx-auto p-8 mt-15">
+      {post && (
+        <Head>
+          <title>g4o2.me - Post</title>
+          <meta
+            name="description"
+            content={post.content?.slice(0, 150) || "匿名或公開發布貼文、留言"}
+          />
+          <meta name="author" content="Hu Kai-Hsiang @ tagme" />
+          <meta name="robots" content="index, follow" />
+
+          {/* Open Graph */}
+          <meta property="og:title" content="g4o2.me - 學生留言平台" />
+          <meta
+            property="og:description"
+            content={post.content?.slice(0, 150) || "匿名或公開發布貼文、留言"}
+          />
+          <meta property="og:image" content="https://g4o2.me/logo.png" />
+          <meta property="og:url" content={`https://g4o2.me/post/${post.id}`} />
+          <meta property="og:type" content="website" />
+
+          {/* Twitter */}
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta
+            property="twitter:url"
+            content={`https://g4o2.me/post/${post.id}`}
+          />
+          <meta property="twitter:title" content="g4o2.me - 學生留言平台" />
+          <meta
+            property="twitter:description"
+            content={post.content?.slice(0, 150) || "匿名或公開發布貼文、留言"}
+          />
+          <meta property="twitter:image" content="https://g4o2.me/logo.png" />
+        </Head>
+      )}
       <BackButton
         onClick={() => {
           router.back();
