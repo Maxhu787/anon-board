@@ -96,9 +96,10 @@ export default function Home() {
             ) : (
               <Link
                 href="/login"
-                className="active:scale-95 transition-all inline-block px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+                className="active:scale-95 transition-all inline-flex px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
               >
                 {t("getstarted")}
+                <ChevronRight className="ml-1 mt-[2] mr-[-11]" />
               </Link>
             )}
             <div className="border-t-2 mt-10 md:mt-5 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
