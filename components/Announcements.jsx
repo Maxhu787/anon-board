@@ -21,7 +21,7 @@ import { Separator } from "./ui/separator";
 const ANNOUNCEMENTS = [
   {
     id: 2,
-    title: "更新",
+    title: "流量報告",
     content: "昨天瀏覽數破1450！註冊用戶+10",
     author: "Admin",
     date: "2024-07-20T10:00:00Z",
