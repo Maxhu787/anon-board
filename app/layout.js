@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
           <ThemeProvider
             attribute="class"
             defaultTheme="light"
-            enableSystem
+            // enableSystem
             disableTransitionOnChange
           >
             <header className="flex justify-center">

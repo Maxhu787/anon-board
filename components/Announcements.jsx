@@ -28,9 +28,9 @@ const ANNOUNCEMENTS = [
   },
   {
     id: 1,
-    title: " 🎉 測試版網站正式上線 🎉",
+    title: "測試版正式上線",
     content:
-      "測試版 2025/7/6 正式上線！\n測試期間，會有不斷的功能＆介面更新，\n這期間註冊帳號也會有特殊標籤。",
+      "2025/7/6 正式上線！\n測試期間，會不斷更新功能＆介面，\n這期間註冊的帳號之後也會有特殊標籤。",
     author: "Admin",
     date: "2024-07-06T10:00:00Z",
   },
@@ -45,7 +45,6 @@ export default function Announcements() {
   const supabase = createClient();
 
   useEffect(() => {
-    document.title = "g4o2.me | Announcements";
     async function fetchStats() {
       const [{ count: posts }, { count: users }] = await Promise.all([
         supabase.from("posts").select("id", { count: "exact", head: true }),
