@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -15,6 +15,23 @@ import SendPost from "./SendPost";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 
+function setCookie(name, value, days = 365) {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie =
+    name +
+    "=" +
+    encodeURIComponent(value) +
+    "; expires=" +
+    expires +
+    "; path=/";
+}
+function getCookie(name) {
+  return document.cookie.split("; ").reduce((r, v) => {
+    const parts = v.split("=");
+    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+  }, "");
+}
+
 export default function NavBar() {
   const iconSize = 24;
   const buttonClass =
@@ -23,6 +40,8 @@ export default function NavBar() {
   const supabase = createClient();
   const [user, setUser] = useState(null);
   const [mounted, setMounted] = useState(false);
+  const [showBubble, setShowBubble] = useState(true);
+  const plusClickedRef = useRef(false);
 
   useEffect(() => {
     setMounted(true);
@@ -31,7 +50,17 @@ export default function NavBar() {
       setUser(data.user);
     };
     checkUser();
+    // Check cookie for bubble
+    if (getCookie("hidePlusBubble") === "1") setShowBubble(false);
   }, []);
+
+  const handlePlusClick = () => {
+    if (!plusClickedRef.current) {
+      setShowBubble(false);
+      setCookie("hidePlusBubble", "1");
+      plusClickedRef.current = true;
+    }
+  };
 
   if (!mounted) {
     // Prevent hydration mismatch by not rendering until mounted
@@ -75,25 +104,29 @@ export default function NavBar() {
               <>
                 <Drawer>
                   <DrawerTrigger asChild>
-                    <Button variant="outline" className={buttonClass}>
+                    <Button
+                      variant="outline"
+                      className={buttonClass}
+                      onClick={handlePlusClick}
+                    >
                       <Plus style={{ height: iconSize, width: iconSize }} />
                     </Button>
                   </DrawerTrigger>
                   <SendPost />
                 </Drawer>
-                {/* Red message bubble tag */}
-                <span
-                  className="absolute top-[130%] left-1/2 -translate-x-1/2 
+                {showBubble && (
+                  <span
+                    className="absolute top-[120%] left-1/2 -translate-x-1/2 
   bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full 
   shadow-md whitespace-nowrap z-20 
   before:content-[''] before:absolute before:top-0 before:left-1/2 
   before:-translate-x-1/2 before:-translate-y-full
   before:border-l-8 before:border-r-8 before:border-b-[8px] 
   before:border-l-transparent before:border-r-transparent before:border-b-red-500"
-                >
-                  {/* What's on your mind? */}
-                  馬上發布貼文
-                </span>
+                  >
+                    馬上發布貼文
+                  </span>
+                )}
               </>
             ) : (
               <Button variant="outline" asChild className={buttonClass}>
