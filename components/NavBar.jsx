@@ -70,15 +70,31 @@ export default function NavBar() {
             </Button>
           </NavigationMenuItem>
           <NavigationMenuItem>
+            {/* <div className="relative flex flex-col items-center"> */}
             {user ? (
-              <Drawer>
-                <DrawerTrigger asChild>
-                  <Button variant="outline" className={buttonClass}>
-                    <Plus style={{ height: iconSize, width: iconSize }} />
-                  </Button>
-                </DrawerTrigger>
-                <SendPost />
-              </Drawer>
+              <>
+                <Drawer>
+                  <DrawerTrigger asChild>
+                    <Button variant="outline" className={buttonClass}>
+                      <Plus style={{ height: iconSize, width: iconSize }} />
+                    </Button>
+                  </DrawerTrigger>
+                  <SendPost />
+                </Drawer>
+                {/* Red message bubble tag */}
+                <span
+                  className="absolute top-[130%] left-1/2 -translate-x-1/2 
+  bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full 
+  shadow-md whitespace-nowrap z-20 
+  before:content-[''] before:absolute before:top-0 before:left-1/2 
+  before:-translate-x-1/2 before:-translate-y-full
+  before:border-l-8 before:border-r-8 before:border-b-[8px] 
+  before:border-l-transparent before:border-r-transparent before:border-b-red-500"
+                >
+                  {/* What's on your mind? */}
+                  馬上發布貼文
+                </span>
+              </>
             ) : (
               <Button variant="outline" asChild className={buttonClass}>
                 <Link href="/login">
@@ -86,6 +102,7 @@ export default function NavBar() {
                 </Link>
               </Button>
             )}
+            {/* </div> */}
           </NavigationMenuItem>
           <NavigationMenuItem>
             {user ? (
