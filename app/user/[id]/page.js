@@ -37,7 +37,7 @@ export default function UserPage({ params }) {
     };
 
     fetchProfile();
-    document.title = "g4o2.me | User";
+    document.title = "靠北屏中 5.0 | User";
   }, [id, supabase]);
 
   if (loading) {

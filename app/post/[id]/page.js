@@ -122,7 +122,7 @@ export default function PostPage(promiseParams) {
     }
 
     fetchPost();
-    document.title = "g4o2.me | Post";
+    document.title = "靠北屏中 5.0 | Post";
   }, [id, supabase]);
 
   const handleVote = async (type) => {
@@ -251,36 +251,41 @@ export default function PostPage(promiseParams) {
     <div className="max-w-xl mx-auto p-8 mt-15">
       {post && (
         <Head>
-          <title>g4o2.me - Post</title>
+          <title>靠北屏中 5.0</title>
+          <meta name="title" content="靠北屏中 5.0" />
           <meta
             name="description"
-            content={post.content?.slice(0, 150) || "匿名或公開發布貼文、留言"}
+            content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
           />
-          <meta name="author" content="Hu Kai-Hsiang @ tagme" />
+          <meta name="author" content="Mr. Hu" />
           <meta name="robots" content="index, follow" />
 
-          {/* Open Graph */}
-          <meta property="og:title" content="g4o2.me - 學生留言平台" />
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property="og:title" content="靠北屏中 5.0" />
           <meta
             property="og:description"
-            content={post.content?.slice(0, 150) || "匿名或公開發布貼文、留言"}
+            content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
           />
           <meta property="og:image" content="https://g4o2.me/logo.png" />
-          <meta property="og:url" content={`https://g4o2.me/post/${post.id}`} />
+          <meta property="og:url" content="https://g4o2.me" />
           <meta property="og:type" content="website" />
 
-          {/* Twitter */}
+          {/* <!-- X (Twitter) --> */}
           <meta property="twitter:card" content="summary_large_image" />
-          <meta
-            property="twitter:url"
-            content={`https://g4o2.me/post/${post.id}`}
-          />
-          <meta property="twitter:title" content="g4o2.me - 學生留言平台" />
+          <meta property="twitter:url" content="https://g4o2.me/" />
+          <meta property="twitter:title" content="靠北屏中 5.0" />
           <meta
             property="twitter:description"
-            content={post.content?.slice(0, 150) || "匿名或公開發布貼文、留言"}
+            content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
           />
           <meta property="twitter:image" content="https://g4o2.me/logo.png" />
+
+          {/* Google One Tap Script */}
+          <script
+            src="https://accounts.google.com/gsi/client"
+            async
+            defer
+          ></script>
         </Head>
       )}
       <BackButton

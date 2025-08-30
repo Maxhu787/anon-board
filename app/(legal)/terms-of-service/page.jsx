@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export default function TermsOfService() {
   const { t } = useTranslation("tos");
   useEffect(() => {
-    document.title = "g4o2.me | Terms of Service";
+    document.title = "靠北屏中 5.0 | Terms of Service";
   }, []);
 
   return (

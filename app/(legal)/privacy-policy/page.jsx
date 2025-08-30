@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export default function PrivacyPolicy() {
   const { t } = useTranslation("privacy");
   useEffect(() => {
-    document.title = "g4o2.me | Privacy Policy";
+    document.title = "靠北屏中 5.0 | Privacy Policy";
   }, []);
 
   return (

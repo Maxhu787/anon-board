@@ -29,7 +29,7 @@ export default function Home() {
     }
 
     setMounted(true);
-    document.title = "g4o2.me";
+    document.title = "靠北屏中 5.0";
 
     const fetchUser = async () => {
       const {
@@ -116,7 +116,7 @@ export default function Home() {
                 </Link>
               </div>
               <div>
-                © {new Date().getFullYear()} g4o2.me - {t("legal")}
+                © {new Date().getFullYear()} 靠北屏中 5.0 - {t("legal")}
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function Home() {
         <section className="w-full pt-8 md:pt-28 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh]">
           {/* <Posts /> */}
           {/* <Announcements /> */}
-          <SendPost />
+          <SendPost onSent={() => {}} />
         </section>
       </main>
     </div>

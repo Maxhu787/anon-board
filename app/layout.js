@@ -14,15 +14,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>g4o2.me</title>
-        <meta name="title" content="g4o2.me - 學生留言平台" />
-        <meta name="description" content="匿名或公開發布貼文、留言" />
-        <meta name="author" content="Hu Kai-Hsiang @ tagme" />
+        <title>靠北屏中 5.0</title>
+        <meta name="title" content="靠北屏中 5.0" />
+        <meta
+          name="description"
+          content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
+        />
+        <meta name="author" content="Mr. Hu" />
         <meta name="robots" content="index, follow" />
 
         {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:title" content="g4o2.me - 學生留言平台" />
-        <meta property="og:description" content="匿名或公開發布貼文、留言" />
+        <meta property="og:title" content="靠北屏中 5.0" />
+        <meta
+          property="og:description"
+          content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
+        />
         <meta property="og:image" content="https://g4o2.me/logo.png" />
         <meta property="og:url" content="https://g4o2.me" />
         <meta property="og:type" content="website" />
@@ -30,10 +36,10 @@ export default function RootLayout({ children }) {
         {/* <!-- X (Twitter) --> */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://g4o2.me/" />
-        <meta property="twitter:title" content="g4o2.me - 學生留言平台" />
+        <meta property="twitter:title" content="靠北屏中 5.0" />
         <meta
           property="twitter:description"
-          content="匿名或公開發布貼文、留言"
+          content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
         />
         <meta property="twitter:image" content="https://g4o2.me/logo.png" />
 

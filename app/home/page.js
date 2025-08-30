@@ -15,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-    document.title = "g4o2.me | Home";
+    document.title = "靠北屏中 5.0 | Home";
 
     const fetchUser = async () => {
       const {
@@ -59,7 +59,7 @@ export default function Home() {
           </Link>
         </div>
         <div>
-          © {new Date().getFullYear()} g4o2.me - {t("legal")}
+          © {new Date().getFullYear()} 靠北屏中 5.0 - {t("legal")}
         </div>
       </footer>
     </div>

@@ -29,6 +29,13 @@ export default function SendPost({ onSent, hideTitle }) {
     setLoading(true);
     const { data: user } = await supabase.auth.getUser();
 
+    // Redirect to login if not anonymous and user is not logged in
+    if (!isAnonymous && !user?.user?.id) {
+      setLoading(false);
+      window.location.href = "/login";
+      return;
+    }
+
     const postId = nanoid(11); // generate id for the post
 
     const { error } = await supabase.from("posts").insert({
@@ -42,7 +49,7 @@ export default function SendPost({ onSent, hideTitle }) {
     if (!error) {
       setContent("");
       setIsAnonymous(false);
-      toast.success(t("posted"));
+      toast.success(t("已發布！"));
       if (onSent) onSent();
       else window.location.reload(); // fallback
     } else {

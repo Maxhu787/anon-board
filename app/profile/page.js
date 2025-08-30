@@ -35,7 +35,7 @@ export default function ProfilePage() {
 
     fetchUser();
 
-    document.title = "g4o2.me | Profile";
+    document.title = "靠北屏中 5.0 | Profile";
   }, [supabase.auth, router]);
 
   if (loading || !user) {

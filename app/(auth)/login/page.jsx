@@ -8,7 +8,7 @@ function ToastMessage() {
   const toastParam = searchParams.get("toast");
 
   useEffect(() => {
-    document.title = "g4o2.me | Login";
+    document.title = "靠北屏中 5.0 | Login";
   }, []);
 
   if (toastParam === "email_sent") {

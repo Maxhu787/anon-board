@@ -1,4 +1,4 @@
-# g4o2.me - Anonymous Student Message Board
+# Anonymous Student Message Board
 
 A lightweight, modern web platform for students to share posts and comments anonymously or publicly. Built with Next.js, Supabase, and Tailwind CSS.
 

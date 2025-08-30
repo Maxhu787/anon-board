@@ -5,14 +5,15 @@ import { useTranslation } from "react-i18next";
 export default function About() {
   const { t } = useTranslation("about");
   useEffect(() => {
-    document.title = "g4o2.me | About";
+    document.title = "靠北屏中 5.0 | About";
   }, []);
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12 mt-18 space-y-8">
       <h1 className="text-5xl font-bold">{t("title")}</h1>
-      <p className="text-xl">{t("intro")}</p>
-      <section>
+      <p className="text-xl">Coming soon</p>
+      {/* <p className="text-xl">{t("intro")}</p> */}
+      {/* <section>
         <ul className="list-disc text-xl pl-6 space-y-2">
           <li>
             <a
@@ -24,11 +25,11 @@ export default function About() {
               {t("creatorSection.websiteText")}
             </a>
           </li>
-          {/* <li>{t("creatorSection.school")}</li>
+          <li>{t("creatorSection.school")}</li>
           <li>{t("creatorSection.club")}</li>
-          <li>{t("creatorSection.grade")}</li> */}
+          <li>{t("creatorSection.grade")}</li>
         </ul>
-      </section>
+      </section> */}
     </div>
   );
 }

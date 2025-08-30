@@ -56,7 +56,7 @@ export default function PostCommentForm({ postId, onCommentAdded, onCancel }) {
       return;
     }
 
-    toast.success("Comment Posted");
+    toast.success("留言已發布！");
     window.location.reload(); // temporary solution
 
     const { data: profile, error: profileError } = await supabase
