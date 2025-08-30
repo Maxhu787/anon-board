@@ -249,7 +249,7 @@ export default function PostPage(promiseParams) {
 
   return (
     <div className="max-w-xl mx-auto p-8 mt-15">
-      {post && (
+      {/* {post && (
         <Head>
           <title>靠北屏中 5.0</title>
           <meta name="title" content="靠北屏中 5.0" />
@@ -260,7 +260,6 @@ export default function PostPage(promiseParams) {
           <meta name="author" content="Mr. Hu" />
           <meta name="robots" content="index, follow" />
 
-          {/* <!-- Open Graph / Facebook --> */}
           <meta property="og:title" content="靠北屏中 5.0" />
           <meta
             property="og:description"
@@ -270,7 +269,6 @@ export default function PostPage(promiseParams) {
           <meta property="og:url" content="https://g4o2.me" />
           <meta property="og:type" content="website" />
 
-          {/* <!-- X (Twitter) --> */}
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://g4o2.me/" />
           <meta property="twitter:title" content="靠北屏中 5.0" />
@@ -280,14 +278,13 @@ export default function PostPage(promiseParams) {
           />
           <meta property="twitter:image" content="https://g4o2.me/logo.png" />
 
-          {/* Google One Tap Script */}
           <script
             src="https://accounts.google.com/gsi/client"
             async
             defer
           ></script>
         </Head>
-      )}
+      )} */}
       <BackButton
         onClick={() => {
           router.back();

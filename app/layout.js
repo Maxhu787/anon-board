@@ -29,19 +29,28 @@ export default function RootLayout({ children }) {
           property="og:description"
           content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
         />
-        <meta property="og:image" content="https://g4o2.me/logo.png" />
-        <meta property="og:url" content="https://g4o2.me" />
+        <meta
+          property="og:image"
+          content="https://pths-cowbell.vercel.app/logo.png"
+        />
+        <meta property="og:url" content="https://pths-cowbell.vercel.app" />
         <meta property="og:type" content="website" />
 
         {/* <!-- X (Twitter) --> */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://g4o2.me/" />
+        <meta
+          property="twitter:url"
+          content="https://pths-cowbell.vercel.app/"
+        />
         <meta property="twitter:title" content="靠北屏中 5.0" />
         <meta
           property="twitter:description"
           content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
         />
-        <meta property="twitter:image" content="https://g4o2.me/logo.png" />
+        <meta
+          property="twitter:image"
+          content="https://pths-cowbell.vercel.app/logo.png"
+        />
 
         {/* Google One Tap Script */}
         <script

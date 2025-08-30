@@ -341,7 +341,7 @@ export default function Posts() {
                         onClick={(e) => {
                           e.stopPropagation();
                           navigator.clipboard.writeText(
-                            `https://g4o2.me/post/${post.id}`
+                            `https://pths-cowbell.vercel.app/post/${post.id}`
                           );
                           toast(t("linkcopy"));
                         }}

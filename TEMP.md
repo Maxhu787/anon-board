@@ -1,11 +1,11 @@
 # anon-board
 
-g4o2.me domain expires in 2025/6/10
+.me domain expires in 2025/6/10
 reply to google verify email to resolve issue
 
 - imbed text posts
 - poll for website theme color, badges for beta testers
-- share g4o2.me section\button when on mobile
+- share section\button when on mobile
 - add social media images link
 - setup post hog https://us.posthog.com/project/196496/products?next=%2F
 - fix website loading cycle, like load skeleton page faster than fetch data
@@ -41,7 +41,7 @@ A anonymous forum website for posts on various topics for discussion, targeted t
 - or something like a button to press to donwload the post with some comments as a image to post on other platforms
 - home page with list of posts
 
-https://dashboard.simpleanalytics.com/g4o2.me
+https://dashboard.simpleanalytics.com/
 https://lucide.dev/icons/
 https://tailwindcss.com/docs
 

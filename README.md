@@ -4,7 +4,6 @@ A lightweight, modern web platform for students to share posts and comments anon
 
 ## Live Demo
 
-- https://g4o2.me
 - Next.js app hosted on Vercel free tier
 - Database hosted on supabase free tier
 

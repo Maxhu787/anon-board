@@ -51,31 +51,25 @@ const postIds = [
 export default function sitemap() {
   const staticRoutes = [
     {
-      url: "https://g4o2.me",
+      url: "https://pths-cowbell.vercel.app",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: "https://g4o2.me/?lng=zh",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: "https://g4o2.me/home",
+      url: "https://pths-cowbell.vercel.app/home",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
-      url: "https://g4o2.me/about",
+      url: "https://pths-cowbell.vercel.app/about",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: "https://g4o2.me/user",
+      url: "https://pths-cowbell.vercel.app/user",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.2,
@@ -83,7 +77,7 @@ export default function sitemap() {
   ];
 
   const postRoutes = postIds.map((id) => ({
-    url: `https://g4o2.me/post/${id}`,
+    url: `https://pths-cowbell.vercel.app/post/${id}`,
     lastModified: new Date(),
     changeFrequency: "weekly",
     priority: 0.8,
