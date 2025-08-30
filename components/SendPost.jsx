@@ -10,7 +10,7 @@ import { createClient } from "@/utils/supabase/client";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
-export default function SendPost({ onSent }) {
+export default function SendPost({ onSent, hideTitle }) {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,12 +56,15 @@ export default function SendPost({ onSent }) {
       className="w-full max-w-md mx-auto space-y-6 mt-12"
       onSubmit={handleSubmit}
     >
-      <div className="text-center mt-2">
-        <h2 className="text-2xl font-bold mb-2">{t("cardTitle")}</h2>
-        <p className="text-muted-foreground text-sm mb-4">
-          {t("cardSecondary")}
-        </p>
-      </div>
+      {!hideTitle && (
+        // <div className="text-center mt-2">
+        <div className="mt-2 text-left">
+          <h2 className="text-2xl font-bold mb-2">{t("cardTitle")}</h2>
+          <p className="text-muted-foreground text-sm mb-4">
+            {t("cardSecondary")}
+          </p>
+        </div>
+      )}
       <div>
         <Label htmlFor="content">{t("content")}</Label>
         <Textarea
@@ -75,7 +78,9 @@ export default function SendPost({ onSent }) {
         />
       </div>
       <div className="flex items-center justify-between">
-        <Label htmlFor="anonymous">{t("postAnon")}</Label>
+        <Label className="cursor-pointer" htmlFor="anonymous">
+          {t("postAnon")}
+        </Label>
         <Switch
           id="anonymous"
           checked={isAnonymous}

@@ -44,7 +44,8 @@ export default function RootLayout({ children }) {
           defer
         ></script>
       </head>
-      <body className="overscroll-none bg-[rgb(250,250,250)] dark:bg-[rgb(10,10,10)] ">
+      {/* <body className="overscroll-none bg-[rgb(250,250,250)] dark:bg-[rgb(10,10,10)] "> */}
+      <body className=" bg-[rgb(250,250,250)] dark:bg-[rgb(10,10,10)] ">
         <I18nProvider>
           <ThemeProvider
             attribute="class"

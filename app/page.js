@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import Posts from "@/components/Posts";
+// import Posts from "@/components/Posts";
 import GoogleOneTap from "@/components/GoogleOneTap";
-import Announcements from "@/components/Announcements";
+// import Announcements from "@/components/Announcements";
 import { ChevronRight } from "lucide-react";
+import SendPost from "@/components/SendPost"; // Add import for SendPost
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -67,10 +68,10 @@ export default function Home() {
       <main className="flex flex-col md:flex-row flex-grow w-full">
         <section className="w-full md:w-1/2 p-8 flex items-center justify-center bg-white dark:bg-black">
           <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-18 md:pl-12 md:pr-0">
-            <div className="select-none inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
+            <div className="select-none inline-block bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
               {t("madeby")}
             </div>
-            <div className="select-none ml-2 inline-block bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
+            <div className="select-none ml-2 inline-block bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
               {t("testversion")}
             </div>
             <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-yellow-500 dark:text-yellow-400">
@@ -123,7 +124,8 @@ export default function Home() {
 
         <section className="w-full pt-8 md:pt-28 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh]">
           {/* <Posts /> */}
-          <Announcements />
+          {/* <Announcements /> */}
+          <SendPost />
         </section>
       </main>
     </div>
