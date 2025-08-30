@@ -1,0 +1,39 @@
+{
+  "title": "Terms of Service",
+  "effectiveDate": "Effective Date: July 1, 2025",
+  "intro": "Welcome to g4o2.me! These Terms of Service (\"Terms\") govern your use of our app and services. By using g4o2.me, you agree to these terms.",
+  "section1": {
+    "title": "1. Use of the Service",
+    "point1": "You agree not to misuse the service or attempt to harm others or the platform."
+  },
+  "section2": {
+    "title": "2. User Content",
+    "content": "You are responsible for any content you upload. We may remove content that violates laws or these terms."
+  },
+  "section3": {
+    "title": "3. Accounts",
+    "point1": "You are responsible for your account and activity on it.",
+    "point2": "Keep your login information secure."
+  },
+  "section4": {
+    "title": "4. Termination",
+    "content": "We may suspend or terminate your access if you violate these terms or abuse the service."
+  },
+  "section5": {
+    "title": "5. Limitation of Liability",
+    "content": "g4o2.me is provided \"as is.\" We are not liable for indirect damages, loss of data, or service interruptions."
+  },
+  "section6": {
+    "title": "6. Changes to These Terms",
+    "content": "We may update these terms from time to time. Continued use of the app means you accept the updated terms."
+  },
+  "section7": {
+    "title": "7. Governing Law",
+    "content": "These terms are governed by the laws of your jurisdiction, unless otherwise required by applicable law."
+  },
+  "section8": {
+    "title": "8. Contact",
+    "content": "If you have any questions or concerns, contact us at"
+  },
+  "email": "g4o2dotme@googlegroups.com"
+}

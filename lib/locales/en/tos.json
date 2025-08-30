@@ -1,39 +1,39 @@
 {
-  "title": "Terms of Service",
-  "effectiveDate": "Effective Date: July 1, 2025",
-  "intro": "Welcome to g4o2.me! These Terms of Service (\"Terms\") govern your use of our app and services. By using g4o2.me, you agree to these terms.",
+  "title": "服務條款",
+  "effectiveDate": "生效日期：2025 年 7 月 1 日",
+  "intro": "歡迎來到 g4o2.me！本服務條款（「條款」）規範您對我們應用程式與服務的使用。使用 g4o2.me 即表示您同意這些條款。",
   "section1": {
-    "title": "1. Use of the Service",
-    "point1": "You agree not to misuse the service or attempt to harm others or the platform."
+    "title": "一、服務使用",
+    "point1": "您同意不得濫用服務或試圖傷害他人或平台。"
   },
   "section2": {
-    "title": "2. User Content",
-    "content": "You are responsible for any content you upload. We may remove content that violates laws or these terms."
+    "title": "二、使用者內容",
+    "content": "您對您上傳的任何內容負責。我們可能會移除違反法律或本條款的內容。"
   },
   "section3": {
-    "title": "3. Accounts",
-    "point1": "You are responsible for your account and activity on it.",
-    "point2": "Keep your login information secure."
+    "title": "三、帳戶",
+    "point1": "您對您的帳戶及其活動負全部責任。",
+    "point2": "請妥善保管您的登入資訊。"
   },
   "section4": {
-    "title": "4. Termination",
-    "content": "We may suspend or terminate your access if you violate these terms or abuse the service."
+    "title": "四、終止使用",
+    "content": "若您違反本條款或濫用服務，我們可能暫停或終止您的使用權限。"
   },
   "section5": {
-    "title": "5. Limitation of Liability",
-    "content": "g4o2.me is provided \"as is.\" We are not liable for indirect damages, loss of data, or service interruptions."
+    "title": "五、責任限制",
+    "content": "g4o2.me 以「現狀」提供。我們不對任何間接損害、資料遺失或服務中斷負責。"
   },
   "section6": {
-    "title": "6. Changes to These Terms",
-    "content": "We may update these terms from time to time. Continued use of the app means you accept the updated terms."
+    "title": "六、條款變更",
+    "content": "我們可能不時更新本條款。持續使用應用程式即表示您接受更新後的條款。"
   },
   "section7": {
-    "title": "7. Governing Law",
-    "content": "These terms are governed by the laws of your jurisdiction, unless otherwise required by applicable law."
+    "title": "七、適用法律",
+    "content": "本條款受您所在地的法律所管轄，除非適用法律另有規定。"
   },
   "section8": {
-    "title": "8. Contact",
-    "content": "If you have any questions or concerns, contact us at"
+    "title": "八、聯絡我們",
+    "content": "若您有任何問題或疑慮，請透過以下方式聯絡我們："
   },
   "email": "g4o2dotme@googlegroups.com"
 }

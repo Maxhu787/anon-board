@@ -1,11 +1,11 @@
 {
-  "title": "About",
-  "intro": "g4o2.me was created by Hu Kai-Hsiang as a fun side project, primarily for students to share and discuss topics publicly and anonymously.",
+  "title": "關於",
+  "intro": "g4o2.me，由 胡凱翔 創建，作為一個提供學生能匿名（或公開）留言互動、討論各種話題的平台。",
   "creatorSection": {
-    "school": "Pingtung Senior High School",
-    "club": "Circ Club Principal",
-    "grade": "2nd grade in highschool soon",
-    "websiteText": "Portfolio Website",
+    "school": "屏東高中",
+    "club": "資訊研習社長",
+    "grade": "升高二",
+    "websiteText": "個人網站",
     "websiteUrl": "https://maxhu787.github.io/"
   }
 }

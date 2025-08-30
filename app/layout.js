@@ -62,11 +62,11 @@ export default function RootLayout({ children }) {
               asChild
               className="backdrop-blur-[2px] bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-4 top-40"
             />
-            <ToggleLanguageButton
+            {/* <ToggleLanguageButton
               variant="outline"
               asChild
               className="backdrop-blur-[2px] bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-4 top-25"
-            />
+            /> */}
           </ThemeProvider>
         </I18nProvider>
         <Analytics />
