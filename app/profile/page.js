@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslation } from "react-i18next";
 import LoginButton from "@/components/LoginLogoutButton";
 import { ToggleThemeButton } from "@/components/ToggleThemeButton";
-import { ToggleLanguageButton } from "@/components/ToggleLanguageButton";
+// import { ToggleLanguageButton } from "@/components/ToggleLanguageButton";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
@@ -90,10 +90,10 @@ export default function ProfilePage() {
               asChild
               className="cursor-pointer active:scale-95 transition-all"
             />
-            <ToggleLanguageButton
+            {/* <ToggleLanguageButton
               asChild
               className="cursor-pointer active:scale-95 transition-all"
-            />
+            /> */}
             <LoginButton className="cursor-pointer" />
           </div>
         </div>

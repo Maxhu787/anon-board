@@ -89,7 +89,7 @@ export default function Home() {
             {user ? (
               <Link
                 href="/home"
-                className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-yellow-500 text-white rounded-xl text-lg hover:bg-yellow-600 dark:bg-yellow-500 dark:text-white dark:hover:bg-yellow-600"
+                className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-yellow-500 text-white rounded-xl text-lg hover:bg-yellow-400 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500"
               >
                 {t("browseposts")}
                 <ChevronRight className="ml-2 mr-[-8]" />

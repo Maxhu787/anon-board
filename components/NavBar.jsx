@@ -107,7 +107,7 @@ export default function NavBar() {
                   onClick={handlePlusClick}
                 >
                   <Link href="/send">
-                    <Send style={{ height: iconSize, width: iconSize }} />
+                    <Plus style={{ height: iconSize, width: iconSize }} />
                   </Link>
                 </Button>
                 {showBubble && (
