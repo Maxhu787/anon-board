@@ -6,7 +6,7 @@ import NavBar from "@/components/NavBar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ToggleThemeButton } from "@/components/ToggleThemeButton";
 import { I18nProvider } from "@/components/i18nProvider";
-import { ToggleLanguageButton } from "@/components/ToggleLanguageButton";
+// import { ToggleLanguageButton } from "@/components/ToggleLanguageButton";
 import Script from "next/script";
 import Analytics from "@/utils/analytics";
 

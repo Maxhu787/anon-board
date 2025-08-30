@@ -9,9 +9,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
 import { Plus, House, User } from "lucide-react";
-import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 import LoginButton from "./LoginLogoutButton";
-import SendPost from "./SendPost";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 
@@ -102,18 +100,16 @@ export default function NavBar() {
             {/* <div className="relative flex flex-col items-center"> */}
             {user ? (
               <>
-                <Drawer>
-                  <DrawerTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={buttonClass}
-                      onClick={handlePlusClick}
-                    >
-                      <Plus style={{ height: iconSize, width: iconSize }} />
-                    </Button>
-                  </DrawerTrigger>
-                  <SendPost />
-                </Drawer>
+                <Button
+                  variant="outline"
+                  asChild
+                  className={buttonClass}
+                  onClick={handlePlusClick}
+                >
+                  <Link href="/send">
+                    <Plus style={{ height: iconSize, width: iconSize }} />
+                  </Link>
+                </Button>
                 {showBubble && (
                   <span
                     className="absolute top-[120%] left-1/2 -translate-x-1/2 

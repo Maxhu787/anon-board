@@ -1,16 +1,8 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import { Button } from "./ui/button";
-import {
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-} from "@/components/ui/drawer";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
@@ -18,16 +10,16 @@ import { createClient } from "@/utils/supabase/client";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
-export default function SendPost() {
+export default function SendPost({ onSent }) {
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [loading, setLoading] = useState(false);
-  const closeRef = useRef(null);
 
   const supabase = createClient();
   const { t } = useTranslation();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e?.preventDefault?.();
     if (!content.trim()) return;
     if (content.length > 2000) {
       toast.error("Content is too long (max 2000 characters)");
@@ -50,9 +42,9 @@ export default function SendPost() {
     if (!error) {
       setContent("");
       setIsAnonymous(false);
-      closeRef.current?.click();
-      // toast.success("Posted!");
-      window.location.reload(); // temporary solution for getting newly posted post
+      toast.success(t("posted"));
+      if (onSent) onSent();
+      else window.location.reload(); // fallback
     } else {
       toast.error("Something went wrong.");
       console.error("Error posting:", error);
@@ -60,63 +52,57 @@ export default function SendPost() {
   };
 
   return (
-    <DrawerContent>
-      <DrawerHeader className="text-center mt-2">
-        <DrawerTitle>{t("cardTitle")}</DrawerTitle>
-        <DrawerDescription>{t("cardSecondary")}</DrawerDescription>
-      </DrawerHeader>
-      <div className="w-full flex justify-center">
-        <div className="w-full max-w-md px-4 space-y-4">
-          <div>
-            <Label htmlFor="content">{t("content")}</Label>
-            <Textarea
-              id="content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder={t("cardPlaceholder")}
-              rows={4}
-              maxLength={2000}
-              className="mt-2 min-h-40 max-h-40 overflow-y-auto resize-none"
-            />
-          </div>
-
-          <div className="flex items-center justify-between">
-            <Label htmlFor="anonymous">{t("postAnon")}</Label>
-            <Switch
-              id="anonymous"
-              checked={isAnonymous}
-              onCheckedChange={setIsAnonymous}
-              className="cursor-pointer"
-            />
-          </div>
-        </div>
+    <form
+      className="w-full max-w-md mx-auto space-y-6 mt-12"
+      onSubmit={handleSubmit}
+    >
+      <div className="text-center mt-2">
+        <h2 className="text-2xl font-bold mb-2">{t("cardTitle")}</h2>
+        <p className="text-muted-foreground text-sm mb-4">
+          {t("cardSecondary")}
+        </p>
       </div>
-      <DrawerFooter>
-        <div className="w-full flex justify-center">
-          <div className="w-full max-w-md px-4 space-y-2 mb-4">
-            <Button
-              className="w-full cursor-pointer active:bg-[rgb(57,57,57)] active:scale-95 transition-all dark:active:bg-gray-200"
-              disabled={loading || !content.trim()}
-              onClick={handleSubmit}
-            >
-              {loading ? t("posting") : t("post")}
-            </Button>
-
-            <DrawerClose asChild>
-              <button ref={closeRef} className="hidden" />
-            </DrawerClose>
-
-            <DrawerClose asChild>
-              <Button
-                variant="outline"
-                className="w-full cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)]"
-              >
-                {t("cancel")}
-              </Button>
-            </DrawerClose>
-          </div>
-        </div>
-      </DrawerFooter>
-    </DrawerContent>
+      <div>
+        <Label htmlFor="content">{t("content")}</Label>
+        <Textarea
+          id="content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder={t("cardPlaceholder")}
+          rows={4}
+          maxLength={2000}
+          className="mt-2 min-h-40 max-h-40 overflow-y-auto resize-none"
+        />
+      </div>
+      <div className="flex items-center justify-between">
+        <Label htmlFor="anonymous">{t("postAnon")}</Label>
+        <Switch
+          id="anonymous"
+          checked={isAnonymous}
+          onCheckedChange={setIsAnonymous}
+          className="cursor-pointer"
+        />
+      </div>
+      <div className="space-y-2 mb-4">
+        <Button
+          type="submit"
+          className="w-full cursor-pointer active:bg-[rgb(57,57,57)] active:scale-95 transition-all dark:active:bg-gray-200"
+          disabled={loading || !content.trim()}
+        >
+          {loading ? t("posting") : t("post")}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)]"
+          onClick={() => {
+            setContent("");
+            setIsAnonymous(false);
+          }}
+        >
+          {t("cancel")}
+        </Button>
+      </div>
+    </form>
   );
 }
