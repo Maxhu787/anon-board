@@ -30,7 +30,8 @@ export default function SendPost({ onSent, hideTitle }) {
     const { data: user } = await supabase.auth.getUser();
 
     // Redirect to login if not anonymous and user is not logged in
-    if (!isAnonymous && !user?.user?.id) {
+    // if (!isAnonymous && !user?.user?.id) {
+    if (!user?.user?.id) {
       setLoading(false);
       window.location.href = "/login";
       return;
