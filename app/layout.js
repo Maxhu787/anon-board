@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
         <I18nProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="dark"
             // enableSystem
             disableTransitionOnChange
           >
@@ -61,12 +61,12 @@ export default function RootLayout({ children }) {
             <ToggleThemeButton
               variant="outline"
               asChild
-              className="backdrop-blur-[2px] bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-4 top-40"
+              className="backdrop-blur-[2px] bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-4 top-25"
             />
             {/* <ToggleLanguageButton
               variant="outline"
+              className="backdrop-blur-[2px] bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-4 top-40"
               asChild
-              className="backdrop-blur-[2px] bg-transparent min-w-[50px] min-h-[50px] cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)] fixed right-4 top-25"
             /> */}
           </ThemeProvider>
         </I18nProvider>

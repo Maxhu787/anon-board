@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
-import { Plus, House, User } from "lucide-react";
+import { Plus, House, User, Send } from "lucide-react";
 import LoginButton from "./LoginLogoutButton";
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
@@ -107,7 +107,7 @@ export default function NavBar() {
                   onClick={handlePlusClick}
                 >
                   <Link href="/send">
-                    <Plus style={{ height: iconSize, width: iconSize }} />
+                    <Send style={{ height: iconSize, width: iconSize }} />
                   </Link>
                 </Button>
                 {showBubble && (

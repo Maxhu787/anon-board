@@ -64,7 +64,7 @@ export default function ProfilePage() {
 
   return (
     <div className="flex items-center flex-col justify-center min-h-screen bg-[rgb(250,250,250)] dark:bg-[rgb(10,10,10)]">
-      <div className="bg-white dark:bg-[rgb(23,23,23)] text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+      <div className="bg-white dark:bg-zinc-900 text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
         <div className="flex flex-col items-center mb-6">
           <Avatar className="w-28 h-28 mt-6 mb-2">
             <AvatarImage src={avatarUrl} alt={fullName} />

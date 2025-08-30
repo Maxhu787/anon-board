@@ -29,13 +29,13 @@ export default function SendPost({ onSent, hideTitle }) {
     setLoading(true);
     const { data: user } = await supabase.auth.getUser();
 
-    const postId = nanoid(11); // generate Threads-style ID
+    const postId = nanoid(11); // generate id for the post
 
     const { error } = await supabase.from("posts").insert({
-      id: postId, // custom short ID
+      id: postId,
+      user_id: isAnonymous ? null : user?.user?.id ?? null,
       content,
       is_anonymous: isAnonymous,
-      user_id: user?.user?.id ?? null,
     });
 
     setLoading(false);

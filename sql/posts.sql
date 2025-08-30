@@ -14,7 +14,7 @@ for select
 
 create policy "Users can insert their own posts." on public.posts 
 for insert
-  with check (auth.uid() = user_id);
+  with check (auth.uid() IS NULL OR auth.uid() = user_id);
 
 create policy "Users can update their own posts." on public.posts 
 for update
