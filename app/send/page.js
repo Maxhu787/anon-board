@@ -20,7 +20,7 @@ export default function SendPage() {
           />
           <h2 className="text-2xl font-bold">{t("cardTitle")}</h2>
         </div>
-        <p className="text-muted-foreground text-sm mb-4">
+        <p className="ml-12 text-muted-foreground text-sm mb-4">
           不指名道姓、不得辨識出當事人
         </p>
         <SendPost

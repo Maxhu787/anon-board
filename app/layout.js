@@ -16,10 +16,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>靠北屏中 5.0</title>
         <meta name="title" content="靠北屏中 5.0" />
-        <meta
-          name="description"
-          content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
-        />
+        <meta name="description" content="全新獨立留言平台，自由發布貼文。" />
         <meta name="author" content="Mr. Hu" />
         <meta name="robots" content="index, follow" />
 
@@ -27,11 +24,11 @@ export default function RootLayout({ children }) {
         <meta property="og:title" content="靠北屏中 5.0" />
         <meta
           property="og:description"
-          content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
+          content="全新獨立留言平台，自由發布貼文。"
         />
         <meta
           property="og:image"
-          content="https://pths-cowbell.vercel.app/logo.png"
+          content="https://pths-cowbell.vercel.app/logo-rect.png"
         />
         <meta property="og:url" content="https://pths-cowbell.vercel.app" />
         <meta property="og:type" content="website" />
@@ -45,11 +42,11 @@ export default function RootLayout({ children }) {
         <meta property="twitter:title" content="靠北屏中 5.0" />
         <meta
           property="twitter:description"
-          content="靠北屏中 5.0，全新獨立留言平台，自由發布貼文，享受簡潔瀏覽體驗。"
+          content="全新獨立留言平台，自由發布貼文。"
         />
         <meta
           property="twitter:image"
-          content="https://pths-cowbell.vercel.app/logo.png"
+          content="https://pths-cowbell.vercel.app/logo-rect.png"
         />
 
         {/* Google One Tap Script */}
