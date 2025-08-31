@@ -68,28 +68,28 @@ export default function Home() {
       <main className="flex flex-col md:flex-row flex-grow w-full">
         <section className="w-full md:w-1/2 p-8 flex items-center justify-center bg-white dark:bg-black">
           <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-18 md:pl-12 md:pr-0">
-            <div className="select-none inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
-              {t("madeby")}
+            <div className="select-none inline-block bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
+              屏東高中生開發 Made in PTHS
             </div>
             <div className="select-none ml-2 inline-block bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
-              {t("testversion")}
+              Beta 測試版
             </div>
-            <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-blue-500 dark:text-blue-400">
-              {t("title1")}
+            <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-yellow-500 dark:text-yellow-400">
+              靠北屏中 5.0
             </h1>
             <h2 className="text-[43px] md:text-[50px] font-extrabold leading-[50px] md:leading-[50px] mt-[-10] text-black dark:text-white">
-              {t("title2")}
+              匿名發文、留言
             </h2>
             <p className="text-lg md:text-[18px] text-gray-700 dark:text-gray-300">
-              {t("description1")}
+              靠北屏中 5.0，全新獨立留言平台，學生自行開發
             </p>
             <p className="text-lg mt-[-12] md:text-[18px] text-gray-700 dark:text-gray-300">
-              {t("description2")}
+              自由發布貼文，享受簡潔瀏覽體驗
             </p>
             {user ? (
               <Link
                 href="/home"
-                className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-xl text-lg hover:bg-blue-400 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-500"
+                className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-yellow-500 text-white rounded-xl text-lg hover:bg-yellow-400 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500"
               >
                 {t("browseposts")}
                 <ChevronRight className="ml-2 mr-[-8]" />
@@ -100,31 +100,31 @@ export default function Home() {
               //   // className="select-none active:scale-95 transition-all inline-flex px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
               //   className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-yellow-500 text-white rounded-xl text-lg hover:bg-yellow-400 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500"
               // >
-              //   {t("getstarted")}
+              //   開始使用
               //   <ChevronRight className="ml-1 mt-[2] mr-[-11]" />
               // </Link>
               <Link
                 href="/home"
-                className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-xl text-lg hover:bg-blue-600 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-700"
+                className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-yellow-500 text-white rounded-xl text-lg hover:bg-yellow-400 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500"
               >
-                {t("browseposts")}
+                瀏覽貼文
                 <ChevronRight className="ml-2 mr-[-8]" />
               </Link>
             )}
             <div className="border-t-2 mt-10 md:mt-5 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
               <div className="flex flex-row space-x-2.5">
                 <Link href="/about" className="hover:underline">
-                  {t("aboutus")}
+                  關於我們
                 </Link>
                 <Link href="/terms-of-service" className="hover:underline">
-                  {t("tos")}
+                  服務條款
                 </Link>
                 <Link href="/privacy-policy" className="hover:underline">
-                  {t("privacyPolicy")}
+                  隱私政策
                 </Link>
               </div>
               <div>
-                © {new Date().getFullYear()} 學生匿名留言平台 - {t("legal")}
+                © {new Date().getFullYear()} 靠北屏中 5.0 - 保留所有權利。
               </div>
             </div>
           </div>

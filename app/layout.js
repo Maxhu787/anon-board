@@ -14,9 +14,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>靠北屏中 5.0</title>
-        <meta name="title" content="靠北屏中 5.0" />
-        <meta name="description" content="全新獨立留言平台，自由發布貼文。" />
+        <title>學生匿名留言平台</title>
+        <meta name="title" content="學生匿名留言平台" />
+        <meta
+          name="description"
+          content="全新獨立留言平台，讓學生能公開、匿名分享貼文。自由發布貼文，享受簡潔瀏覽體驗。"
+        />
         <meta name="author" content="Mr. Hu" />
         <meta name="robots" content="index,follow" />
         <meta name="google" content="notranslate" />
@@ -33,14 +36,14 @@ export default function RootLayout({ children }) {
         />
 
         {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:title" content="靠北屏中 5.0" />
+        <meta property="og:title" content="學生匿名留言平台" />
         <meta
           property="og:description"
-          content="全新獨立留言平台，自由發布貼文。"
+          content="全新獨立留言平台，讓學生能公開、匿名分享貼文。自由發布貼文，享受簡潔瀏覽體驗。"
         />
         <meta
           property="og:image"
-          content="https://pths-cowbell.vercel.app/logo.png"
+          content="https://pths-cowbell.vercel.app/logo-rect.png"
         />
         <meta property="og:url" content="https://pths-cowbell.vercel.app" />
         <meta property="og:type" content="website" />
@@ -51,10 +54,10 @@ export default function RootLayout({ children }) {
           property="twitter:url"
           content="https://pths-cowbell.vercel.app/"
         />
-        <meta property="twitter:title" content="靠北屏中 5.0" />
+        <meta property="twitter:title" content="學生匿名留言平台" />
         <meta
           property="twitter:description"
-          content="全新獨立留言平台，自由發布貼文。"
+          content="全新獨立留言平台，讓學生能公開、匿名分享貼文。自由發布貼文，享受簡潔瀏覽體驗。"
         />
         <meta
           property="twitter:image"
