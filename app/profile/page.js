@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [editingName, setEditingName] = useState(false);
   const [newName, setNewName] = useState("");
@@ -24,26 +25,39 @@ export default function ProfilePage() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchUserProfile = async () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
 
       if (!user) {
         router.push("/login");
+        return;
+      }
+
+      setUser(user);
+
+      // Fetch profile from the profiles table
+      const { data: profileData, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        toast.error("Failed to fetch profile.");
       } else {
-        setUser(user);
+        setProfile(profileData);
       }
 
       setLoading(false);
     };
 
-    fetchUser();
-
+    fetchUserProfile();
     document.title = "靠北屏中 5.0 | Profile";
   }, [supabase.auth, router]);
 
-  if (loading || !user) {
+  if (loading || !user || !profile) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-zinc-900">
         <Card className="w-full max-w-md p-8 rounded-2xl shadow-lg">
@@ -63,24 +77,24 @@ export default function ProfilePage() {
     );
   }
 
-  const fullName = user?.user_metadata?.full_name || "Anonymous";
-  const email = user?.email || "No email";
-  const avatarUrl = user?.user_metadata?.avatar_url || "";
+  const fullName = profile.full_name || "Anonymous";
+  const email = profile.email || user.email || "No email";
+  const avatarUrl = profile.avatar_url || "";
 
   async function handleSaveName() {
     if (!newName.trim()) return;
     setSavingName(true);
-    // Update user_metadata in Supabase
-    const { error } = await supabase.auth.updateUser({
-      data: { full_name: newName },
-    });
+
+    const { error } = await supabase
+      .from("profiles")
+      .update({ full_name: newName })
+      .eq("id", user.id);
+
     setSavingName(false);
+
     if (!error) {
       setEditingName(false);
-      setUser((prev) => ({
-        ...prev,
-        user_metadata: { ...prev.user_metadata, full_name: newName },
-      }));
+      setProfile((prev) => ({ ...prev, full_name: newName }));
       toast.success("Name updated!");
     } else {
       toast.error("Failed to update name.");
@@ -156,10 +170,6 @@ export default function ProfilePage() {
               asChild
               className="cursor-pointer active:scale-95 transition-all"
             />
-            {/* <ToggleLanguageButton
-              asChild
-              className="cursor-pointer active:scale-95 transition-all"
-            /> */}
             <LoginButton className="cursor-pointer" />
           </div>
         </div>
