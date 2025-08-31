@@ -69,7 +69,7 @@ export default function NavBar() {
     // backdrop-blur-[3px] bg-transparent
     <NavigationMenu className="dark:bg-[rgb(33,33,33)] bg-white py-3 mt-0 rounded-b-2xl shadow w-full max-w-5xl mx-auto fixed z-10">
       <div className="relative w-full pl-5 pr-4">
-        <ul className="float-left list-none">
+        <ul className="float-left list-none flex flex-row">
           <NavigationMenuItem>
             <Button
               variant="none"
@@ -85,6 +85,17 @@ export default function NavBar() {
                   alt="logo"
                   priority={true}
                 />
+              </Link>
+            </Button>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Button
+              // variant="none"
+              asChild
+              className="ml-4 p-4 min-h-[50px] cursor-pointer active:scale-90 transition-all"
+            >
+              <Link href="/pths" aria-label="Landing page">
+                靠屏 5.0 入口
               </Link>
             </Button>
           </NavigationMenuItem>
