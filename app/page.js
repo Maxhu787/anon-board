@@ -95,13 +95,20 @@ export default function Home() {
                 <ChevronRight className="ml-2 mr-[-8]" />
               </Link>
             ) : (
+              // <Link
+              //   href="/login"
+              //   // className="select-none active:scale-95 transition-all inline-flex px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+              //   className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-yellow-500 text-white rounded-xl text-lg hover:bg-yellow-400 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500"
+              // >
+              //   {t("getstarted")}
+              //   <ChevronRight className="ml-1 mt-[2] mr-[-11]" />
+              // </Link>
               <Link
-                href="/login"
-                // className="select-none active:scale-95 transition-all inline-flex px-6 py-3 bg-black text-white rounded-xl text-lg hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+                href="/home"
                 className="select-none active:scale-95 transition-all inline-flex items-center px-6 py-3 bg-yellow-500 text-white rounded-xl text-lg hover:bg-yellow-400 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500"
               >
-                {t("getstarted")}
-                <ChevronRight className="ml-1 mt-[2] mr-[-11]" />
+                {t("browseposts")}
+                <ChevronRight className="ml-2 mr-[-8]" />
               </Link>
             )}
             <div className="border-t-2 mt-10 md:mt-5 pt-4 pl-4 text-sm text-gray-500 dark:text-gray-400">
