@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
         <I18nProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             // enableSystem
             disableTransitionOnChange
           >

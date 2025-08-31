@@ -130,7 +130,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full pt-8 md:pt-28 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh]">
+        <section className="w-full mt-6 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh] flex flex-col justify-center">
           {/* <Posts /> */}
           {/* <Announcements /> */}
           <SendPost onSent={() => {}} />
