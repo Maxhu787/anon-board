@@ -9,6 +9,7 @@ import GoogleOneTap from "@/components/GoogleOneTap";
 // import Announcements from "@/components/Announcements";
 import { ChevronRight } from "lucide-react";
 import SendPost from "@/components/SendPost"; // Add import for SendPost
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -130,9 +131,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full mt-6 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh] flex flex-col justify-center">
-          {/* <Posts /> */}
-          {/* <Announcements /> */}
+        {/* <section className="w-full mt-6 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh] flex flex-col justify-center">
+          <Posts />
+          <Announcements />
+          <SendPost onSent={() => {}} />
+        </section> */}
+
+        <section className="w-full mt-10 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh] flex flex-col justify-center">
+          <div className="mb-[-25] flex justify-center">
+            <Button className="bg-yellow-500 text-white text-md hover:bg-yellow-400 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500 transition">
+              <Link href="/pths">靠屏 5.0 入口</Link>
+            </Button>
+          </div>
           <SendPost onSent={() => {}} />
         </section>
       </main>
