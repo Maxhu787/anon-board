@@ -9,11 +9,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useTranslation } from "react-i18next";
 import LoginButton from "@/components/LoginLogoutButton";
 import { ToggleThemeButton } from "@/components/ToggleThemeButton";
-// import { ToggleLanguageButton } from "@/components/ToggleLanguageButton";
+import { Pencil, Check, X } from "lucide-react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [editingName, setEditingName] = useState(false);
+  const [newName, setNewName] = useState("");
+  const [savingName, setSavingName] = useState(false);
   const router = useRouter();
   const supabase = createClient();
   const { t } = useTranslation();
@@ -62,6 +67,26 @@ export default function ProfilePage() {
   const email = user?.email || "No email";
   const avatarUrl = user?.user_metadata?.avatar_url || "";
 
+  async function handleSaveName() {
+    if (!newName.trim()) return;
+    setSavingName(true);
+    // Update user_metadata in Supabase
+    const { error } = await supabase.auth.updateUser({
+      data: { full_name: newName },
+    });
+    setSavingName(false);
+    if (!error) {
+      setEditingName(false);
+      setUser((prev) => ({
+        ...prev,
+        user_metadata: { ...prev.user_metadata, full_name: newName },
+      }));
+      toast.success("Name updated!");
+    } else {
+      toast.error("Failed to update name.");
+    }
+  }
+
   return (
     <div className="flex items-center flex-col justify-center min-h-screen bg-[rgb(250,250,250)] dark:bg-[rgb(10,10,10)]">
       <div className="bg-white dark:bg-zinc-900 text-black dark:text-white p-8 rounded-2xl shadow-lg w-full max-w-md">
@@ -79,8 +104,49 @@ export default function ProfilePage() {
         </div>
         <div className="text-left">
           <h1 className="text-2xl font-bold mb-4">{t("profile")}</h1>
-          <p className="mb-2">
-            <span className="font-semibold">Name:</span> {fullName}
+          <p className="mb-2 flex items-center gap-2">
+            <span className="font-semibold">Name:</span>
+            {editingName ? (
+              <>
+                <input
+                  type="text"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  className="border rounded px-2 py-1 text-black dark:text-white bg-white dark:bg-zinc-800"
+                  disabled={savingName}
+                  style={{ minWidth: "120px" }}
+                />
+                <Button
+                  onClick={handleSaveName}
+                  disabled={savingName || !newName.trim()}
+                  className="w-9 cursor-pointer active:bg-[rgb(57,57,57)] active:scale-95 transition-all dark:active:bg-gray-200"
+                >
+                  <Check />
+                </Button>
+                <Button
+                  onClick={() => setEditingName(false)}
+                  disabled={savingName}
+                  variant="outline"
+                  className="w-9 cursor-pointer active:bg-gray-200 active:scale-95 transition-all dark:active:bg-[rgb(70,70,70)]"
+                >
+                  <X />
+                </Button>
+              </>
+            ) : (
+              <>
+                {fullName}
+                <Button
+                  onClick={() => {
+                    setEditingName(true);
+                    setNewName(fullName);
+                  }}
+                  className="cursor-pointer active:scale-95 transition-all w-7 h-7"
+                  aria-label="Edit name"
+                >
+                  <Pencil className="h-[1rem] w-[1rem]" />
+                </Button>
+              </>
+            )}
           </p>
           <p className="mb-6">
             <span className="font-semibold">Email:</span> {email}
