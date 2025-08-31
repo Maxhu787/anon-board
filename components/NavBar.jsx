@@ -69,29 +69,30 @@ export default function NavBar() {
     // backdrop-blur-[3px] bg-transparent
     <NavigationMenu className="dark:bg-[rgb(33,33,33)] bg-white py-3 mt-0 rounded-b-2xl shadow w-full max-w-5xl mx-auto fixed z-10">
       <div className="relative w-full pl-5 pr-4">
-        <div className="float-left list-none">
+        <ul className="float-left list-none">
           <NavigationMenuItem>
             <Button
               variant="none"
               asChild
               className="p-0 ml-1 min-w-[50px] min-h-[50px] cursor-pointer active:scale-85 transition-all"
             >
-              <Link href="/">
+              <Link href="/" aria-label="Landing page">
                 <Image
-                  src="/logo.png"
+                  src="/logo-lowres.png"
                   width={iconSize + 19}
                   height={iconSize + 19}
                   className="rounded-full"
                   alt="logo"
+                  priority={true}
                 />
               </Link>
             </Button>
           </NavigationMenuItem>
-        </div>
-        <div className="float-right flex items-center gap-3 list-none">
+        </ul>
+        <ul className="float-right flex items-center gap-3 list-none">
           <NavigationMenuItem>
             <Button variant="outline" asChild className={buttonClass}>
-              <Link href="/home">
+              <Link href="/home" aria-label="Home">
                 <House style={{ height: iconSize, width: iconSize }} />
               </Link>
             </Button>
@@ -106,7 +107,7 @@ export default function NavBar() {
                   className={buttonClass}
                   onClick={handlePlusClick}
                 >
-                  <Link href="/send">
+                  <Link href="/send" aria-label="Create post">
                     <Plus style={{ height: iconSize, width: iconSize }} />
                   </Link>
                 </Button>
@@ -126,7 +127,7 @@ export default function NavBar() {
               </>
             ) : (
               <Button variant="outline" asChild className={buttonClass}>
-                <Link href="/login">
+                <Link href="/login" aria-label="Login">
                   <Plus style={{ height: iconSize, width: iconSize }} />
                 </Link>
               </Button>
@@ -136,7 +137,7 @@ export default function NavBar() {
           <NavigationMenuItem>
             {user ? (
               <Button variant="outline" asChild className={buttonClass}>
-                <Link href="/profile">
+                <Link href="/profile" aria-label="Profile">
                   <User style={{ height: iconSize, width: iconSize }} />
                 </Link>
               </Button>
@@ -148,7 +149,7 @@ export default function NavBar() {
               />
             )}
           </NavigationMenuItem>
-        </div>
+        </ul>
       </div>
     </NavigationMenu>
   );

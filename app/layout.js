@@ -18,7 +18,19 @@ export default function RootLayout({ children }) {
         <meta name="title" content="靠北屏中 5.0" />
         <meta name="description" content="全新獨立留言平台，自由發布貼文。" />
         <meta name="author" content="Mr. Hu" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index,follow" />
+        <meta name="google" content="notranslate" />
+
+        {/* Preconnect to Supabase */}
+        <link
+          rel="preconnect"
+          href="https://gwjezgyzughtujndzoyv.supabase.co"
+          crossOrigin=""
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://gwjezgyzughtujndzoyv.supabase.co"
+        />
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:title" content="靠北屏中 5.0" />
@@ -28,7 +40,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           property="og:image"
-          content="https://pths-cowbell.vercel.app/logo-rect.png"
+          content="https://pths-cowbell.vercel.app/logo.png"
         />
         <meta property="og:url" content="https://pths-cowbell.vercel.app" />
         <meta property="og:type" content="website" />
@@ -97,11 +109,16 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         {/* Simple Analytics */}
-        <script
+        {/* <script
           data-collect-dnt="true"
           async
           src="https://scripts.simpleanalyticscdn.com/latest.js"
-        ></script>
+        ></script> */}
+        <Script
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+          strategy="afterInteractive"
+          data-collect-dnt="true"
+        />
       </body>
     </html>
   );

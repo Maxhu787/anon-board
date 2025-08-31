@@ -34,8 +34,29 @@ export default function Home() {
 
   if (loading) {
     return (
-      <></>
-      // <div className="p-8 mt-20 text-center text-gray-500">{t("loading")}</div>
+      <div className="h-10 mt-23 w-full flex justify-center items-center">
+        <svg
+          className="animate-spin h-6 w-6 text-gray-500 mr-2"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+          ></path>
+        </svg>
+        <p className="text-sm text-gray-500">載入中...</p>
+      </div>
     );
   }
 
@@ -46,22 +67,6 @@ export default function Home() {
           <Posts />
         </div>
       </main>
-      <footer className="border-t mt-12 py-6 px-4 text-center text-sm text-gray-500 dark:text-gray-400">
-        <div className="space-x-4 mb-2">
-          <Link href="/about" className="hover:underline">
-            {t("aboutus")}
-          </Link>
-          <Link href="/terms-of-service" className="hover:underline">
-            {t("tos")}
-          </Link>
-          <Link href="/privacy-policy" className="hover:underline">
-            {t("privacyPolicy")}
-          </Link>
-        </div>
-        <div>
-          © {new Date().getFullYear()} 靠北屏中 5.0 - {t("legal")}
-        </div>
-      </footer>
     </div>
   );
 }
