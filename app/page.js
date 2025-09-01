@@ -30,7 +30,7 @@ export default function Home() {
     }
 
     setMounted(true);
-    document.title = "靠北屏中 5.0";
+    document.title = "學生匿名留言平台";
 
     const fetchUser = async () => {
       const {
