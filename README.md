@@ -59,7 +59,7 @@ Live Demo：https://pths-cowbell.vercel.app/
 - `/lib`：特定功能、auth、i18n 函式
 - `/lib/locales`：i18n 翻譯
 - `/utils`：Supabase 資料庫
-- `/sql`：資料庫各個table設計 schema 檔
+- `/sql`：資料庫各個 table 的設計 schema 檔
 
 ## License
 
