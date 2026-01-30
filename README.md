@@ -40,7 +40,7 @@ Live Demo：https://pths-cowbell.vercel.app/
 
 ### 2) 設置環境變數
 
-   建立 `.env.local` 檔案，並放入 Supabase 的 credentials:
+   建立 `.env.local` 檔案，並放入 Supabase 和 Google Auth 的 credentials:
    ```
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
