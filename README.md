@@ -25,7 +25,7 @@ Live Demo：https://pths-cowbell.vercel.app/
 - 按讚/倒讚 (貼文、留言)
 - RWD 和 深色/亮色模式
 - 切換網站語言 (中英文翻譯)
-- 簡易流量分析整合
+- 簡易流量分析整合 (Simple Analytics 平台)
 
 ## 快速開始
 
