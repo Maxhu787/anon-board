@@ -138,11 +138,11 @@ export default function Home() {
         </section> */}
 
         <section className="w-full mt-10 md:w-1/2 p-6 bg-gray-50 dark:bg-[#111] overflow-y-auto md:max-h-[100vh] flex flex-col justify-center">
-          <div className="mb-[-25] flex justify-center">
+          {/* <div className="mb-[-25] flex justify-center">
             <Button className="bg-yellow-500 text-white text-md hover:bg-yellow-400 dark:bg-yellow-600 dark:text-white dark:hover:bg-yellow-500 transition">
               <Link href="/pths">靠屏 5.0 入口</Link>
             </Button>
-          </div>
+          </div> */}
           <SendPost onSent={() => {}} />
         </section>
       </main>
