@@ -10,7 +10,7 @@
 
 ---
 
-Live Demo：https://pths-cowbell.vercel.app/
+<!--Live Demo：https://pths-cowbell.vercel.app/-->
 
 - 前端：Next.js（App Router）+ Tailwind CSS
 - 後端：Supabase (資料庫 & auth)
@@ -70,4 +70,4 @@ CC BY-NC
 
 For questions or feedback, you can contact me via social links on my website [g4o2.com](https://g4o2.com).<br/>
 如有任何疑問或回饋，可以透過我的網站上的社群連結與我聯繫 [g4o2.com](https://g4o2.com)。<br/>
-`開發期間 2025/6/18 ~ 2025/9/1`
+<!--`開發期間 2025/6/18 ~ 2025/9/1`-->
