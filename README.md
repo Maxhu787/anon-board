@@ -1,10 +1,10 @@
 <div align=center>
 
 <picture>
-  <img alt="SCIST Logo" src="public/logo-rect.png" width="250" style=margin-bottom:1rem />
+  <img alt="SCIST Logo" src="public/readme-logo.png" width="280" style=margin-bottom:1rem />
 </picture>
 
-Anonymous Student Message Board
+學生匿名留言平台
 
 </div>
 
