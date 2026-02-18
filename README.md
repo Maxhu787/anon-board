@@ -10,7 +10,7 @@
 
 ---
 
-<!--Live Demo：https://pths-cowbell.vercel.app/-->
+Live Demo：https://pths-cowbell.vercel.app/
 
 - 前端：Next.js（App Router）+ Tailwind CSS
 - 後端：Supabase (資料庫 & auth)
