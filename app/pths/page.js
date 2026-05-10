@@ -69,10 +69,10 @@ export default function Home() {
         <section className="w-full md:w-1/2 p-8 flex items-center justify-center bg-white dark:bg-black">
           <div className="space-y-5 md:space-y-7 max-w-xl text-left pt-25 md:pt-18 md:pl-12 md:pr-0">
             <div className="select-none inline-block bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
-              屏東高中生開發 Made in PTHS
+              高中生開發
             </div>
             <div className="select-none ml-2 inline-block bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 text-xs font-medium px-3 py-1 rounded-full mb-3">
-              Beta 測試版
+              測試版
             </div>
             <h1 className="text-[46px] md:text-[52px] font-extrabold leading-[50px] md:leading-[50px] text-yellow-500 dark:text-yellow-400">
               靠北屏中 5.0
