@@ -10,8 +10,6 @@
 
 ---
 
-Live Demo：https://pths-cowbell.vercel.app/
-
 - 前端：Next.js（App Router）+ Tailwind CSS
 - 後端：Supabase (資料庫 & auth)
 - 其它：Shadcn (ui 套件), i18next (網站多語言翻譯)
